@@ -52,7 +52,19 @@ void Beche_achi()
 {
     string s;
     cin >> s;
-    
+    ll n = s.size();
+    ll cnt = 0;
+    for (ll i = 0; i < n; i++)
+    {
+        if (s[i] == s[i + 1])
+            cnt++;
+    }
+    if (cnt)
+    {
+            cout << 1 << el;
+    }
+    else
+        cout << n << el;
 }
 
 /************************************************************
