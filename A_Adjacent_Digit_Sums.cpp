@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-02-11 20:36:05
+Created: 2025-02-11 22:54:31
 */
 
 #include <bits/stdc++.h>
@@ -53,17 +53,15 @@ void Beche_achi()
     ll x, y;
     cin >> x >> y;
     x++;
-    if (y == x)
+    if (x == y)
     {
         yes;
         return;
     }
-    if (x > y and (x - y) % 9 == 0)
-    {
+    if ((x - y) / 9 > 0 and (x - y) % 9 == 0)
         yes;
-        return;
-    }
-    no;
+    else
+        no;
 }
 
 /************************************************************
