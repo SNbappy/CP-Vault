@@ -57,7 +57,25 @@ void Beche_achi()
     {
         cin >> a[i];
     }
-    
+    for (ll i = 0; i < n - 2; i++)
+    {
+        if(a[i] < 0){
+            no;
+            return;
+        }
+        ll x = a[i];
+        a[i] -= x;
+        a[i + 1] -= 2 * x;
+        a[i + 2] -= x;
+    }
+    for(auto &c: a){
+        if(c != 0)
+        {
+            no;
+            return;
+        }
+    }
+    yes;
 }
 
 /************************************************************
@@ -70,7 +88,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye

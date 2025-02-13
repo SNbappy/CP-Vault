@@ -52,7 +52,31 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
+    ll ans = LLONG_MAX, y = 0;
+    while (true)
+    {
 
+        ll x = n;
+        y = y * 10 + 9;
+        ll cnt = 0;
+        for (ll i = 0; i < 9; i++)
+        {
+            string s = to_string(x);
+            
+            for (auto c : s)
+            {
+                if (c == '7')
+                {
+                    ans = min(ans, cnt);
+                }
+            }
+            x += y;
+            cnt++;
+        }
+        if (to_string(n).size() == to_string(y).size())
+            break;
+    }
+    cout << ans << el;
 }
 
 /************************************************************
