@@ -27,29 +27,36 @@ using namespace std;
 
 void Beche_achi()
 {
-
-    ll n;
+    int n;
     cin >> n;
-    vector<ll> a(n - 1);
-    for (ll i = 0; i < n - 1; i++)
+    vector<ll> a(n), b(n);
+    for (ll i = 0; i < n; i++)
     {
-        cin >> a[i];
+        a[i] = 0;
     }
-    vector<ll> b;
-    ll x = a[0];
-    ll y = x | (~0);
-    
-    b.push_back(y);
-
-    b.push_back(x);
-
-    for (ll i = 2; i < n; i++)
+    for (ll i = 1; i < n; i++)
     {
-        b.push_back(a[i]);
+        cin >> b[i];
+        a[i - 1] |= b[i];
+        a[i] |= b[i];
     }
-    for(auto c : b)
-        cout << c << " ";
-    cout << el;
+    bool val = 1;
+    for (ll i = 1; i < n; i++)
+    {
+        if((a[i - 1]&a[i]) != b[i])
+            val = false;
+    }
+    if(!val){
+        cout << -1 << el;
+    }
+    else
+    {
+        for (ll i = 0; i < n; i++)
+        {
+            cout << a[i] << " ";
+        }
+        cout << el;
+    }
 }
 
 /************************************************************
