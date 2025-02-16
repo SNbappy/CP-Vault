@@ -1,0 +1,41 @@
+Bit - manipulation 
+1. Video - 32
+2. solve from Discord
+
+prefix-sum + Two-pointer + binary search
+1. GFG 
+2. codeforces - dp(1200)
+
+Sliding Window + Kadan Algorithm
+1. GFG 
+2. Codeforces 
+
+
+Math : (Sai Avinash)
+1. Modular Arithmetic
+2. Modulo Multiplicative inverse
+3. Fermet's little Theorem
+4. GCD (Extended GCD)
+
+5.Prime determinant 
+5.Sieve Erotho...
+6.Segment Sieve
+7.Bitwise sieve / Space optimize Sieve (optional)
+5.Prime Factorization
+
+6. Number of Divisor
+7. Sum of Divisor 
+
+Advance......
+8. euler totient function / Phi
+9. Cumulative Phi using Sieve
+
+10.Combinatorics -> Basic 
+
+Dynamic Programming -> (Usaco Guide)
+1. Rod cutting 
+2. Knapsack
+3. subsequence dp
+
+
+
