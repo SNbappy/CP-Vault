@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-02-17 18:26:18
+Created: 2025-02-18 07:03:53
 */
 
 #include <bits/stdc++.h>
@@ -53,49 +53,42 @@ void Beche_achi()
     ll n;
     cin >> n;
     vector<ll> a(n);
-    map<ll, ll> mp;
     for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
-        mp[a[i]]++;
+    }
+    vector<ll> pref(n), suff(n);
+
+    if (a[0] > 0)
+        pref[0] = a[0];
+
+    for (ll i = 1; i < n; i++)
+    {
+        pref[i] = pref[i - 1];
+        if (a[i] > 0)
+            pref[i] += a[i];
     }
 
-    ll len = 0, l = -1, r = -1, cur = -1;
+    if (a[n - 1] < 0)
+        suff[n - 1] = -a[n - 1];
+
+    for (ll i = n - 2; i >= 0; i--)
+    {
+        suff[i] = suff[i + 1];
+
+        if (a[i] < 0)
+            suff[i] -= a[i];
+    }
+
+    ll ans = 0;
 
     for (ll i = 0; i < n; i++)
     {
-        if(mp[a[i]] == 1){
-            if(cur == -1){
-                cur = i;
-                
-            }
-            continue;
-        }
-        if(cur != -1){
-            ll d = i - cur;
-            if(d > len){
-                len = d;
-                l = cur;
-                r = i - 1;
-            }
-            cur = -1;
-        }
+        // cout << suff[i] << " " << pref[i] << el;
+        ans = max(ans, suff[i] + pref[i]);
     }
-    if (cur != -1)
-    {
-        ll d = n - cur;
-        if (d > len)
-        {
-            len = d;
-            l = cur;
-            r = n - 1;
-        }
-    }
-    if(len == 0){
-        cout << 0 << el;
-        return;
-    }
-    cout << l + 1 << " " << r + 1 << el;
+
+    cout << ans << el;
 }
 
 /************************************************************
