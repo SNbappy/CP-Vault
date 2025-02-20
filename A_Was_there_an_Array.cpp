@@ -2,13 +2,16 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2024-10-16 06:34:02
+Created: 2025-02-18 20:35:21
 */
 
 #include <bits/stdc++.h>
 using namespace std;
 
-#define int long long
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
+
+#define ll long long
 #define tst   \
     int t;    \
     cin >> t; \
@@ -23,29 +26,47 @@ using namespace std;
 #define pb push_back
 const int MOD = 1e9 + 7;
 
+typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+/// change int to any data type
+/// less_equal for multiset increasing order
+/// less for set increasing order
+/// greater_equal for multiset decreasing order
+/// greater for set decreasing order
+
+/// cout<<*X.find_by_order(1)<<endl; // iterator to the k-th largest element
+/// cout<<X.order_of_key(-5)<<endl;  // number of items in a set that are strictly smaller than our item
+
 /************************************************************
  *                   Utility Function                      *
  ************************************************************/
 
+int gcd(int a, int b)
+{
+    if (b == 0)
+        return a;
+    else
+        return gcd(b, a % b);
+}
+
 void Beche_achi()
 {
-    int n, r;
-    cin >> n >> r;
-    vector<int> a(n);
-    int b = 0, ans = 0;
-    for (int i = 0; i < n; i++)
+    ll n;
+    cin >> n;
+    vector<ll> a(n);
+    for (ll i = 1; i < n - 1; i++)
     {
         cin >> a[i];
-        ans += (a[i] / 2) * 2;
-        // int x = a[i] % 2;
-        b += a[i] % 2;
-        r -= a[i] / 2;
     }
-    if (b < r)
-        ans += b;
-    else
-        ans += (r * 2 - b);
-    cout << ans << el;
+    ll cnt = 0;
+    ll bnt = 0;
+    for (ll i = 1; i < n - 3; i++)
+    {
+        if(a[i] == 1 and a[i + 1] == 0 and a[i + 2] == 1){
+            no;
+            return;
+        } 
+    }
+    yes;
 }
 
 /************************************************************
