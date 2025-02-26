@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-02-25 07:43:13
+Created: 2025-02-25 20:43:08
 */
 
 #include <bits/stdc++.h>
@@ -48,23 +48,77 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
+
 void Beche_achi()
 {
     ll n;
-    cin >> n;
-    vector<ll> a;
-    for (ll i = 1; i <= n; i += 2)
+    ll x;
+    cin >> n >> x;
+
+    ll m0 = 0;
+    for (ll y = 0; y <= n; y++)
     {
-        for (ll j = i; j <= n; j *= 2)
+        if ((y & (~x)) != 0)
         {
-            a.pb(j);
+            m0 = y;
+            break;
         }
     }
+    if (m0 == 0)
+        m0 = n + 1;
+
+    ll k;
+    if (m0 < n)
+    {
+        k = m0;
+    }
+    else
+    {
+        ll tempOR = 0;
+        for (ll i = 0; i < n; i++)
+        {
+            tempOR |= i;
+        }
+        if (tempOR == x)
+        {
+            k = n;
+        }
+        else
+        {
+            k = n - 1;
+        }
+    }
+
+    vector<ll> ans;
+    ans.reserve(n);
+    for (ll i = 0; i < k; i++)
+    {
+        ans.push_back(i);
+    }
+
+    ll currentOR = 0;
+    for (ll i = 0; i < k; i++)
+    {
+        currentOR |= ans[i];
+    }
+
+    if (n > k)
+    {
+        if (currentOR != x)
+        {
+            ans.push_back(x);
+            currentOR |= x;
+        }
+        while (ans.size() < (size_t)n)
+        {
+            ans.push_back(0);
+        }
+    }
+
     for (ll i = 0; i < n; i++)
     {
-        cout << a[i] << " ";
+        cout << ans[i] << (i + 1 < n ? " " : "\n");
     }
-    cout << el;
 }
 
 /************************************************************

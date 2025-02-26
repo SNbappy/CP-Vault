@@ -52,7 +52,25 @@ void Beche_achi()
 {
     ll a, b;
     cin >> a >> b;
-    
+
+    ll p = 0;
+    for (ll i = 0; i < a; i++)
+    {
+        p ^= i;
+    }
+
+    if (p == b)
+    {
+        cout << a << el;
+    }
+    else if ((p ^ b) == a)
+    {
+        cout << a + 2 << el;
+    }
+    else
+    {
+        cout << a + 1 << el;
+    }
 }
 
 /************************************************************
