@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-02-27 06:29:40
+Created: 2025-02-28 10:53:17
 */
 
 #include <bits/stdc++.h>
@@ -52,45 +52,17 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    string s;
-    cin >> s;
-    ll one = 0, two = 0;
-
+    vector<ll> a(n);
     for (ll i = 0; i < n; i++)
     {
-        if (s[i] == '1')
-            one++;
-        else
-            two++;
+        cin >> a[i];
     }
-
-    if (two == 1)
+    ll sum = a[0];
+    for (ll i = 1; i < n; i++)
     {
-        no;
-        return;
+        sum &= a[i];
     }
-
-    yes;
-    vector<string> grid(n, string(n, '='));
-
-    for (ll i = 0; i < n; i++)
-        grid[i][i] = 'X';
-
-    vector<int> two_indices;
-    for (ll i = 0; i < n; i++)
-        if (s[i] == '2')
-            two_indices.push_back(i);
-
-    ll size = two_indices.size();
-    for (ll i = 0; i < size; i++)
-    {
-        ll x = two_indices[i], y = two_indices[(i + 1) % size];
-        grid[x][y] = '+';
-        grid[y][x] = '-';
-    }
-
-    for (ll i = 0; i < n; i++)
-        cout << grid[i] << el;
+    cout << sum << el;
 }
 
 /************************************************************
