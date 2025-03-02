@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-02 14:37:29
+Created: 2025-03-02 14:57:26
 */
 
 #include <bits/stdc++.h>
@@ -50,27 +50,23 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n;
-    cin >> n;
-    ll one = 0, two = 0;
-    vector<pair<ll, ll>> v;
-    for (ll i = 0; i < n; i++)
+    double a;
+    cin >> a;
+
+    if (a == 180)
     {
-        ll x, y;
-        cin >> x >> y;
-        v.pb(make_pair(x, y));
+        no;
+        return;
     }
-    sort(all(v));
-    for (ll i = 0; i < n - 1; i++)
-    {
-        if(v[i].first < v[i + 1].first){
-            if(v[i].second > v[i+1].second){
-                cout << "Happy Alex" << el;
-                return;
-            }
-        }
-    }
-    cout << "Poor Alex" << el;
+
+    double x = 2 / (1 - (a / 180.0));
+    ll y = (ll)round(x);
+    // cout << x << " " << y << el;
+
+    if (abs(x - y) < 1e-9)
+        yes;
+    else
+        no;
 }
 
 /************************************************************
@@ -83,7 +79,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
