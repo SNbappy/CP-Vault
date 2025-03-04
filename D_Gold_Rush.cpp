@@ -50,7 +50,32 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    
+    ll n, m;
+    cin >> n >> m;
+    if (n == m)
+    {
+        yes;
+        return;
+    }
+    queue<ll> q;
+    q.push(n);
+    while (!q.empty())
+    {
+        ll curr = q.front();
+        q.pop();
+        if (curr == m)
+        {
+            yes;
+            return;
+        }
+        if (curr % 3 == 0)
+        {
+            ll x = curr / 3;
+            q.push(x);
+            q.push(x * 2);
+        }
+    }
+    no;
 }
 
 /************************************************************
@@ -63,7 +88,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
