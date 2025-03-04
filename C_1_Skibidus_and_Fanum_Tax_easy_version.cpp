@@ -50,7 +50,35 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    
+    ll n, m;
+    cin >> n >> m;
+    vector<ll> a(n);
+    for (ll i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    ll b;
+    cin >> b;
+
+    ll uncng = true, cng = true;
+    for (ll i = 1; i < n; i++)
+    {
+        ll cur_cng = false, korsi = false;
+        if (cng && (b - a[i - 1]) <= a[i] || uncng && a[i - 1] <= a[i])
+        {
+            cur_cng = true;
+        }
+        if (uncng && a[i - 1] <= (b - a[i]) || cng && a[i - 1] >= a[i])
+        {
+            korsi = true;
+        }
+        uncng = cur_cng;
+        cng = korsi;
+    }
+    if (cng || uncng)
+        yes;
+    else
+        no;
 }
 
 /************************************************************
@@ -63,7 +91,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye

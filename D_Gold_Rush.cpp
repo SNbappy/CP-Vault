@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-04 22:06:37
+Created: 2025-03-04 22:26:21
 */
 
 #include <bits/stdc++.h>
@@ -12,10 +12,10 @@ using namespace std;
 using namespace __gnu_pbds;
 
 #define ll long long
-#define tst \
-  int t;    \
-  cin >> t; \
-  while (t--)
+#define tst   \
+    int t;    \
+    cin >> t; \
+    while (t--)
 #define el '\n'
 #define yes cout << "YES" << el
 #define no cout << "NO" << el
@@ -42,51 +42,15 @@ typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics
 
 int gcd(int a, int b)
 {
-  if (b == 0)
-    return a;
-  else
-    return gcd(b, a % b);
+    if (b == 0)
+        return a;
+    else
+        return gcd(b, a % b);
 }
 
 void Beche_achi()
 {
-  ll n, m;
-  cin >> n >> m;
-  vector<string> s(n);
-  for (ll i = 0; i < n; i++)
-  {
-    cin >> s[i];
-  }
-  ll mxr = 0, mxri = 0;
-  for (ll i = 0; i < n; i++)
-  {
-    ll x = count(s[i].begin(), s[i].end(), '#');
-    if(x > mxr){
-      mxr = x;
-      mxri = i + 1;
-    }
-  }
-  ll mxc = 0, mxci = 0;
-
-  vector<ll> colm(m, 0);
-
-  for (const auto &row : s)
-  {
-    transform(row.begin(), row.end(), colm.begin(), colm.begin(),
-              [](char c, ll count)
-              { return count + (c == '#'); });
-  }
-
-  for (ll i = 0; i < m; i++)
-  {
-    if(colm[i] > mxc){
-      mxc = colm[i];
-      mxci = i + 1;
-    }
-  }
-  
-  
-  cout << mxri << " " << mxci << el;
+    
 }
 
 /************************************************************
@@ -95,11 +59,12 @@ void Beche_achi()
 
 Depressed_C0der
 {
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
-  cout.tie(0);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
 
-  tst Beche_achi();
+    //tst
+    Beche_achi();
 
-  Goodbye
+    Goodbye
 }
