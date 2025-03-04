@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-04 23:25:14
+Created: 2025-03-05 04:55:22
 */
 
 #include <bits/stdc++.h>
@@ -50,14 +50,50 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, m;
-    cin >> n >> m;
-    vector<ll> a(n * m);
-    for (ll i = 0; i < n * m; i++)
+    ll n;
+    cin >> n;
+    vector<ll> a(n);
+    for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-    
+
+    ll m;
+    cin >> m;
+    vector<ll> b(n);
+    b = a;
+    sort(all(b));
+
+    vector<ll> prefA(n), prefB(n);
+    prefA[0] = a[0];
+    prefB[0] = b[0];
+    for (ll i = 1; i < n; i++)
+    {
+        prefA[i] = a[i] + prefA[i - 1];
+        prefB[i] = b[i] + prefB[i - 1];
+    }
+
+    for (ll i = 0; i < m; i++)
+    {
+        ll type, l, r;
+        cin >> type >> l >> r;
+        if (type == 1)
+        {
+
+            if (l != 1)
+                cout << prefA[r - 1] - prefA[l - 2] << el;
+            else
+                cout << prefA[r - 1] << el;
+        }
+        if (type == 2)
+        {
+            // cout << prefB[r - 1] << " " << prefB[l - 2] << el;
+            if (l != 1)
+                cout << prefB[r - 1] - prefB[l - 2] << el;
+            else
+                cout << prefB[r - 1] << el;
+        }
+    }
 }
 
 /************************************************************
@@ -70,7 +106,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    tst
+    // tst
     Beche_achi();
 
     Goodbye
