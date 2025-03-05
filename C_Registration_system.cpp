@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-05 05:19:06
+Created: 2025-03-05 10:19:34
 */
 
 #include <bits/stdc++.h>
@@ -51,21 +51,8 @@ int gcd(int a, int b)
 void Beche_achi()
 {
     ll n;
-    cin >> n;
-    vector<ll> a(n);
-    ll mxp = 0, mxn = LLONG_MIN;
-    for (ll i = 0; i < n; i++)
-    {
-        cin >> a[i];
-        if (a[i] > 0)
-        {
-            mxp = max(mxp, a[i]);
-        }
-        else
-            mxn = max(mxn, a[i]);
-    }
-    // cout << mxp << " " << mxn << el;
-    cout << mxp + mxn << el;
+    string s;
+    cin >> s;
 }
 
 /************************************************************
