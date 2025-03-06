@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-05 10:19:34
+Created: 2025-03-06 17:21:24
 */
 
 #include <bits/stdc++.h>
@@ -52,22 +52,7 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-
-    map<string, ll> mp;
-    for (ll i = 0; i < n; i++)
-    {
-        string s;
-        cin >> s;
-        mp[s]++;
-        if (mp[s] == 1)
-        {
-            cout << "OK" << el;
-        }
-        else{
-            string x = to_string(mp[s] - 1);
-            cout << s + x << el;
-        }
-    }
+    
 }
 
 /************************************************************
@@ -80,7 +65,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    // tst
+    tst
     Beche_achi();
 
     Goodbye
