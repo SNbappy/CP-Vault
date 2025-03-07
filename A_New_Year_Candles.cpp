@@ -50,7 +50,18 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    
+    ll a, b;
+    cin >> a >> b;
+    ll jalabe = 0;
+    ll obosishto = 0;
+    while (a >= b)
+    {
+        obosishto = a / b + a % b;
+        jalabe += a - a % b;
+        a = obosishto;
+    }
+    jalabe += a;
+    cout << jalabe << el;
 }
 
 /************************************************************
@@ -63,7 +74,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
