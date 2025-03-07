@@ -50,7 +50,27 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    
+    ll n, x;
+    cin >> n >> x;
+    vector<ll> a(n);
+    ll odd = 0, even = 0;
+    for (ll i = 0; i < n; i++)
+    {
+        cin >> a[i];
+        if (a[i] % 2)
+            odd++;
+        else
+            even++;
+    }
+    for (ll i = 1; i <= x; i+=2)
+    {
+        if (odd >= i and even >= x - i)
+        {
+            yes;
+            return;
+        }
+    }
+    no;
 }
 
 /************************************************************
@@ -63,7 +83,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
