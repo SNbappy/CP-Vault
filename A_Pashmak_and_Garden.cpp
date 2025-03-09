@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-07 22:15:39
+Created: 2025-03-09 05:01:30
 */
 
 #include <bits/stdc++.h>
@@ -50,34 +50,46 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, k;
-    cin >> n >> k;
-    vector<ll> a(n);
-    for (ll i = 0; i < n; i++)
+    ll x, y, xt, yt;
+    cin >> x >> y >> xt >> yt;
+    if (x == xt)
     {
-        cin >> a[i];
     }
-    sort(all(a));
-    // for(auto x : a)
-    //     cout << x << " ";
-    // cout << el;
-    if (n == k)
+    else if (y == yt)
     {
-        cout << a[k - 1] << el;
-        return;
     }
-    if(k == 0){
-        if(a[0] == 1)
-        cout << -1 << el;
-        else cout << 1 << el;
-        return;
-    }
-    if (a[k - 1] == a[k])
+    else if (abs(x - xt) == abs(y - yt))
     {
-        cout << -1 << el;
     }
     else
-        cout << a[k - 1] << el;
+    {
+        cout << -1 << el;
+        return;
+    }
+
+    ll x3, y3, x4, y4;
+    if (x == xt)
+    {
+        x3 = x + abs(y - yt);
+        y3 = y;
+        x4 = x + abs(y - yt);
+        y4 = yt;
+    }
+    else if (y == yt)
+    {
+        x3 = x;
+        y3 = y + abs(x - xt);
+        x4 = xt;
+        y4 = y + abs(x - xt);
+    }
+    else
+    {
+        x3 = x;
+        y3 = yt;
+        x4 = xt;
+        y4 = y;
+    }
+    cout << x3 << " " << y3 << " " << x4 << " " << y4 << el;
 }
 
 /************************************************************
