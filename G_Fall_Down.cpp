@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-05 10:34:43
+Created: 2025-03-09 23:47:03
 */
 
 #include <bits/stdc++.h>
@@ -50,26 +50,13 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, a, b, c;
-    cin >> n >> a >> b >> c;
-    ll x, y, z;
-    ll ans = 1;
-    for (ll x = 0; x <= n; x++)
+    ll n, m;
+    cin >> n >> m;
+    for (ll i = 0; i < m; i++)
     {
-        for (ll y = 0; y <= n; y++)
-        {
-            z = n - x - y;
-            if(z < 0)
-                break;
-            if (x % a == 0 && y % b == 0 && z % c == 0)
-            {
-                ans = max(ans, x / a + y / b + z / c);
-            }
-            // else
-                // cout << "miltese na" << el;
-        }
+        
     }
-    cout << ans << el;
+    
 }
 
 /************************************************************
@@ -82,7 +69,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    // tst
+    tst
     Beche_achi();
 
     Goodbye

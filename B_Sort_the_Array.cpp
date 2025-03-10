@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-05 10:34:43
+Created: 2025-03-10 00:15:20
 */
 
 #include <bits/stdc++.h>
@@ -50,26 +50,49 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, a, b, c;
-    cin >> n >> a >> b >> c;
-    ll x, y, z;
-    ll ans = 1;
-    for (ll x = 0; x <= n; x++)
+    ll n;
+    cin >> n;
+    vector<ll> a(n), b(n);
+
+    for (ll i = 0; i < n; i++)
     {
-        for (ll y = 0; y <= n; y++)
+        cin >> a[i];
+        b[i] = a[i];
+    }
+
+    sort(all(b));
+
+    ll cnt = 0, start = -1, end = -1;
+
+    for (ll i = 0; i < n; i++)
+    {
+        if (a[i] != b[i])
         {
-            z = n - x - y;
-            if(z < 0)
-                break;
-            if (x % a == 0 && y % b == 0 && z % c == 0)
-            {
-                ans = max(ans, x / a + y / b + z / c);
-            }
-            // else
-                // cout << "miltese na" << el;
+            if (cnt == 0)
+                start = i;
+            end = i;
+            cnt++;
         }
     }
-    cout << ans << el;
+
+    if (cnt == 0)
+    {
+        cout << "yes" << el;
+        cout << "1 1" << el;
+        return;
+    }
+
+    reverse(a.begin() + start, a.begin() + end + 1);
+
+    if (a == b)
+    {
+        cout << "yes" << el;
+        cout << start + 1 << " " << end + 1 << el;
+    }
+    else
+    {
+        cout << "no" << el;
+    }
 }
 
 /************************************************************
