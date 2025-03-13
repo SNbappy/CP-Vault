@@ -57,7 +57,17 @@ void Beche_achi()
     {
         cin >> a[i];
     }
-    
+    if(n == 1){
+        cout << a[0] << el;
+        return;
+    }
+    sort(all(a));
+    ll sum = a[0];
+    for (ll i = 1; i < n; i++)
+    {
+        sum += a[i] - 1;
+    }
+    cout << sum << el;
 }
 
 /************************************************************
@@ -70,7 +80,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
