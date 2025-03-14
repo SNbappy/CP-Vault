@@ -52,7 +52,15 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    
+    ll ans = 1;
+    for (ll i = 1; i <= n; i++)
+    {
+        ans *= i;
+        ans %= MOD;
+    }
+    ans *= (n*(n - 1));
+    ans %= MOD;
+    cout << ans << el;
 }
 
 /************************************************************
