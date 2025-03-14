@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-01-27 18:19:16
+Created: 2025-03-14 11:25:55
 */
 
 #include <bits/stdc++.h>
@@ -51,56 +51,8 @@ int gcd(int a, int b)
 void Beche_achi()
 {
     string s;
-    cin >> s; // Input the binary string
-
-    string ans;         // Variable to store the maximum lexicographical string found so far
-    int n = s.size();   // Length of the input string
-    int L = -1, R = -1; // Variables to store the indices of the best range (1-based)
-
-    for (int r = 0; r < n; r++) // Iterate through each possible right boundary of the range
-    {
-        auto t = s; // Create a temporary copy of the string
-        int i = r;  // Initialize i to the current right boundary
-
-        // Process the range [l, r] where l decreases from r to 0
-        for (int l = r; l >= 0; l--)
-        {
-            if (s[l] == '1') // Check if the current character is '1'
-            {
-                // Flip the corresponding character in the mirrored position of t
-                t[n - 1 - (r - l)] ^= 1;
-
-                // If the mirrored position becomes '1', update i to the current left boundary
-                if (t[n - 1 - (r - l)] == '1')
-                {
-                    i = l;
-                }
-            }
-        }
-
-        t = s; // Reset t to the original string for the next step
-
-        // Process the range [i, r] where l decreases from r to i
-        for (int l = r; l >= i; l--)
-        {
-            if (s[l] == '1') // Check if the current character is '1'
-            {
-                // Flip the corresponding character in the mirrored position of t
-                t[n - 1 - (r - l)] ^= 1;
-            }
-        }
-
-        // If the resulting string t is lexicographically larger than the current answer
-        if (t > ans)
-        {
-            ans = t; // Update the answer
-            L = i;   // Update the best left boundary
-            R = r;   // Update the best right boundary
-        }
-    }
-
-    // Output the results: 1-based indexing for the range
-    cout << 1 << " " << n << " " << L + 1 << " " << R + 1 << "\n";
+    cin >> s;
+    
 }
 
 /************************************************************

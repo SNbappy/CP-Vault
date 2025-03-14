@@ -50,7 +50,32 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    
+    ll n, x;
+    cin >> n >> x;
+    vector<ll> a(n, 0);
+
+    for (ll i = 0; i < n; i++)
+    {
+        if ((x | i) != x)
+        {
+            break;
+        }
+        else
+        {
+            a[i] = i;
+        }
+    }
+    ll OR = 0;
+    for (auto val : a)
+        {
+            OR |= val;
+        }
+    if(OR!=x){
+        a[n - 1] = x;
+    }
+    for(auto x: a)
+        cout << x << " ";
+    cout << el;
 }
 
 /************************************************************
@@ -63,7 +88,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye

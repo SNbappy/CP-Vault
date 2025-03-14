@@ -52,6 +52,32 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
+    if (n == 3)
+        no;
+    else
+    {
+        yes;
+        if(n %2){
+            ll a = n / 2;
+            ll b = n / 2 - 1;
+            for (ll i = 0; i < n; i++)
+            {
+                cout << -b << " ";
+                i++;
+                if(i != n)
+                    cout << a << " ";
+            }
+            cout << el;
+        }
+        else{
+            for (ll i = 0; i < n; i++)
+            {
+                cout << 1 << " " << -1 << " ";
+                i++;
+            }
+            cout << el;
+        }
+    }
 }
 
 /************************************************************
