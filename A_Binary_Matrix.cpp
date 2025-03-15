@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-15 14:08:03
+Created: 2025-03-15 20:36:13
 */
 
 #include <bits/stdc++.h>
@@ -48,62 +48,38 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
-bool isPossible(vector<ll> &arr, ll N, ll C, ll minAllowedDist)
-{
-    ll cows = 1, lastStallPos = arr[0];
-
-    for (ll i = 1; i < N; i++)
-    {
-        if (arr[i] - lastStallPos >= minAllowedDist)
-        {
-            cows++;
-            lastStallPos = arr[i];
-        }
-
-        if (cows == C)
-        {
-            return true;
-        }
-    }
-    return false; 
-}
-
-ll getDistance(vector<ll> &arr, ll N, ll C)
-{
-    sort(all(arr));
-
-    ll st = 1, end = arr[N - 1] - arr[0], ans = -1;
-
-    while (st <= end)
-    {
-        ll mid = (st + end) / 2;
-
-        if (isPossible(arr, N, C, mid))
-        {
-            ans = mid;
-            st = mid + 1;
-        }
-        else
-        {
-            end = mid - 1;
-        }
-    }
-
-    return ans;
-}
-
 void Beche_achi()
 {
-    ll n, c;
-    cin >> n >> c;
-    vector<ll> a(n);
-
+    ll n, m;
+    cin >> n >> m;
+    ll cnt = 0;
+    vector<ll> column_count(m, 0);
     for (ll i = 0; i < n; i++)
     {
-        cin >> a[i];
+        string s;
+        cin >> s;
+        ll one = 0;
+        for (ll j = 0; j < m; j++)
+        {
+            if (s[j] == '1')
+            {
+                one++;
+                column_count[j]++;
+            }
+        }
+        if(one % 2 )
+            cnt++;
     }
 
-    cout << getDistance(a, n, c) << el;
+    ll cmt = 0;
+    for (ll j = 0; j < m; j++)
+    {
+        if (column_count[j] % 2 == 1)
+        {
+            cmt++;
+        }
+    }
+    cout << max(cnt,cmt) << el;
 }
 
 /************************************************************

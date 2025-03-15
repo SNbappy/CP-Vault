@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-15 14:08:03
+Created: 2025-03-16 04:42:48
 */
 
 #include <bits/stdc++.h>
@@ -48,62 +48,49 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
-bool isPossible(vector<ll> &arr, ll N, ll C, ll minAllowedDist)
-{
-    ll cows = 1, lastStallPos = arr[0];
-
-    for (ll i = 1; i < N; i++)
-    {
-        if (arr[i] - lastStallPos >= minAllowedDist)
-        {
-            cows++;
-            lastStallPos = arr[i];
-        }
-
-        if (cows == C)
-        {
-            return true;
-        }
-    }
-    return false; 
-}
-
-ll getDistance(vector<ll> &arr, ll N, ll C)
-{
-    sort(all(arr));
-
-    ll st = 1, end = arr[N - 1] - arr[0], ans = -1;
-
-    while (st <= end)
-    {
-        ll mid = (st + end) / 2;
-
-        if (isPossible(arr, N, C, mid))
-        {
-            ans = mid;
-            st = mid + 1;
-        }
-        else
-        {
-            end = mid - 1;
-        }
-    }
-
-    return ans;
-}
-
 void Beche_achi()
 {
-    ll n, c;
-    cin >> n >> c;
-    vector<ll> a(n);
+    ll x, n, m;
+    cin >> x >> n >> m;
+    ll x1 = x, n1 = n, m1 = m, x2 = x, n2 = n, m2 = m;
 
-    for (ll i = 0; i < n; i++)
+    while (x1 > 1)
     {
-        cin >> a[i];
+        if (n1)
+        {
+            x1 /= 2;
+            n1--;
+        }
+        else if (m1)
+        {
+            x1 = (x1 + 1) / 2;
+            m1--;
+        }
+        else
+            break;
     }
+    if(n1)
+        x1 = 0;
 
-    cout << getDistance(a, n, c) << el;
+    while (x2 > 1)
+    {
+        
+        if (m2)
+        {
+            x2 = (x2 + 1) / 2;
+            m2--;
+        }
+        else if (n2)
+        {
+            x2 /= 2;
+            n2--;
+        }
+        else
+            break;
+    }
+    if(n2)
+        x2 = 0;
+    cout << x2 << " "  << x1 << el;
 }
 
 /************************************************************
