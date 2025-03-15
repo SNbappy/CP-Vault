@@ -57,7 +57,17 @@ void Beche_achi()
     {
         cin >> a[i];
     }
-    
+    sort(all(a));
+    ll x = abs(a[0] - a[n - 1]);
+    cout << x << " ";
+    ll y = count(all(a), a[0]);
+    ll z = count(all(a), a[n - 1]);
+    if (a[0] == a[n - 1])
+    {
+        cout << y * (y - 1) / 2 << el;
+    }
+    else
+        cout << y * z << el;
 }
 
 /************************************************************
@@ -70,7 +80,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
