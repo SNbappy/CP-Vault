@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2024-12-25 08:52:28
+Created: 2025-03-15 14:08:03
 */
 
 #include <bits/stdc++.h>
@@ -48,40 +48,62 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
-void Beche_achi()
+bool isPossible(vector<ll> &arr, ll N, ll C, ll minAllowedDist)
 {
-    int n, c;
-    cin >> n >> c;
-    vector<int> x(n);
-    for (int i = 0; i < n; i++)
-    {
-        cin >> x[i];
-    }
-    sort(all(x));
+    ll cows = 1, lastStallPos = arr[0];
 
-    int l = 0, r = 1e9;
-    while (l <= r)
+    for (ll i = 1; i < N; i++)
     {
-        int m = (l + r) / 2;
-        int cnt = 1;
-        int last = x[0];
-        for (int i = 1; i < n; i++)
+        if (arr[i] - lastStallPos >= minAllowedDist)
         {
-            if (x[i] - last >= m)
-            {
-                cnt++;
-                last = x[i];
-            }
+            cows++;
+            lastStallPos = arr[i];
         }
 
-        if (cnt >= c)
+        if (cows == C)
         {
-            l = m + 1;
+            return true;
+        }
+    }
+    return false;
+}
+
+ll getDistance(vector<ll> &arr, ll N, ll C)
+{
+    sort(all(arr));
+
+    ll st = 1, end = arr[N - 1] - arr[0], ans = -1;
+
+    while (st <= end)
+    {
+        ll mid = (st + end) / 2;
+
+        if (isPossible(arr, N, C, mid))
+        {
+            ans = mid;
+            st = mid + 1;
         }
         else
-            r = m - 1;
+        {
+            end = mid - 1;
+        }
     }
-    cout << l - 1 << el;
+
+    return ans;
+}
+
+void Beche_achi()
+{
+    ll n, c;
+    cin >> n >> c;
+    vector<ll> a(n);
+
+    for (ll i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+
+    cout << getDistance(a, n, c) << el;
 }
 
 /************************************************************
