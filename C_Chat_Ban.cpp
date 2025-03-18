@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2024-12-27 11:06:37
+Created: 2025-03-16 14:56:37
 */
 
 #include <bits/stdc++.h>
@@ -50,39 +50,49 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, k;
-    cin >> n >> k;
-    ll ans = -1, l = 1, r = 2 * n - 1, Sum;
-    while (l <= r)
-    {
-        ll mid = l + (r - l) / 2;
+    ll k, x;
+    cin >> k >> x;
 
-        if (mid <= n)
+    ll s = 1, e = 2 * k - 1;
+
+    ll ans = 1;
+    while (s <= e)
+    {
+        ll mid = (s + e) / 2;
+
+        ll sum;
+
+        if (mid <= k)
         {
-            Sum = mid * (mid + 1) >> 1;
+            sum = (mid * (mid + 1)) / 2;
         }
         else
         {
-            ll rem = mid - n;
-            ll segment = n - rem - 1;
-            Sum = (n * (n - 1) / 2) - (segment * (segment + 1) >> 1) + n * (n + 1) / 2;
+            ll num = mid - k;
+            ll temp = k - num - 1;
+
+            sum = ((k * (k - 1)) / 2 - (temp * (temp + 1)) / 2) + k * (k + 1) / 2;
         }
 
-        if (Sum >= k)
+        if (sum == x)
         {
             ans = mid;
-            r = mid - 1;
+            break;
+        }
+        else if (sum > x)
+        {
+            e = mid - 1;
         }
         else
         {
-            l = mid + 1;
+            ans = mid + 1;
+            s = mid + 1;
         }
     }
-    if (ans == -1)
-    {
-        ans = 2 * n - 1;
-    }
-    cout << ans << el;
+
+    ans = min(ans, 2 * k - 1);
+
+    cout << ans << endl;
 }
 
 /************************************************************

@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-16 15:41:05
+Created: 2025-03-18 09:05:52
 */
 
 #include <bits/stdc++.h>
@@ -52,18 +52,7 @@ void Beche_achi()
 {
     ll n, k;
     cin >> n >> k;
-    ll low = 0, high = 2 * k;
-    while (low <= high)
-    {
-        ll mid = (low + high) / 2;
-        if (mid - mid / n < k)
-        {
-            low = mid + 1;
-        }
-        else
-            high = mid - 1;
-    }
-    cout << low << el;
+    
 }
 
 /************************************************************
