@@ -52,7 +52,39 @@ void Beche_achi()
 {
     ll n, k;
     cin >> n >> k;
+    vector<ll> a(n);
+    for (ll i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    ll sum = 0;
+    if (k == 1)
+    {
+        if (a[0] > a[n - 1])
+        {
+            sum += a[0];
+        }
+        else
+            sum += a[n - 1];
+
+        sort(all(a));
+        if(a[n - 1] != sum){
+            sum += a[n - 1];
+        }
+        else
+            sum += a[n - 2];
+        cout << sum << el;
+        return;
+    }
+
+    sort(rall(a));
     
+    
+    for (ll i = 0; i < k + 1; i++)
+    {
+        sum += a[i];
+    }
+    cout << sum << el;
 }
 
 /************************************************************
