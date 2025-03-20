@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-20 13:35:49
+Created: 2025-03-20 14:03:05
 */
 
 #include <bits/stdc++.h>
@@ -53,18 +53,11 @@ void Beche_achi()
     ll n;
     cin >> n;
     vector<ll> a(n);
-    
     for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-    ll sum = a[0];
-    for (ll i = 0; i < n; i++)
-    {
-        sum &= a[i];
-    }
     
-    cout << sum << el;
 }
 
 /************************************************************
@@ -77,7 +70,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    tst
+    //tst
     Beche_achi();
 
     Goodbye
