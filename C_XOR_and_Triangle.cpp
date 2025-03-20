@@ -52,7 +52,17 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    
+    for (ll i = 1; i <= 30; i++)
+    {
+        ll x = (1 << i )- 1;
+        ll y = x ^ n;
+        if (x < n && x + y > n && y + n > x && x + n > y)
+        {
+            cout << x << el;
+            return;
+        }
+    }
+    cout << -1 << el;
 }
 
 /************************************************************
@@ -65,7 +75,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
