@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-20 14:03:05
+Created: 2025-03-20 14:22:54
 */
 
 #include <bits/stdc++.h>
@@ -53,11 +53,19 @@ void Beche_achi()
     ll n;
     cin >> n;
     vector<ll> a(n);
+    map<ll, ll> mp;
     for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
+        ll msb = 32 - __builtin_clz(a[i]);
+        mp[msb]++;
     }
-    
+    ll cnt = 0;
+    for (auto [x, y] : mp)
+    {
+        cnt += y * (y - 1) / 2;
+    }
+    cout << cnt << el;
 }
 
 /************************************************************
@@ -70,7 +78,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
