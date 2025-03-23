@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-22 08:04:54
+Created: 2025-03-23 09:29:51
 */
 
 #include <bits/stdc++.h>
@@ -50,9 +50,22 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    string s;
-    cin >> s;
-    
+    ll x, y;
+    cin >> x >> y;
+    if(x == y){
+        cout << -1 << el;
+        return;
+    }
+    if(x > y)
+        swap(x, y);
+    if((x & y )== 0){
+        cout << 0 << el;
+        return;
+    }
+    double p = log2(y);
+    p = floor(p) + 1;
+    ll k = 1 << (ll)p;
+    cout << k - y << el;
 }
 
 /************************************************************

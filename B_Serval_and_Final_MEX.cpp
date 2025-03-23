@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-22 08:04:54
+Created: 2025-03-23 08:43:58
 */
 
 #include <bits/stdc++.h>
@@ -50,9 +50,61 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    string s;
-    cin >> s;
+    ll n;
+    cin >> n;
+    vector<ll> a(n);
+    for (ll i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    vector<pair<ll, ll>> v;
+    ll one = 0;
+    ll first = -1, last = -1;
+    for (ll i = 0; i < n; i++)
+    {
+        if (a[i] == 0)
+        {
+            if (first == -1)
+            {
+                first = i + 1;
+            }
+            last = max(last, i + 1);
+            one++;
+        }
+    }
+    if (one == 0)
+    {
+        cout << 1 << el;
+        cout << 1 << " " << n << el;
+        return;
+    }
+    if (one == 1)
+    {
+        cout << 2 << el;
+        if (first != 1)
+        {
+            cout << first - 1 << " " << first << el;
+            cout << 1 << " " << n - 1 << el;
+        }
+        else
+        {
+            cout << first << " " << first + 1 << el;
+            cout << 1 << " " << n - 1 << el;
+        }
+        return;
+    }
+    if (first != last && (last != n || first != 1))
+    {
+        cout << 2 << el;
+        cout << first << " " << last << el;
+        cout << 1 << " " << n - (last - first) << el;
+        return;
+    }
     
+    cout << 3 << el;
+    cout << n - 1 << " " << n << el;
+    cout << 1 << " " << n - 2 << el;
+    cout << 1 << " " << 2 << el;
 }
 
 /************************************************************
