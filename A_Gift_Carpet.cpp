@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-23 14:32:40
+Created: 2025-03-23 15:51:38
 */
 
 #include <bits/stdc++.h>
@@ -53,7 +53,7 @@ void Beche_achi()
     ll n, m;
     cin >> n >> m;
     char s[n][m];
-    bool ok = true;
+
     for (ll i = 0; i < n; i++)
     {
         for (ll j = 0; j < m; j++)
@@ -61,42 +61,46 @@ void Beche_achi()
             cin >> s[i][j];
         }
     }
-    for (ll i = 0; i < n; i++)
+
+    if (m < 4)
     {
-        for (ll j = 0; j < m; j++)
+        no;
+        return;
+    }
+
+    ll cnt = 0;
+    for (ll i = 0; i < m; i++)
+    {
+        for (ll j = 0; j < n; j++)
         {
-            if (s[i][j] == '1')
+            // cout << s[j][i];
+            if (cnt == 0 && s[j][i] == 'v')
             {
-                bool c = true, r = true;
-                for (ll k = i; k >= 0; k--)
-                {
-                    if (s[k][j] == '0')
-                    {
-                        r = false;
-                        break;
-                    }
-                }
-                for (ll k = j; k >= 0; k--)
-                {
-                    if (s[i][k] == '0')
-                    {
-                        c = false;
-                        break;
-                    }
-                }
-                if (c || r)
-                {
-                    true;
-                }
-                else
-                {
-                    ok = false;
-                    break;
-                }
+                cnt++;
+                break;
+            }
+            if (cnt == 1 && s[j][i] == 'i')
+            {
+                cnt++;
+                break;
+            }
+            if (cnt == 2 && s[j][i] == 'k')
+            {
+                cnt++;
+                break;
+            }
+            if (cnt == 3 && s[j][i] == 'a')
+            {
+                cnt++;
+                break;
             }
         }
     }
-    cout << (ok ? "YES" : "NO") << el;
+    // cout << el;
+    if (cnt == 4)
+        yes;
+    else
+        no;
 }
 
 /************************************************************

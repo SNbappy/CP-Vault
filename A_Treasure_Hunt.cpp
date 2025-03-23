@@ -53,22 +53,16 @@ void Beche_achi()
     ll x, y, a;
     cin >> x >> y >> a;
     double d = a + 0.5;
-
-    ll l;
-    if (x > d)
-    {
-        l = 1;
+    ll khonon = 0;
+    ll i = 0;
+    while(khonon < d){
+        i++;
+        if(i%2==1)
+            khonon += x;
+        else
+            khonon += y;
     }
-    else
-    {
-        ll r = (ll)floor((d - x) / (x + y)) + 1;
-        l = 2 * r + 1;
-    }
-
-    ll m = (ll)floor(d / (x + y)) + 1;
-    ll p = 2 * m;
-
-    if (l < p)
+    if(i%2==1)
         no;
     else
         yes;
