@@ -62,7 +62,9 @@ void Beche_achi()
     {
         if(i == 0)
             v.pb(a[i]);
-        
+        else{
+            
+        }
     }
     
 }
