@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-26 08:09:22
+Created: 2025-03-26 12:04:49
 */
 
 #include <bits/stdc++.h>
@@ -50,38 +50,25 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, x;
-    cin >> n >> x;
-    vector<ll> a(n);
-    ll sum = 0;
-    ll cnt = 0;
-    ll ans = 0;
-    ll strength = LLONG_MAX;
+    ll n;
+    cin >> n;
+    string s;
+    cin >> s;
+    map<char, ll> mp;
     for (ll i = 0; i < n; i++)
     {
-        cin >> a[i];
+        mp[s[i]]++;
     }
-    sort(rall(a));
-    // for (auto x : a)
-    //     cout << x << " ";
-    // cout << el;
-    for (ll i = 0; i < n; i++)
+    ll maxi = 0;
+    for (auto [x, y] : mp)
     {
-        strength = min(strength, a[i]);
-        // cout << strength << " ";
-        cnt++;
-        ll sum = strength * cnt;
-        // cout << sum << " ";
-        if (sum >= x)
-        {
-            ans++;
-            cnt = 0;
-            sum = 0;
-            strength = LLONG_MAX;
-        }
+        maxi = max(maxi, y);
     }
-    // cout << el;
-    cout << ans << el;
+    ll baki = n - maxi;
+    if(n % 2 == 0)
+    cout << max(0LL, maxi - baki) << el;
+    else
+    cout << max(1LL, maxi - baki) << el;
 }
 
 /************************************************************

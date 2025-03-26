@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-26 08:09:22
+Created: 2025-03-26 11:25:46
 */
 
 #include <bits/stdc++.h>
@@ -53,35 +53,32 @@ void Beche_achi()
     ll n, x;
     cin >> n >> x;
     vector<ll> a(n);
-    ll sum = 0;
-    ll cnt = 0;
-    ll ans = 0;
-    ll strength = LLONG_MAX;
+    map<ll, int> mp;
+
     for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
+        mp[a[i]]++;
     }
-    sort(rall(a));
-    // for (auto x : a)
-    //     cout << x << " ";
-    // cout << el;
+
+    sort(all(a));
+
+    ll cnt = 0;
     for (ll i = 0; i < n; i++)
     {
-        strength = min(strength, a[i]);
-        // cout << strength << " ";
-        cnt++;
-        ll sum = strength * cnt;
-        // cout << sum << " ";
-        if (sum >= x)
+        if (mp[a[i]] > 0)
         {
-            ans++;
-            cnt = 0;
-            sum = 0;
-            strength = LLONG_MAX;
+            ll p = a[i] * x;
+            if (mp[p] > 0)
+            {
+                cnt += 2;
+                mp[p]--;
+            }
+            mp[a[i]]--;
         }
     }
-    // cout << el;
-    cout << ans << el;
+
+    cout << n - cnt << el;
 }
 
 /************************************************************
