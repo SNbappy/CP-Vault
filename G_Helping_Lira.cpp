@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-26 15:11:18
+Created: 2025-03-31 00:40:11
 */
 
 #include <bits/stdc++.h>
@@ -52,22 +52,23 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    vector<pair<ll, ll>> a;
+    ll mina = LLONG_MAX, maxa = LLONG_MIN;
+    ll x = -1, y = -1;
     for (ll i = 0; i < n; i++)
     {
-        ll x;
-        cin >> x;
-        a.pb(make_pair(x, i));
-    }
-    sort(rall(a));
-    vector<ll> ans(n);
-    for (ll i = 0; i < n; i++)
-    {
-        ans[a[i].second] = i + 1;
-    }
-    for (auto x : ans)
-        cout << x << " ";
-    cout << el;
+        ll x1, y1, x2, y2, x3, y3;
+        cin >> x1 >> y1 >> x2 >> y2 >> x3 >> y3;
+        ll sum = abs(x1 * (y2 - y3) + x2 * (y3 - y1) + x3 * (y1 - y2)) / 2.0;
+        mina = min(sum, mina);
+        if(mina == sum){
+            x = i + 1;
+        }
+        maxa = max(sum, maxa);
+        if(maxa == sum)
+            y = i + 1;
+   }
+
+   cout << x << " " << y << el;
 }
 
 /************************************************************
@@ -80,7 +81,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    tst
+    //tst
     Beche_achi();
 
     Goodbye

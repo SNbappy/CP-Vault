@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-26 15:11:18
+Created: 2025-03-30 09:45:23
 */
 
 #include <bits/stdc++.h>
@@ -52,22 +52,49 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    vector<pair<ll, ll>> a;
+    vector<ll> a(n);
     for (ll i = 0; i < n; i++)
     {
-        ll x;
-        cin >> x;
-        a.pb(make_pair(x, i));
+        cin >> a[i];
     }
-    sort(rall(a));
-    vector<ll> ans(n);
+
+    const ll B = 60;
+    vector<ll> cnt(B, 0);
     for (ll i = 0; i < n; i++)
     {
-        ans[a[i].second] = i + 1;
+        for (ll b = 0; b < B; b++)
+        {
+            if (a[i] & (1LL << b))
+            {
+                cnt[b]++;
+            }
+        }
     }
-    for (auto x : ans)
-        cout << x << " ";
-    cout << el;
+
+    ll ans = 0;
+    for (ll j = 0; j < n; j++)
+    {
+        ll L = 0, R = 0;
+        for (ll b = 0; b < B; b++)
+        {
+            ll bitVal = (1LL << b) % MOD;
+            if (a[j] & (1LL << b))
+            {
+                L = (L + bitVal * cnt[b]) % MOD;
+            }
+            if (a[j] & (1LL << b))
+            {
+                R = (R + bitVal * n) % MOD;
+            }
+            else
+            {
+                R = (R + bitVal * cnt[b]) % MOD;
+            }
+        }
+        ans = (ans + L % MOD * R % MOD) % MOD;
+    }
+
+    cout << ans % MOD << el;
 }
 
 /************************************************************

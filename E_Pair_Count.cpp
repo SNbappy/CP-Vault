@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-03-26 15:11:18
+Created: 2025-04-01 21:02:39
 */
 
 #include <bits/stdc++.h>
@@ -51,23 +51,27 @@ int gcd(int a, int b)
 void Beche_achi()
 {
     ll n;
-    cin >> n;
-    vector<pair<ll, ll>> a;
+    ll p, k;
+    cin >> n >> p >> k;
+
+    vector<ll> a(n);
+    map<ll, ll> freq;
+
     for (ll i = 0; i < n; i++)
     {
-        ll x;
-        cin >> x;
-        a.pb(make_pair(x, i));
+        cin >> a[i];
+        ll x = a[i];
+        ll signature = ((x * x % p) * x % p * x % p - k * x % p + p) % p;
+        freq[signature]++;
     }
-    sort(rall(a));
-    vector<ll> ans(n);
-    for (ll i = 0; i < n; i++)
+
+    ll ans = 0;
+    for (auto &[key, count] : freq)
     {
-        ans[a[i].second] = i + 1;
+        ans += count * (count - 1) / 2; // Count pairs (i, j) where i < j
     }
-    for (auto x : ans)
-        cout << x << " ";
-    cout << el;
+
+    cout << ans << "\n";
 }
 
 /************************************************************
@@ -80,7 +84,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    tst
+    //tst
     Beche_achi();
 
     Goodbye
