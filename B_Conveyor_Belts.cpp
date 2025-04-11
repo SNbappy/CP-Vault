@@ -51,7 +51,14 @@ int gcd(int a, int b)
 void Beche_achi()
 {
     ll n, x, y, xt, yt;
-    
+    cin >> n >> x >> y >> xt >> yt;
+    x = min(x, n - x + 1);
+    y = min(y, n - y + 1);
+    ll min1 = min(x, y);
+    xt = min(xt, n - xt + 1);
+    yt = min(yt, n - yt + 1);
+    ll min2 = min(xt, yt);
+    cout << abs(min1 - min2) << el;
 }
 
 /************************************************************
@@ -64,7 +71,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye

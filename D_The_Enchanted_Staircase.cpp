@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-04-10 20:01:41
+Created: 2025-04-10 20:21:45
 */
 
 #include <bits/stdc++.h>
@@ -48,8 +48,17 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
-void Beche_achi(){
-    cout << "Hello visitors, welcome!" << el;
+void Beche_achi()
+{
+    ll s, e;
+    cin >> s >> e;
+    ll sum = 0;
+    for (ll i = s; i <= e; i++)
+    {
+        sum += i;
+        sum %= MOD;
+    }
+    
 }
 
 /************************************************************
@@ -62,7 +71,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye

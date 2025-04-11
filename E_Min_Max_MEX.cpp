@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-04-10 20:01:41
+Created: 2025-04-09 22:11:37
 */
 
 #include <bits/stdc++.h>
@@ -48,8 +48,54 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
-void Beche_achi(){
-    cout << "Hello visitors, welcome!" << el;
+bool check(ll x, ll k, const vector<ll> &a)
+{
+    ll n = a.size();
+    if (x == 0)
+        return true;
+    ll cnt = 0;
+    vector<bool> f(x, false);
+    ll c = 0;
+    for (ll i = 0; i < n; ++i)
+    {
+        if (a[i] < x && !f[a[i]])
+        {
+            f[a[i]] = true;
+            c++;
+        }
+        if (c == x)
+        {
+            cnt++;
+            if (cnt >= k)
+                return true;
+            fill(f.begin(), f.end(), false);
+            c = 0;
+        }
+    }
+    return cnt >= k;
+}
+
+void Beche_achi()
+{
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> a(n);
+    for (ll i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    
+
+    ll l = 0, h = n + 1;
+    while (l < h)
+    {
+        ll mid = l + (h - l + 1) / 2;
+        if (check(mid, k, a))
+            l = mid;
+        else
+            h = mid - 1;
+    }
+    cout << l << el;
 }
 
 /************************************************************
@@ -62,7 +108,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye

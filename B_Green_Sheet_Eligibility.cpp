@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-04-10 20:01:41
+Created: 2025-04-10 20:05:34
 */
 
 #include <bits/stdc++.h>
@@ -48,8 +48,21 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
-void Beche_achi(){
-    cout << "Hello visitors, welcome!" << el;
+void Beche_achi()
+{
+    vector<ll> a(8);
+    for (ll i = 0; i < 8; i++)
+    {
+        cin >> a[i];
+    }
+    for (ll i = 0; i < 8; i++)
+    {
+        if(a[i] < 60){
+            cout << "Not Eligible" << el;
+            return;
+        }
+    }
+    cout << "Eligible" << el;
 }
 
 /************************************************************
