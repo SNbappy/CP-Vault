@@ -54,8 +54,39 @@ void Beche_achi()
     cin >> k >> l1 >> r1 >> l2 >> r2;
 
     ll ans = 0, n = 0;
-    
-    while
+
+    while (pow(k, n) * l1 <= r2)
+    {
+        ll a = l1, b = r1, low = LLONG_MAX, high = 0;
+        while (a <= b)
+        {
+            ll mid = (a + b) / 2;
+            if (pow(k, n) * mid >= l2)
+            {
+                b = mid - 1;
+                low = min(low, mid);
+            }
+            else
+                a = mid + 1;
+        }
+        if (low == LLONG_MAX)
+            low = r1 + 1;
+        a = l1, b = r1;
+        while (a <= b)
+        {
+            ll mid = (a + b) / 2;
+            if (pow(k, n) * mid <= r2)
+            {
+                a = mid + 1;
+                high = max(high, mid);
+            }
+            else
+                b = mid - 1;
+        }
+        ans += high - low + 1;
+        n++;
+    }
+    cout << ans << el;
 }
 
 /************************************************************
@@ -68,7 +99,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
