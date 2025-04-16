@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-04-16 11:26:20
+Created: 2025-04-16 19:18:29
 */
 
 #include <bits/stdc++.h>
@@ -50,50 +50,28 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, m;
-    cin >> n >> m;
-    char a[1005][1005];
-    char layer[4005];
-
+    ll n;
+    cin >> n;
+    vector<array<ll, 2>> a(n);
     for (ll i = 0; i < n; i++)
     {
-        cin >> a[i];
+        cin >> a[i][0] >> a[i][1];
     }
-
-    ll cnt = 0;
-
-    for (ll i = 0; (i + 1) * 2 <= n && (i + 1) * 2 <= m; i++)
+    // sort(all(a),
+    //      [&](auto x, auto y)
+    //      {
+    //          return x[0] + x[1] < y[0] + y[1];
+    //      });
+    sort(all(a),
+         [&](auto x, auto y)
+         {
+             return x[0] + x[1] < y[0] + y[1];
+         });
+    for (ll i = 0; i < n; i++)
     {
-        ll pos = 0;
-
-        for (ll j = i; j < m - i; j++)
-        {
-            layer[pos++] = a[i][j];
-        }
-
-        for (ll j = i + 1; j < n - i - 1; j++)
-        {
-            layer[pos++] = a[j][m - i - 1];
-        }
-
-        for (ll j = m - i - 1; j >= i; j--)
-        {
-            layer[pos++] = a[n - i - 1][j];
-        }
-
-        for (ll j = n - i - 2; j >= i + 1; j--)
-        {
-            layer[pos++] = a[j][i];
-        }
-
-        for (ll j = 0; j < pos; j++)
-        {
-            if (layer[j] == '1' && layer[(j + 1) % pos] == '5' && layer[(j + 2) % pos] == '4' && layer[(j + 3) % pos] == '3')
-                cnt++;
-        }
+        cout << a[i][0] << " " << a[i][1] << " ";
     }
-
-    cout << cnt << el;
+    cout << el;
 }
 
 /************************************************************
