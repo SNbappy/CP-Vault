@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2024-12-17 07:40:29
+Created: 2025-04-16 08:41:12
 */
 
 #include <bits/stdc++.h>
@@ -11,7 +11,7 @@ using namespace std;
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
 
-#define int long long
+#define ll long long
 #define tst   \
     int t;    \
     cin >> t; \
@@ -50,9 +50,12 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    int k, l1, r1, l2, r2;
+    ll k, l1, r1, l2, r2;
     cin >> k >> l1 >> r1 >> l2 >> r2;
+
+    ll ans = 0, n = 0;
     
+    while
 }
 
 /************************************************************

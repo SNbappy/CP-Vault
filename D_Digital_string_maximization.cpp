@@ -52,7 +52,28 @@ void Beche_achi()
 {
     string s;
     cin >> s;
-
+    vector<ll> a;
+    for (ll i = 0; i < s.size(); i++)
+    {
+        a.pb(s[i] - '0');
+    }
+    // for (auto x : a)
+    //     cout << x;
+    // cout << el;
+    for (ll i = 1; i < s.size(); i++)
+    {
+        ll x = i;
+        while (x > 0 && a[x] > 0 && a[x] - 1 > a[x - 1])
+        {
+            
+            a[x]--;
+            swap(a[x], a[x - 1]);
+            --x;
+        }
+    }
+    for (auto x : a)
+        cout << x;
+    cout << el;
 }
 
 /************************************************************

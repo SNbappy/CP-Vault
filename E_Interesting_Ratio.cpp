@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-04-15 06:29:18
+Created: 2025-04-15 13:36:38
 */
 
 #include <bits/stdc++.h>
@@ -12,10 +12,10 @@ using namespace std;
 using namespace __gnu_pbds;
 
 #define ll long long
-#define tst \
-  int t;    \
-  cin >> t; \
-  while (t--)
+#define tst   \
+    int t;    \
+    cin >> t; \
+    while (t--)
 #define el '\n'
 #define yes cout << "YES" << el
 #define no cout << "NO" << el
@@ -42,38 +42,28 @@ typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics
 
 int gcd(int a, int b)
 {
-  if (b == 0)
-    return a;
-  else
-    return gcd(b, a % b);
+    if (b == 0)
+        return a;
+    else
+        return gcd(b, a % b);
 }
+
+ll N = 1e7 + 9;
+vector<ll> ans(N, 0);
 
 void Beche_achi()
 {
-  ll n;
-  cin >> n;
-  vector<ll> a(n);
-  for (ll i = 0; i < n; i++)
-  {
-    cin >> a[i];
-  }
-  priority_queue<ll> pq;
-  ll ans = 0;
-  for (ll i = 0; i < n; i++)
-  {
-    if (a[i] == 0)
+    for (ll i = 2; i < N; i++)
     {
-      if (pq.empty())
-        continue;
-      ans += pq.top();
-      pq.pop();
+        if(ans[i] == 0){
+            for (ll j = i; j < N; j+= i)
+            {
+                ans[j]++;
+            }
+            
+        }
+        ans[i] += ans[i - 1];
     }
-    else
-    {
-      pq.push(a[i]);
-    }
-  }
-  cout << ans << el;
 }
 
 /************************************************************
@@ -82,11 +72,16 @@ void Beche_achi()
 
 Depressed_C0der
 {
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
-  cout.tie(0);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    Beche_achi();
+    tst
+    {
+        ll n;
+        cin >> n;
+        cout << ans[n] << el;
+    }
 
-  tst Beche_achi();
-
-  Goodbye
+    Goodbye
 }

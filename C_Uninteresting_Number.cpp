@@ -50,8 +50,35 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n;
-    cin >> n;
+    string s;
+    cin >> s;
+    ll ans = 0;
+    ll two = 0;
+    ll three = 0;
+    for (ll i = 0; i < s.size(); i++)
+    {
+        ans += s[i] - '0';
+        if (s[i] == '2')
+        {
+            two++;
+        }
+        if (s[i] == '3')
+        {
+            three++;
+        }
+    }
+    for (ll i = 0; i < min(10LL, two + 1); i++)
+    {
+        for (ll j = 0; j < min(10LL, three + 1); j++)
+        {
+            if ((ans + 2 * i + 6 * j) % 9 == 0)
+            {
+                yes;
+                return;
+            }
+        }
+    }
+    no;
 }
 
 /************************************************************
@@ -64,7 +91,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
