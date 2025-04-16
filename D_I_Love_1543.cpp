@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-04-16 10:42:05
+Created: 2025-04-16 11:26:20
 */
 
 #include <bits/stdc++.h>
@@ -50,8 +50,34 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, m, l;
-    cin >> n >> m >> l;
+    ll n, m;
+    cin >> n >> m;
+    char a[1005][1005];
+    char layer[4005];
+
+    for (ll i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    
+
+    ll cnt = 0;
+
+    for (ll i = 0; (i + 1) * 2 <= n && (i + 1) * 2 <= m; i++)
+    {
+        ll pos = 0;
+
+        for (ll j = i; j < m - i; j++)
+        {
+            layer[pos++] = a[i][j];
+        }
+        
+        for (ll j = i + 1; j < n - i - 1; j++)
+        {
+            layer[pos++] = a[j][m - i - 1];
+        }
+        
+    }
     
 }
 
@@ -65,7 +91,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
