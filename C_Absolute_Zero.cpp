@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-04-17 03:41:16
+Created: 2025-04-17 06:50:15
 */
 
 #include <bits/stdc++.h>
@@ -48,24 +48,41 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
-const ll N = 2e5 + 9;
-
-ll a[N], pref[N];
-
-ll f(ll x){
-    ll cnt = 0;
-    while(x){
-        x /= 3;
-        cnt++;
-    }
-    return cnt;
-}
+const ll N = 2e5 + 5;
+ll n, a[N];
 
 void Beche_achi()
 {
-    ll l, r;
-    cin >> l >> r;
-    cout << pref[r] - pref[l - 1] + a[l] << el;
+    cin >> n;
+    for (ll i = 1; i <= n; i++)
+    {
+        cin >> a[i];
+    }
+    bool odd = false, even = false;
+    for (ll i = 1; i <= n; i++)
+    {
+        if (a[i] % 2 == 1)
+            odd = true;
+        else
+            even = true;
+    }
+    if (odd && even)
+        cout << -1 << el;
+    else
+    {
+        vector<ll> op;
+        for (ll i = 29; i >= 0; i--)
+        {
+            op.pb(1 << i);
+        }
+
+        if (even)
+            op.pb(1);
+        cout << op.size() << el;
+        for (auto x : op)
+            cout << x << " ";
+        cout << el;
+    }
 }
 
 /************************************************************
@@ -78,13 +95,8 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-        for (ll i = 1; i < N; i++)
-        {
-            /* code */
-            a[i] = f(i);
-            pref[i] = pref[i - 1] + a[i];
-        }
-        tst
-        Beche_achi();
-        Goodbye
+    tst
+    Beche_achi();
+
+    Goodbye
 }
