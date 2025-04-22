@@ -61,7 +61,32 @@ void Beche_achi()
     {
         cin >> b[i];
     }
-    
+    ll prev = LLONG_MIN;
+    sort(all(b));
+    for (ll i = 0; i < n; i++)
+    {
+        ll keep;
+        if (a[i] >= prev)
+            keep = a[i];
+        else
+            keep = LLONG_MAX;
+        auto it = lower_bound(all(b), prev + a[i]);
+        ll rep;
+        if (it != b.end())
+        {
+            rep = *it - a[i];
+        }
+        else
+            rep = LLONG_MAX;
+        ll x = min(rep, keep);
+        if (x == LLONG_MAX)
+        {
+            no;
+            return;
+        }
+        prev = x;
+    }
+    yes;
 }
 
 /************************************************************
@@ -74,7 +99,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
