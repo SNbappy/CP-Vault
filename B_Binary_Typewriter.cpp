@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-04-21 16:13:31
+Created: 2025-04-21 20:39:18
 */
 
 #include <bits/stdc++.h>
@@ -33,7 +33,7 @@ typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics
 /// greater_equal for multiset decreasing order
 /// greater for set decreasing order
 
-/// cout<<*X.find_by_order(1)<<endl; // iterator to the k-th largest element
+/// cout<<*X.find_by_order(1)<<endl; // iterator to the kotobar-th largest element
 /// cout<<X.order_of_key(-5)<<endl;  // number of items in a set that are strictly smaller than our item
 
 /************************************************************
@@ -48,35 +48,76 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
+// int min_cost_after_one_reverse(const string &s)
+// {
+//     int n = s.size();
+//     int runs = 1;
+
+//     for (int i = 0; i < n - 1; ++i)
+//     {
+//         if (s[i] != s[i + 1])
+//         {
+//             runs++;
+//         }
+//     }
+
+//     int base_cost = n + (runs - 1) + (s[0] == '1' ? 1 : 0);
+
+//     int cnt01 = 0, cnt10 = 0;
+//     for (int i = 0; i < n - 1; ++i)
+//     {
+//         if (s[i] == '0' && s[i + 1] == '1')
+//             cnt01++;
+//         if (s[i] == '1' && s[i + 1] == '0')
+//             cnt10++;
+//     }
+//     int P1 = (cnt01 >= 2 || cnt10 >= 2) ? 2 : 0;
+
+//     int P2 = 0;
+//     char s1 = s[0];
+//     for (int i = 0; i < n - 1; ++i)
+//     {
+//         int term1 = (s[i] != s[i + 1]) ? 1 : 0;
+//         int term2 = (s1 != s[i + 1]) ? 1 : 0;
+//         int base_switch = (s1 == '1' && s[i] == '0') ? 1 : 0;
+//         P2 = max(P2, term1 - term2 + base_switch);
+//     }
+
+//     int P3 = 0;
+//     char sn = s[n - 1];
+//     for (int i = 0; i < n - 1; ++i)
+//     {
+//         int term1 = (s[i] != s[i + 1]) ? 1 : 0;
+//         int term2 = (s[i] != sn) ? 1 : 0;
+//         P3 = max(P3, term1 - term2);
+//     }
+
+//     int P4 = (s1 == '1' && sn == '0') ? 1 : 0;
+
+//     int max_profit = max({0, P1, P2, P3, P4});
+//     return base_cost - max_profit;
+// }
+
 void Beche_achi()
 {
-    ll n, m;
-    cin >> n >> m;
-    vector<ll> a(n);
+    ll n;
+    cin >> n;
+    string s;
+    cin >> s;
+    ll x = 1;
+    ll sum = 0;
     for (ll i = 0; i < n; i++)
     {
-        cin >> a[i];
+        sum++;
+        if(s[i] != s[i + 1])
+            {x++;
+        sum++;}
     }
-    ll k;
-    cin >> k;
-    ll prev = LLONG_MIN;
-    for (ll i = 0; i < n; i++)
-    {
-        ll op1 = a[i];
-        ll op2 = k - a[i];
-        if (op1 > op2)
-            swap(op1, op2);
-        if (op2 < prev)
-        {
-            no;
-            return;
-        }
-        if(op1 >= prev)
-            prev = op1;
-        else
-            prev = op2;
-    }
-    yes;
+
+    if(x)
+        sum--;
+    if(s[0] == '1')
+        sum++;
 }
 
 /************************************************************

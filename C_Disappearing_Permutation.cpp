@@ -52,16 +52,27 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    vector<ll> p(n), d(n);
+    vector<ll> a(n);
+    for (auto &x : a)
+    {
+        cin >> x;
+        x--;
+    }
+
+    set<ll> x;
     for (ll i = 0; i < n; i++)
     {
-        cin >> p[i];
+        ll d;
+        cin >> d;
+        d--;
+        while (x.find(d) == x.end())
+        {
+            x.insert(d);
+            d = a[d];
+        }
+        cout << x.size() << " ";
     }
-    for (ll i = 0; i < n; i++)
-    {
-        cin >> d[i];
-    }
-    
+    cout << el;
 }
 
 /************************************************************
@@ -74,7 +85,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
