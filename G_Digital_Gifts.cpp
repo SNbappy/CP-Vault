@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-04-22 07:41:24
+Created: 2025-04-24 12:03:56
 */
 
 #include <bits/stdc++.h>
@@ -52,20 +52,19 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    string s;
-    cin >> s;
-    ll ans = 0;
-    if (s[0] == '1')
-        ans = 1;
-    for (ll i = 1; i < n; i++)
+    double ans = 0.0;
+    for (ll i = 0; i < n; i++)
     {
-        if (s[i] != s[i - 1])
-            ans++;
+        double x;
+        string s;
+        cin >> x >> s;
+        if(s == "JPY"){
+            ans += x;
+        }
+        else{
+            ans += (x * 380000.0);
+        }
     }
-    if (ans > 0)
-        ans = max(1LL, ans - 2);
-
-    ans += n;
     cout << ans << el;
 }
 
@@ -79,7 +78,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    tst
+    //tst
     Beche_achi();
 
     Goodbye
