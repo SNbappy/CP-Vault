@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-04-27 08:22:06
+Created: 2025-04-29 07:49:41
 */
 
 #include <bits/stdc++.h>
@@ -57,7 +57,27 @@ void Beche_achi()
     {
         cin >> a[i];
     }
-    
+    vector<ll> maxi(n, 0);
+    maxi[0] = a[0];
+    for (ll i = 1; i < n; i++)
+    {
+        maxi[i] = max(a[i], maxi[i - 1]);
+        // cout << maxi[i] << " ";
+    }
+    vector<ll> pref(n);
+    pref[n - 1] = a[n - 1];
+    for (ll i = n - 2; i >= 0; i--)
+    {
+        pref[i] = pref[i + 1] + a[i];
+    }
+    for (ll i = n - 1; i >= 0; i--)
+    {
+        if (i == n - 1)
+            cout << maxi[i] << " ";
+        else
+            cout << pref[i + 1] + maxi[i] << " ";
+    }
+    cout << el;
 }
 
 /************************************************************
@@ -70,7 +90,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye

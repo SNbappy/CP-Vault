@@ -52,25 +52,54 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    vector<ll> a(n), b(n);
+    vector<ll> a(n), b(n), p(n), s(n);
     for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
+        a[i]--;
+        s[a[i]] = i;
     }
     for (ll i = 0; i < n; i++)
     {
         cin >> b[i];
+        b[i]--;
+        p[a[i]] = b[i];
     }
-    vector<ll> c = b;
-    reverse(all(c));
-    if(a == c){
-        cout << 0 << el;
+    ll cnt = 0;
+    for (ll i = 0; i < n; i++)
+    {
+        if(p[i] == i || p[p[i]] != i)
+            cnt++;
+    }
+    
+    if(cnt > 1)
+    {
+        cout << -1 << el;
         return;
     }
-    if(a == b){
-        cout << -1 << el;
+    vector<ll> q(n);
+    for (ll i = 0, l = 0, r = n - 1; i < n; i++)
+    {
+        if(p[i] == i){
+            q[s[i]] = n / 2;
+        }
+        else if(p[i] > i){
+            q[s[i]] = l++;
+            q[s[p[i]]] = r--;
+        }
     }
-
+    vector<array<int, 2>> ans;
+    for (ll i = 0; i < n; i++)
+    {
+        while(q[i] != i){
+            ans.pb({i, q[i]});
+            swap(q[i], q[q[i]]);
+        }
+    }
+    cout << ans.size() << el;
+    for(auto [x, y]: ans){
+        cout << x + 1 << " " << y + 1 << el;
+    }
 }
 
 /************************************************************

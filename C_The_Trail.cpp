@@ -54,6 +54,11 @@ void Beche_achi()
     cin >> n >> m;
     string s;
     cin >> s;
+    vector<ll> a(n * m);
+    for (ll i = 0; i < n * m; i++)
+    {
+        cin >> a[i];
+    }
     
 }
 
@@ -67,7 +72,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
