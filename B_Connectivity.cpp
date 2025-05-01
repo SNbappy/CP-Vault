@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-04-26 14:35:21
+Created: 2025-05-01 12:12:24
 */
 
 #include <bits/stdc++.h>
@@ -47,19 +47,46 @@ int gcd(int a, int b)
     else
         return gcd(b, a % b);
 }
+vector<vector<ll>> adj(105);
+vector<ll> visited(105);
+
+void dfs(ll node)
+{
+    visited[node] = true;
+    for (auto &neighbour : adj[node])
+    {
+        if (!visited[neighbour])
+        {
+            dfs(neighbour);
+        }
+    }
+}
 
 void Beche_achi()
 {
-    string s;
-    cin >> s;
-    multiset<char> st(all(s));
-    for (ll i = 9; i >= 0; i--)
+    ll n, m;
+    cin >> n >> m;
+    for (ll i = 0; i < m; i++)
     {
-        auto x = st.lower_bound(i + '0');
-        cout << *x;
-        st.erase(x);
+        ll x, y;
+        cin >> x >> y;
+        adj[x].pb(y);
+        adj[y].pb(x);
     }
-    cout << el;
+    dfs(1);
+    bool isconnected = true;
+    for (ll i = 1; i <= n; i++)
+    {
+        if (!visited[i])
+        {
+            isconnected = false;
+            break;
+        }
+    }
+    if (isconnected)
+        yes;
+    else
+        no;
 }
 
 /************************************************************
@@ -72,7 +99,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    tst
+    // tst
     Beche_achi();
 
     Goodbye

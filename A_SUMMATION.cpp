@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-04-26 14:35:21
+Created: 2025-05-01 09:56:07
 */
 
 #include <bits/stdc++.h>
@@ -24,7 +24,7 @@ using namespace __gnu_pbds;
 #define all(n) n.begin(), n.end()
 #define rall(n) n.rbegin(), n.rend()
 #define pb push_back
-const int MOD = 1e9 + 7;
+const int MOD = 100000007;
 
 typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 /// change int to any data type
@@ -48,18 +48,47 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
+ll power(ll a, ll b, ll mod)
+{
+    ll result = 1;
+    a %= mod;
+    while (b > 0)
+    {
+        if (b & 1)
+            result = (result * a) % mod;
+        a = (a * a) % mod;
+        b >>= 1;
+    }
+    return result;
+}
+
 void Beche_achi()
 {
-    string s;
-    cin >> s;
-    multiset<char> st(all(s));
-    for (ll i = 9; i >= 0; i--)
+    ll t;
+    cin >> t;
+    for (ll k = 1; k <= t; k++)
     {
-        auto x = st.lower_bound(i + '0');
-        cout << *x;
-        st.erase(x);
+        ll n;
+        cin >> n;
+        vector<ll> a(n);
+        ll sum = 0;
+        for (ll i = 0; i < n; i++)
+        {
+            cin >> a[i];
+        }
+        for (ll i = 0; i < n; i++)
+        {
+            ll x = a[i] % MOD;
+            ll y = power(2, n- 1, MOD);
+            y %= MOD;
+            ll z = (x * y) % MOD;
+            sum += z;
+            sum %= MOD;
+        }
+        
+        cout << "Case " << k << ": " << sum << el;
     }
-    cout << el;
+    
 }
 
 /************************************************************
@@ -72,7 +101,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    tst
+    // tst
     Beche_achi();
 
     Goodbye
