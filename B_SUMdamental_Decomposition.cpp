@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-04-29 12:24:29
+Created: 2025-05-01 20:53:58
 */
 
 #include <bits/stdc++.h>
@@ -50,41 +50,36 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n;
-    cin >> n;
-    string s;
-    cin >> s;
-    ll cnt = 0;
-    if (s.back() == s.front())
-    {
-        if (s.back() == 'B')
-            cout << "Bob" << el;
+    ll n, x;
+    cin >> n >> x;
+    if(n == 1){
+        if(x)
+            cout << x << el;
         else
-            cout << "Alice" << el;
+            cout << -1 << el;
         return;
     }
-    if (s[0] == 'A')
-    {
-        ll cnt = 0;
-        for (ll i = 0; i < n; i++)
-        {
-            if (s[i] == 'B')
-                cnt++;
+    ll a = (n - 1) & 1;
+    ll v = a ^ x;
+    if(v!= 0){
+        cout << (n - 1 + v) << el;
+        return;
+    }
+    if(n == 2){
+        if(x == 0){
+            cout << 2 << el;
         }
-        if (cnt > 1)
-            cout << "Bob" << el;
-        else
-            cout << "Alice" << el;
+        else{
+            ll l = 0;
+            while((x >> l) & 1){
+                l++;
+            }
+            ll k = 1LL << l;
+            cout << x + 2 * k << el;
+        }
         return;
     }
-    if (s[0] == 'B')
-    {
-        if (s[n - 2] == 'B')
-            cout << "Bob" << el;
-        else
-            cout << "Alice" << el;
-    }
-    // cout << "x" << el;
+    cout << n + 3 << el;
 }
 
 /************************************************************
