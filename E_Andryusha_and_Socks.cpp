@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-09 20:06:43
+Created: 2025-05-11 10:24:05
 */
 
 #include <bits/stdc++.h>
@@ -50,42 +50,31 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, m;
-    cin >> n >> m;
-    if (n >= m)
+    ll n;
+    cin >> n;
+    vector<ll> a(2*n);
+    for (ll i = 0; i < 2*n; i++)
     {
-        cout << abs(n - m) << el;
-        return;
+        cin >> a[i];
     }
-    ll x = -1;
-    ll y = m;
+    ll ans = 0;
+    set<ll> st;
     ll cnt = 0;
-    while (y > n)
+    ll nn = (ll)st.size();
+    for (ll i = 0; i < 2 * n; i++)
     {
-        if (y % 2 == 0)
-        {
-            y /= 2;
-            cnt++;
+        st.insert(a[i]);
+        if(st.size() == nn){
+            --cnt;
+            cnt = max(cnt, 0LL);
         }
-        else
-            break;
+        else{
+            cnt++;
+            nn = st.size();
+        }
+        ans = max(ans, cnt);
     }
-    ll z;
-    if (y <= n)
-        z = abs(y - n) + cnt;
-    else
-        z = LLONG_MAX;
-    ll a = n;
-    cnt = 0;
-    while (a < m)
-    {
-        a *= 2;
-        // cout << a << el;
-        cnt++;
-    }
-    ll b = abs(a - m) + cnt;
-    cout << b << " " << z << el;
-    cout << min(z, b) << el;
+    cout << ans << el;
 }
 
 /************************************************************
@@ -98,7 +87,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    // tst
+    //tst
     Beche_achi();
 
     Goodbye
