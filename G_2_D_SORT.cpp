@@ -1,27 +1,28 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
-int main(){
+int main()
+{
     int t;
-    cin >> t;
-    while(t--){
+    scanf("%d", &t);
+    while (t--)
+    {
         int n;
-        cin >> n;
+        scanf("%d", &n);
         vector<pair<int, int>> v;
         for (int i = 0; i < n; i++)
         {
             int x, y;
-            cin >> x >> y;
+            scanf("%d%d", &x, &y);
             v.push_back(make_pair(x, y));
         }
-        sort(v.begin(), v.end());
-        for (int i = 0; i < n; i++)
-        {
-            if(v[i].first == v[i + 1].second){
-                
-            }
-        }
-        
+        sort(v.begin(), v.end(), [](pair<int, int> &a, pair<int, int> &b)
+             {
+                 if (a.first != b.first)
+                     return a.first < b.first;
+                 else
+                     return a.second > b.second; });
+        for (auto x : v)
+            printf("%d %d\n", x.first, x.second);
     }
-    
 }
