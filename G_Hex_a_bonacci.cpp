@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-12 11:29:39
+Created: 2025-05-12 11:59:17
 */
 
 #include <bits/stdc++.h>
@@ -48,54 +48,11 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
-struct Type
-{
-    string name;
-    string surname;
-};
-
 void Beche_achi()
 {
-    ll t;
-    cin >> t;
-    for (ll k = 1; k <= t; k++)
-    {
-        bool ok = true;
-        ll n;
-        cin >> n;
-        vector<Type> s(n);
-        for (ll i = 0; i < n; i++)
-        {
-            cin >> s[i].name >> s[i].surname;
-        }
-        for (ll i = 0; i < n; i++)
-        {
-            if (s[i].surname == "wine")
-            {
-                if (s[i].name == "water" || s[i].name == "soda")
-                {
-                }
-                else
-                {
-                    cout << "Case " << k << ": No" << el;
-                    ok = false;
-                    break;
-                }
-            }
-            else{
-                cout << "Case " << k << ": No" << el;
-                ok = false;
-                break;
-            }
-            if(s[i].name == "wine"){
-                cout << "Case " << k << ": No" << el;
-                ok = false;
-                break;
-            }
-        }
-        if(ok)
-            cout << "Case " << k << ": Yes" << el;
-    }
+    ll a, b, c, d, e, f, n;
+    cin >> a >> b >> c >> d >> e >> f >> n;
+    
 }
 
 /************************************************************
@@ -108,7 +65,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    // tst
+    tst
     Beche_achi();
 
     Goodbye
