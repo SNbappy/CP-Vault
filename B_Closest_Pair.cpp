@@ -50,7 +50,26 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    
+    ll n;
+    cin >> n;
+    vector<pair<ll, ll>> a;
+    for (ll i = 0; i < n; i++)
+    {
+        ll x, y;
+        cin >> x >> y;
+        a.push_back(make_pair(x, y));
+    }
+    double ans = DBL_MAX;
+    for (ll i = 0; i < n; i++)
+    {
+        for (ll j = i + 1; j < n; j++)
+        {
+            ll p = (a[i].first - a[j].first) * (a[i].first - a[j].first) + (a[i].second - a[j].second) * (a[i].second - a[j].second);
+            double q = sqrtl(p);
+            ans = min(q, ans);
+        }
+    }
+    cout << fixed << setprecision(9) << ans << el;
 }
 
 /************************************************************
@@ -63,7 +82,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
