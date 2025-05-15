@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-14 19:52:02
+Created: 2025-05-15 21:39:58
 */
 
 #include <bits/stdc++.h>
@@ -48,40 +48,44 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
+const ll M = 5e6;
+ll a[M + 6];
+
 void Beche_achi()
 {
-    ll n;
-    cin >> n;
-
-    vector<ll> a(n);
-    for (ll i = 0; i < n; ++i)
-        cin >> a[i];
-
-    vector<ll> ans(n, 0);
-
-    for (ll i = n - 2; i >= 0; --i)
+    for (ll i = 0; i <= M; i++)
     {
-        if (a[i + 1] - a[i] >= 2)
+        a[i] = i;
+    }
+
+    for (ll i = 2; i <= M; i++)
+    {
+        if (a[i] == i)
         {
-            ans[i] = 1 + ans[i + 1];
-        }
-        else
-        {
-            ans[i] = 0;
+            for (ll j = 0; j <= M; j+= i)
+            {
+                a[j] -= (a[j] / i);
+            }
         }
     }
 
-    for (ll i = 0; i < n; ++i)
+    for (ll i = 2; i <= M; i++)
     {
-        if (ans[i] > 0)
-        {
-            cout << ans[i] + 1 << el;
-        }
-        else
-        {
-            cout << 0 << el;
-        }
+        a[i] = a[i] * a[i] + a[i - 1];
     }
+
+    ll t;
+    cin >> t;
+
+    for (ll i = 0; i < t; i++)
+    {
+        cout << "Case " << i + 1 << ": ";
+        ll l, r;
+        cin >> l >> r;
+
+        cout << a[r] - a[l - 1] << el;
+    }
+    
 }
 
 /************************************************************
