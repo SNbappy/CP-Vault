@@ -58,11 +58,11 @@ void Beche_achi()
         a[i] = i;
     }
 
-    for (ll i = 2; i <= M; i++)
+    for (ll i = 2; i*i <= M; i++)
     {
         if (a[i] == i)
         {
-            for (ll j = 0; j <= M; j+= i)
+            for (ll j = i; j <= M; j+= i)
             {
                 a[j] -= (a[j] / i);
             }

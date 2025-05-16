@@ -24,7 +24,7 @@ using namespace __gnu_pbds;
 #define all(n) n.begin(), n.end()
 #define rall(n) n.rbegin(), n.rend()
 #define pb push_back
-const int MOD = 1e9 + 7;
+const int MOD = 10000007;
 
 typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 /// change int to any data type
@@ -50,8 +50,30 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll a, b, c, d, e, f, n;
-    cin >> a >> b >> c >> d >> e >> f >> n;
+    ll t;
+    cin >> t;
+    for (ll i = 0; i < t; i++)
+    {
+        cout << "Case " << i + 1 << ": ";
+        ll a, b, c, d, e, f, n;
+        cin >> a >> b >> c >> d >> e >> f >> n;
+        vector<ll> dp(n + 1);
+        dp[0] = a;
+        dp[1] = b;
+        dp[2] = c;
+        dp[3] = d;
+        dp[4] = e;
+        dp[5] = f;
+
+        ll sum = a + b + c + d + e + f;
+
+        for (ll i = 6; i <= n; i++)
+        {
+            sum += (dp[i - 1] % MOD + dp[i - 2] % MOD + dp[i - 3] % MOD + dp[i - 4] % MOD + dp[i - 5] % MOD + dp[i - 6] % MOD) % MOD;
+        }
+        cout << sum << el;
+    }
+    
     
 }
 
