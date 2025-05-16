@@ -52,29 +52,32 @@ void Beche_achi()
 {
     ll t;
     cin >> t;
-    for (ll i = 0; i < t; i++)
+    for (ll k = 0; k < t; k++)
     {
-        cout << "Case " << i + 1 << ": ";
+        cout << "Case " << k + 1 << ": ";
         ll a, b, c, d, e, f, n;
         cin >> a >> b >> c >> d >> e >> f >> n;
-        vector<ll> dp(n + 1);
-        dp[0] = a;
-        dp[1] = b;
-        dp[2] = c;
-        dp[3] = d;
-        dp[4] = e;
-        dp[5] = f;
+        vector<ll> dp(max(6LL, n + 1));
+        if(n >= 0)
+        dp[0] = a % MOD;
+        if(n >= 1)
+        dp[1] = b % MOD;
+        if(n >= 2)
+        dp[2] = c % MOD;
+        if(n >= 3)
+        dp[3] = d % MOD;
+        if(n >= 4)
+        dp[4] = e % MOD;
+        if(n >= 5)
+        dp[5] = f % MOD;
 
-        ll sum = a + b + c + d + e + f;
 
         for (ll i = 6; i <= n; i++)
         {
-            sum += (dp[i - 1] % MOD + dp[i - 2] % MOD + dp[i - 3] % MOD + dp[i - 4] % MOD + dp[i - 5] % MOD + dp[i - 6] % MOD) % MOD;
+            dp[i] = (dp[i - 1] % MOD + dp[i - 2] % MOD + dp[i - 3] % MOD + dp[i - 4] % MOD + dp[i - 5] % MOD + dp[i - 6] % MOD) % MOD;
         }
-        cout << sum << el;
+        cout << dp[n] << el;
     }
-    
-    
 }
 
 /************************************************************
@@ -87,7 +90,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    tst
+    // tst
     Beche_achi();
 
     Goodbye
