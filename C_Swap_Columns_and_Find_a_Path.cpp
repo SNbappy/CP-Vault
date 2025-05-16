@@ -63,8 +63,26 @@ void Beche_achi()
     {
         cin >> b[i];
     }
-    
-    
+    vector<pair<ll, ll>> p;
+    ll sum = LLONG_MIN;
+    for (ll i = 0; i < n; i++)
+    {
+        sum = max(sum, a[i] + b[i]);
+        p.pb(make_pair(a[i], b[i]));
+    }
+    // cout << sum << el;
+    bool ok = false;
+    ll ans = 0;
+    for (ll i = 0; i < n; i++)
+    {
+        if(a[i] + b[i] == sum and !ok){
+            ans += sum;
+            ok = true;
+            continue;
+        }
+        ans += max(a[i], b[i]);
+    }
+    cout << ans << el;
 }
 
 /************************************************************
