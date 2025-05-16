@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-16 16:08:15
+Created: 2025-05-16 20:59:39
 */
 
 #include <bits/stdc++.h>
@@ -50,20 +50,38 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n;
-    cin >> n;
-    if(n < 2){
-        cout << "No SPF" << el;
-        return;
-    }
-    for (ll i = 2; i*i <= n; i++)
+    ll t;
+    cin >> t;
+    for (ll k = 0; k < t; k++)
     {
-        if(n % i == 0){
-            cout << i << el;
-            return;
+        cout << "Case " << k + 1 << ": ";
+
+        ll n;
+        cin >> n;
+        vector<vector<ll>> banana(2 * n, vector<ll>(n + 1, 0LL));
+        vector<vector<ll>> dp(2 * n, vector<ll>(n + 1, 0LL));
+
+        for (ll i = 1; i <= n; i++)
+        {
+            for (ll j = 1; j <= i; j++)
+            {
+                /* code */
+                cin >> banana[i][j];
+            }
+            
         }
+
+        for (ll i = n + 1; i < 2*n; i++)
+        {
+            for (ll j = 1; j <= 2*n; j++)
+            {
+                cin >> banana[i][j];
+            }
+            
+        }
+        
+        
     }
-    cout << n << el;
 }
 
 /************************************************************
@@ -76,7 +94,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
