@@ -75,7 +75,8 @@ void Beche_achi()
     ll ans = 0;
     for (ll i = 0; i < n; i++)
     {
-        if(a[i] + b[i] == sum and !ok){
+        if (a[i] + b[i] == sum and !ok)
+        {
             ans += sum;
             ok = true;
             continue;
