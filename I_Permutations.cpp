@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-18 14:51:26
+Created: 2025-05-18 15:05:56
 */
 
 #include <bits/stdc++.h>
@@ -52,21 +52,27 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    vector<ll> a(n);
-    for (ll i = 0; i < n; i++)
-    {
-        cin >> a[i];
+    if(n == 1){
+        cout << 1 << el;
+        return;
     }
-    ll ans = 0;
-    for (ll i = 0; i < n - 1; i++)
-    {
-        if (a[i + 1] < a[i])
-        {
-            ans += abs(a[i + 1] - a[i]);
-            a[i + 1] = a[i];
-        }
+    if(n < 4){
+        cout << "NO SOLUTION" << el;
+        return;
     }
-    cout << ans << el;
+    if(n == 4){
+        cout << 2 << " " << 4 << " " << 1 << " " << 3 << el;
+        return;
+    }
+    for (ll i = 0; i < n; i += 2)
+    {
+        cout << i + 1 << " ";
+    }
+    for (ll i = 1; i < n; i += 2)
+    {
+        cout << i + 1 << " ";
+    }
+    cout << el;
 }
 
 /************************************************************
