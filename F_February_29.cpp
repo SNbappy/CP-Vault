@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-18 12:28:22
+Created: 2025-05-18 12:38:03
 */
 
 #include <bits/stdc++.h>
@@ -48,25 +48,56 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
+struct Date
+{
+    string month;
+    ll date;
+    char comma;
+    ll year;
+};
+
 void Beche_achi()
 {
-    ll t;
-    cin >> t;
-    for (ll cs = 0; cs < t; cs++)
+    ll tc;
+    cin >> tc;
+    for (ll cs = 0; cs < tc; cs++)
     {
         cout << "Case " << cs + 1 << ": ";
-        double x0, y0, x1, y1, x2, y2;
-        cin >> x0 >> y0 >> x1 >> y1 >> x2 >> y2;
-        double a = (x1 - x0) * (x2 - x0);
-        double b = (y1 - y0) * (y2 - y0);
-        double c = (x1 - x0) * (x1 - x0) + (y2 - y0) * (y2 - y0);
-        double d = sqrtf(c);
-        double e = (a + b) / d;
-        double f = acos(e);
-        double ans = f * M_PI;
-        cout << ans << el;
+        Date birth, dead;
+        cin >> birth.month >> birth.date >> birth.comma >> birth.year >> dead.month >> dead.date >> dead.comma >> dead.year;
+        ll cnt = 0;
+        if (birth.year % 400 == 0 || (birth.year % 4 == 0 and birth.year % 100 != 0))
+        {
+            if (birth.month == "January" || (birth.month == "February" && birth.date <= 29))
+            {
+                if (dead.year != birth.year || (dead.month != "January" || (dead.month == "February" and dead.date >= 29)))
+                {
+                    cnt++;
+                    while (true)
+                    {
+                        if (birth.year + 4 < dead.year)
+                        {
+                            cnt++;
+                            birth.year += 4;
+                        }
+                        else
+                        {
+                            break;
+                        }
+                    }
+                }
+                if (dead.year != birth.year)
+                {
+                    if (dead.year % 400 == 0 || (dead.year % 4 == 0 and dead.year % 100 != 0))
+                    {
+                        if (dead.year != birth.year || (dead.month != "January" || (dead.month == "February" and dead.date >= 29)))
+                            cnt++;
+                    }
+                }
+            }
+        }
+        cout << cnt << el;
     }
-    
 }
 
 /************************************************************
@@ -79,7 +110,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
