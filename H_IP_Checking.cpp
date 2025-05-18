@@ -48,13 +48,194 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
-struct IP{
-    
-};
-
 void Beche_achi()
 {
-    
+    ll t;
+    cin >> t;
+    for (ll cs = 0; cs < t; cs++)
+    {
+        cout << "Case " << cs + 1 << ": ";
+        string s, st;
+        cin >> s >> st;
+        string temp = "";
+        ll k = 0;
+        for (ll i = 0; i < s.size(); i++)
+        {
+            if (s[i] == '.')
+            {
+                k = i;
+                break;
+            }
+            temp += s[i];
+        }
+        ll a = stoll(temp);
+        string p = "";
+        while (a)
+        {
+            ll obo = a % 2;
+            a /= 2;
+            if (obo == 1)
+                p += '1';
+            else
+                p += '0';
+        }
+        reverse(all(p));
+        string final = "";
+        if (p.size() < 8)
+        {
+            for (ll i = 0; i < (8 - p.size()); i++)
+            {
+                /* code */
+                final += '0';
+            }
+            final += p;
+        }
+        else
+            final += p;
+        // cout << final << " " << st.substr(0, 8) << el;
+        if (final != st.substr(0, 8))
+        {
+            cout << "No" << el;
+            continue;
+        }
+
+        // cout << final << " " << st.substr(0, 8) << el;
+
+        // second part
+        temp = "";
+        for (ll i = k + 1; i < s.size(); i++)
+        {
+            /* code */
+            if (s[i] == '.')
+            {
+                k = i;
+                break;
+            }
+            temp += s[i];
+        }
+
+        a = stoll(temp);
+        p = "";
+        while (a)
+        {
+            ll obo = a % 2;
+            a /= 2;
+            if (obo == 1)
+                p += '1';
+            else
+                p += '0';
+        }
+        reverse(all(p));
+        final = "";
+        if (p.size() < 8)
+        {
+            for (ll i = 0; i < (8 - p.size()); i++)
+            {
+                final += '0';
+            }
+            final += p;
+        }
+        else
+            final += p;
+        // cout << final << el;
+        // cout << st.substr(9, 8) << el;
+        if (final != st.substr(9, 8))
+        {
+            cout << "No" << el;
+            continue;
+        }
+
+        // third part
+        temp = "";
+        for (ll i = k + 1; i < s.size(); i++)
+        {
+            /* code */
+            if (s[i] == '.')
+            {
+                k = i;
+                break;
+            }
+            temp += s[i];
+        }
+
+        a = stoll(temp);
+        p = "";
+        while (a)
+        {
+            ll obo = a % 2;
+            a /= 2;
+            if (obo == 1)
+                p += '1';
+            else
+                p += '0';
+        }
+        reverse(all(p));
+        final = "";
+        if (p.size() < 8)
+        {
+            for (ll i = 0; i < (8 - p.size()); i++)
+            {
+                final += '0';
+            }
+            final += p;
+        }
+        else
+            final += p;
+        // cout << final << el;
+        // cout << st.substr(9, 8) << el;
+        // cout << final << " " << st.substr(18, 8) << el;
+        if (final != st.substr(18, 8))
+        {
+            cout << "No" << el;
+            continue;
+        }
+
+        // fourth part
+        temp = "";
+        for (ll i = k + 1; i < s.size(); i++)
+        {
+            /* code */
+            if (s[i] == '.')
+            {
+                k = i;
+                break;
+            }
+            temp += s[i];
+        }
+
+        a = stoll(temp);
+        p = "";
+        while (a)
+        {
+            ll obo = a % 2;
+            a /= 2;
+            if (obo == 1)
+                p += '1';
+            else
+                p += '0';
+        }
+        reverse(all(p));
+        final = "";
+        if (p.size() < 8)
+        {
+            for (ll i = 0; i < (8 - p.size()); i++)
+            {
+                final += '0';
+            }
+            final += p;
+        }
+        else
+            final += p;
+        // cout << final << el;
+        // cout << st.substr(9, 8) << el;
+        // cout << final << " " << st.substr(27, 8) << el;
+        if (final != st.substr(27, 8))
+        {
+            cout << "No" << el;
+            continue;
+        }
+        cout << "Yes" << el;
+    }
 }
 
 /************************************************************
@@ -67,7 +248,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
