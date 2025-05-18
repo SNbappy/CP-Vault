@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-16 20:59:39
+Created: 2025-05-17 20:38:29
 */
 
 #include <bits/stdc++.h>
@@ -52,35 +52,43 @@ void Beche_achi()
 {
     ll t;
     cin >> t;
-    for (ll k = 0; k < t; k++)
+    for (ll cs = 0; cs < t; cs++)
     {
-        cout << "Case " << k + 1 << ": ";
-
         ll n;
         cin >> n;
-        vector<vector<ll>> banana(2 * n, vector<ll>(n + 1, 0LL));
-        vector<vector<ll>> dp(2 * n, vector<ll>(n + 1, 0LL));
-
-        for (ll i = 1; i <= n; i++)
+        vector<vector<ll>> a(2 * n, vector<ll>(n + 1, 0));
+        ll cnt = 1;
+        for (ll i = 1; i <= 2 * n - 1; i++)
         {
-            for (ll j = 1; j <= i; j++)
+            for (ll j = 1; j <= cnt; j++)
             {
-                /* code */
-                cin >> banana[i][j];
+                cin >> a[i][j];
             }
-            
+            if (i < n)
+                cnt++;
+            else
+                cnt--;
         }
 
-        for (ll i = n + 1; i < 2*n; i++)
+        for (ll i = 1; i <= 2 * n - 1; i++)
         {
-            for (ll j = 1; j <= 2*n; j++)
+            for (ll j = 1; j <= n; j++)
             {
-                cin >> banana[i][j];
+                ll mx = a[i - 1][j];
+                if (i <= n)
+                {
+                    mx = max(mx, a[i - 1][j - 1]);
+                }
+                else
+                {
+                    if (j + 1 <= n)
+                        mx = max(mx, a[i - 1][j + 1]);
+                }
+                a[i][j] += mx;
             }
-            
         }
-        
-        
+        cout << "Case " << cs + 1 << ": ";
+        cout << a[2 * n - 1][1] << el;
     }
 }
 

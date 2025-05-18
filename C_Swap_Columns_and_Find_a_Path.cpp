@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-02-18 08:23:43
+Created: 2025-05-17 13:31:23
 */
 
 #include <bits/stdc++.h>
@@ -53,35 +53,27 @@ void Beche_achi()
     ll n;
     cin >> n;
     vector<ll> a(n), b(n);
-
     for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-
     for (ll i = 0; i < n; i++)
     {
         cin >> b[i];
     }
-    vector<pair<ll, ll>> p;
-    ll sum = LLONG_MIN;
+    ll ans = LLONG_MIN;
     for (ll i = 0; i < n; i++)
     {
-        sum = max(sum, a[i] + b[i]);
-        p.pb(make_pair(a[i], b[i]));
-    }
-    // cout << sum << el;
-    bool ok = false;
-    ll ans = 0;
-    for (ll i = 0; i < n; i++)
-    {
-        if (a[i] + b[i] == sum and !ok)
+        ll x = a[i] + b[i];
+        for (ll j = 0; j < n; j++)
         {
-            ans += sum;
-            ok = true;
-            continue;
+            if (i != j)
+            {
+                x += max(a[j], b[j]);
+                // cout << a[i] << " " << b[i] << el;
+            }
         }
-        ans += max(a[i], b[i]);
+        ans = max(ans, x);
     }
     cout << ans << el;
 }

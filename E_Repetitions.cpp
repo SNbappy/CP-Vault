@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-17 17:14:44
+Created: 2025-05-18 07:16:42
 */
 
 #include <bits/stdc++.h>
@@ -48,76 +48,24 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
-const int Max = 20005;
-
-vector<int> graph[Max];
-bool visited[Max];
-int color[Max];
-
-ll bfs(ll src)
-{
-    queue<ll> q;
-    q.push(src);
-    visited[src] = true;
-    color[src] = 0;
-
-    ll count[2] = {1, 0};
-
-    while (!q.empty())
-    {
-        ll u = q.front();
-        q.pop();
-
-        for (ll v : graph[u])
-        {
-            if (!visited[v])
-            {
-                visited[v] = true;
-                color[v] = 1 - color[u];
-                count[color[v]]++;
-                q.push(v);
-            }
-        }
-    }
-    return max(count[0], count[1]);
-}
-
 void Beche_achi()
 {
-    int t;
-    cin >> t;
-    for (ll pq = 0; pq < t; pq++)
+    string s;
+    cin >> s;
+    ll ans = 0;
+    ll cnt = 0;
+    for (ll i = 0; i < s.size(); i++)
     {
-        cout << "Case " << pq + 1 << ": ";
-        int n;
-        cin >> n;
-        for (ll i = 0; i < Max; i++)
-        {
-            graph[i].clear();
-            visited[i] = false;
-        }
-        set<ll> nodes;
-
-        for (ll i = 0; i < n; i++)
-        {
-            int u, v;
-            cin >> u >> v;
-            graph[u].pb(v);
-            graph[v].pb(u);
-            nodes.insert(u);
-            nodes.insert(v);
-        }
-
-        ll total = 0;
-
-        for (ll node : nodes)
-        {
-            if (!visited[node])
-                total += bfs(node);
-        }
-
-        cout << total << el;
+        /* code */
+        if(s[i] == s[i + 1])
+            cnt++;
+            else{
+                ans = max(ans, cnt);
+                cnt = 0;
+            }
     }
+    ++ans;
+    cout << ans << el;
 }
 
 /************************************************************
@@ -130,7 +78,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    // tst
+    //tst
     Beche_achi();
 
     Goodbye
