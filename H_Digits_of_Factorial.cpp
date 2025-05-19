@@ -48,6 +48,15 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
+ll fact(ll n)
+{
+    if (n == 0)
+        return 1;
+    if (n == 1)
+        return 1;
+    return n * fact(n - 1);
+}
+
 void Beche_achi()
 {
     ll t;
@@ -58,8 +67,14 @@ void Beche_achi()
         ll n, b;
         cin >> n >> b;
         
+        ll factorial = fact(n);
+        ll cnt = 0;
+        while(factorial > 0){
+            factorial /= b;
+            cnt++;
+        }
+        cout << cnt << el;
     }
-    
 }
 
 /************************************************************
@@ -72,7 +87,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
