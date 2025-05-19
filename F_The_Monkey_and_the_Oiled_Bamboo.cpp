@@ -50,9 +50,42 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n;
-    cin >> n;
-    vector<ll> a(n);
+    ll t;
+    cin >> t;
+    for (ll cs = 0; cs < t; cs++)
+    {
+        cout << "Case " << cs + 1 << ": ";
+        ll n;
+        cin >> n;
+        vector<ll> a(n + 1), v;
+        a[0] = 0;
+        for (ll i = 1; i <= n; i++)
+        {
+            cin >> a[i];
+        }
+        for (ll i = 0; i < n; i++)
+        {
+            v.pb(a[i + 1] - a[i]);
+        }
+        sort(all(v));
+        if (v.size() == 1)
+        {
+            cout << v[0] << el;
+            return;
+        }
+        if (v.size() == 0)
+        {
+            cout << a[0] << el;
+            return;
+        }
+        
+        if (v[v.size() - 1] == v[v.size() - 2])
+        {
+            cout << v[v.size() - 1] + 1 << el;
+        }
+        else
+            cout << v[v.size() - 1] << el;
+    } 
 }
 
 /************************************************************
@@ -65,7 +98,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye

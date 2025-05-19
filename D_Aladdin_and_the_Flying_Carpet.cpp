@@ -55,9 +55,16 @@ void Beche_achi()
     for (ll cs = 0; cs < t; cs++)
     {
         cout << "Case " << cs + 1 << ": ";
-        
+        ll a, b;
+        cin >> a >> b;
+        ll cnt = 0;
+        while (a % b == 0)
+        {
+            ++cnt;
+            a /= b;
+        }
+        cout << cnt << el;
     }
-    
 }
 
 /************************************************************
@@ -70,7 +77,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
