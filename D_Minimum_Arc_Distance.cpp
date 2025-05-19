@@ -59,14 +59,16 @@ void Beche_achi()
         cin >> x0 >> y0 >> x1 >> y1 >> x2 >> y2;
         double a = (x1 - x0) * (x2 - x0);
         double b = (y1 - y0) * (y2 - y0);
-        double c = (x1 - x0) * (x1 - x0) + (y2 - y0) * (y2 - y0);
+        double c = (x1 - x0) * (x1 - x0) + (y1 - y0) * (y1 - y0);
+        double g = (x2 - x0) * (x2 - x0) + (y2 - y0) * (y2 - y0);
+        double h = sqrtf(g);
         double d = sqrtf(c);
-        double e = (a + b) / d;
+        double e = (a + b) / (d * h);
+        e = max(-1.0, min(1.0, e));
         double f = acos(e);
-        double ans = f * M_PI;
-        cout << ans << el;
+        double ans = d * f;
+        cout << fixed << setprecision(10) << ans << el;
     }
-    
 }
 
 /************************************************************
@@ -79,7 +81,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
