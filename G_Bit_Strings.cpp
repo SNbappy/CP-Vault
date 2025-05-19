@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-19 07:37:22
+Created: 2025-05-19 09:22:41
 */
 
 #include <bits/stdc++.h>
@@ -48,30 +48,25 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
+ll power_mod(ll a, ll b)
+{
+    a %= MOD;
+    ll result = 1;
+    while (b > 0)
+    {
+        if (b & 1)
+            result = (result * a) % MOD;
+        a = (a * a) % MOD;
+        b >>= 1;
+    }
+    return result;
+}
+
 void Beche_achi()
 {
-    ll t;
-    cin >> t;
-    for (ll cs = 0; cs < t; cs++)
-    {
-        cout << "Case " << cs + 1 << ": ";
-        long double ox, oy, ax, ay, bx, by;
-        cin >> ox >> oy >> ax >> ay >> bx >> by;
-
-        function<long double(long double)> sq = [](long double x) -> long double
-        {
-            return x * x;
-        };
-
-        long double oa = sqrtl(sq(ox - ax) + sq(oy - ay));
-        long double ob = sqrtl(sq(ox - bx) + sq(oy - by));
-        long double ab = sqrtl(sq(ax - bx) + sq(ay - by));
-
-        long double angle = acos((sq(oa) + sq(ob) - sq(ab)) / (2 * oa * ob));
-
-        cout << fixed << setprecision(10) << oa * angle << el;
-    }
-    
+    ll n;
+    cin >> n;
+    cout << power_mod(2, n) << el;
 }
 
 /************************************************************

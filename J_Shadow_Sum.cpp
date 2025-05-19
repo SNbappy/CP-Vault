@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-19 07:37:22
+Created: 2025-05-19 15:52:57
 */
 
 #include <bits/stdc++.h>
@@ -55,23 +55,27 @@ void Beche_achi()
     for (ll cs = 0; cs < t; cs++)
     {
         cout << "Case " << cs + 1 << ": ";
-        long double ox, oy, ax, ay, bx, by;
-        cin >> ox >> oy >> ax >> ay >> bx >> by;
-
-        function<long double(long double)> sq = [](long double x) -> long double
+        ll n;
+        cin >> n;
+        vector<ll> a(n);
+        set<ll> st;
+        ll cnt = 0;
+        ll sum = 0;
+        for (ll i = 0; i < n; i++)
         {
-            return x * x;
-        };
-
-        long double oa = sqrtl(sq(ox - ax) + sq(oy - ay));
-        long double ob = sqrtl(sq(ox - bx) + sq(oy - by));
-        long double ab = sqrtl(sq(ax - bx) + sq(ay - by));
-
-        long double angle = acos((sq(oa) + sq(ob) - sq(ab)) / (2 * oa * ob));
-
-        cout << fixed << setprecision(10) << oa * angle << el;
+            cin >> a[i];
+        }
+        for (ll i = n - 1; i >= 0; i--)
+        {
+            st.insert(abs(a[i]));
+            if (st.size() != cnt)
+            {
+                cnt++;
+                sum += a[i];
+            }
+        }
+        cout << sum << el;
     }
-    
 }
 
 /************************************************************
