@@ -68,16 +68,16 @@ void Beche_achi()
             v.pb(a[i + 1] - a[i]);
         }
         sort(all(v));
-        if (v.size() == 1)
+        if (v.size() < 2)
         {
             cout << v[0] << el;
             return;
         }
-        if (v.size() == 0)
-        {
-            cout << a[0] << el;
-            return;
-        }
+        // if (v.size() == 0)
+        // {
+        //     cout << a[0] << el;
+        //     return;
+        // }
         
         if (v[v.size() - 1] == v[v.size() - 2])
         {

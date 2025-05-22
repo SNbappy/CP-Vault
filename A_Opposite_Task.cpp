@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-19 15:32:04
+Created: 2025-05-22 18:23:16
 */
 
 #include <bits/stdc++.h>
@@ -52,13 +52,10 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    ll x = n * (n + 1) / 2;
-    if(x % 2){
-        no;
-        return;
-    }
-
-    
+    if(n <= 10)
+        cout << 0 << " " << n << el;
+        else
+            cout << n - 10 << " " << 10 << el;
 }
 
 /************************************************************
@@ -71,7 +68,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
