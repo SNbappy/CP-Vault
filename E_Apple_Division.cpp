@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-23 21:50:58
+Created: 2025-05-23 22:13:59
 */
 
 #include <bits/stdc++.h>
@@ -50,23 +50,7 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    string s;
-    cin >> s;
-    map<char, ll> mp;
-    for (ll i = 0; i < s.size(); i++)
-    {
-        mp[s[i]]++;
-    }
-    string str = "nepal";
-    for (auto it : str)
-    {
-        if (!mp[it])
-        {
-            cout << "Hami sabai milera Nepal Banau hai!!" << el;
-            return;
-        }
-    }
-    cout << "Maile Nepal banauna sakchhu!!" << el;
+    
 }
 
 /************************************************************
@@ -79,7 +63,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    tst
+    //tst
     Beche_achi();
 
     Goodbye
