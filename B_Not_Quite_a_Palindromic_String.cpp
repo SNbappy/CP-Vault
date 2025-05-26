@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-26 19:40:36
+Created: 2025-05-26 20:38:32
 */
 
 #include <bits/stdc++.h>
@@ -52,39 +52,51 @@ void Beche_achi()
 {
     ll n, k;
     cin >> n >> k;
-    vector<ll> a(n + 1);
-    for (ll i = 1; i <= n; i++)
+    string s;
+    cin >> s;
+    ll one = 0, zero = 0;
+    for (ll i = 0; i < n; i++)
     {
-        cin >> a[i];
-    }
-    vector<ll> freq(n + 1);
-    ll rans = -1, lans = -1, distinct = 0, l = 1, mini = n + 1;
-    for (ll r = 1; r <= n; r++)
-    {
-        if (freq[a[r]] == 0)
-            distinct++;
-        freq[a[r]]++;
-        while (distinct >= k)
+        if (s[i] == '1')
         {
-            ll current = r - l + 1;
-            if (current < mini)
-            {
-                mini = current;
-                lans = l;
-                rans = r;
-            }
-            freq[a[l]]--;
-            if (freq[a[l]] == 0)
-                distinct--;
-            l++;
+            one++;
         }
+        else
+            zero++;
     }
-    if (lans == -1)
+
+    if (k != 0 and (zero % 2 == 0 || zero == 1) and (one % 2 == 0 || one == 1))
     {
-        cout << -1 << el;
+        no;
         return;
     }
-    cout << lans << " " << rans << el;
+
+    if (one == 0 and zero != k)
+    {
+        no;
+        return;
+    }
+
+    if (zero == 0 and one != k)
+    {
+        no;
+        return;
+    }
+
+    while (one >= 2 and k)
+    {
+        one -= 2;
+        --k;
+    }
+    while (zero >= 2 and k)
+    {
+        zero -= 2;
+        --k;
+    }
+    if (k)
+        no;
+    else
+        yes;
 }
 
 /************************************************************

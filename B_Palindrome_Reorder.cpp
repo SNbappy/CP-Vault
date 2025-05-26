@@ -53,12 +53,63 @@ void Beche_achi()
     string s;
     cin >> s;
     sort(all(s));
-    map<ll, ll> mp;
+    map<char, ll> mp;
+    deque<char> dq;
     for (ll i = 0; i < s.size(); i++)
     {
         mp[s[i]]++;
     }
-    
+    char c = -1;
+    ll cnt = 0;
+    for (auto &[x, y] : mp)
+    {
+        if (y >= 2)
+        {
+            while (y >= 2)
+            {
+                dq.push_front(x);
+                dq.push_back(x);
+                y -= 2;
+            }
+            if (y == 1)
+            {
+                c = x;
+                cnt++;
+            }
+        }
+        else if (y == 1)
+        {
+            cnt++;
+            c = x;
+        }
+    }
+    if (cnt > 1)
+    {
+        cout << "NO SOLUTION" << el;
+        return;
+    }
+    if (cnt == 0)
+    {
+        for (auto x : dq)
+        {
+            cout << x;
+        }
+        cout << el;
+    }
+    else
+    {
+        for (ll i = 0; i < dq.size() / 2; i++)
+        {
+            cout << dq[i];
+        }
+        cout << c;
+        for (ll i = dq.size() / 2; i < dq.size(); i++)
+        {
+            /* code */
+            cout << dq[i];
+        }
+        cout << el;
+    }
 }
 
 /************************************************************
@@ -71,7 +122,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
