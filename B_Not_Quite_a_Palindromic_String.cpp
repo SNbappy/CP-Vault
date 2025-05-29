@@ -54,49 +54,32 @@ void Beche_achi()
     cin >> n >> k;
     string s;
     cin >> s;
-    ll one = 0, zero = 0;
-    for (ll i = 0; i < n; i++)
+    ll zero = 0, one = 1;
+    for (ll i = 0; i < s.size(); i++)
     {
-        if (s[i] == '1')
-        {
-            one++;
-        }
-        else
+        if (s[i] == '0')
             zero++;
+        else
+            one++;
     }
 
-    if (k != 0 and (zero % 2 == 0 || zero == 1) and (one % 2 == 0 || one == 1))
+    if (k > n / 2)
+    {
+        no;
+        return;
+    }
+    if (zero < n / 2 - k || one < n / 2 - k)
+    {
+        no;
+        return;
+    }
+    if ((zero - n / 2 + k) % 2 != 0)
     {
         no;
         return;
     }
 
-    if (one == 0 and zero != k)
-    {
-        no;
-        return;
-    }
-
-    if (zero == 0 and one != k)
-    {
-        no;
-        return;
-    }
-
-    while (one >= 2 and k)
-    {
-        one -= 2;
-        --k;
-    }
-    while (zero >= 2 and k)
-    {
-        zero -= 2;
-        --k;
-    }
-    if (k)
-        no;
-    else
-        yes;
+    yes;
 }
 
 /************************************************************
