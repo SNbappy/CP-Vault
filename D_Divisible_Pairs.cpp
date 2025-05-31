@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-29 21:00:43
+Created: 2025-05-31 19:47:10
 */
 
 #include <bits/stdc++.h>
@@ -50,23 +50,14 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll t;
-    cin >> t;
-    while(t--){
-        ll n, d;
-        cin >> n >> d;
-        vector<ll> a(n);
-        for (ll i = 0; i < n; i++)
-        {
-            cin >> a[i];
-        }
-        ll lower = 0, upper = d - 1;
-        for (ll i = 0; i < n; i++)
-        {
-            
-        }
-        
+    ll n, x, y;
+    cin >> n >> x >> y;
+    vector<ll> a(n);
+    for (ll i = 0; i < n; i++)
+    {
+        cin >> a[i];
     }
+    
 }
 
 /************************************************************
