@@ -52,17 +52,28 @@ void Beche_achi()
 {
     ll n, x;
     cin >> n >> x;
-    vector<ll> a(n);
+
+    vector<ll> a(n + 1);
+
     for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-    ll i = 0, sum = 0, ans = 0;
+
+    map<ll, ll> mp;
+
     for (ll i = 0; i < n; i++)
     {
-        
+        ll y = x - a[i];
+        if (mp.find(y) != mp.end())
+        {
+            cout << mp[y] + 1 << " " << i + 1 << el;
+            return;
+        }
+        mp[a[i]] = i;
     }
-    
+
+    cout << "IMPOSSIBLE" << el;
 }
 
 /************************************************************
@@ -75,7 +86,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
