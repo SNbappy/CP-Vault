@@ -25,6 +25,8 @@ using namespace __gnu_pbds;
 #define rall(n) n.rbegin(), n.rend()
 #define pb push_back
 const int MOD = 1e9 + 7;
+const int MAX_N = 10;
+int fib[MAX_N + 1];
 
 typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 /// change int to any data type
@@ -48,9 +50,109 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
+struct Slot
+{
+    ll w, l, h;
+    Slot(ll _w, ll _l, ll _h) : w(_w), l(_l), h(_h) {}
+};
+
 void Beche_achi()
 {
+
+    ll n, m;
+    cin >> n >> m;
+
+    fib[1] = 1;
+    fib[2] = 2;
+    for (ll i = 3; i <= MAX_N; ++i)
+    {
+        fib[i] = fib[i - 1] + fib[i - 2];
+    }
     
+    vector<ll> cubes(n);
+    for (ll i = 0; i < n; ++i)
+    {
+        cubes[i] = fib[i + 1];
+    }
+
+    reverse(all(cubes));
+
+    string s;
+
+    for (ll bi = 0; bi < m; ++bi)
+    {
+        ll w, l, h;
+        cin >> w >> l >> h;
+
+        bool boxFits = false;
+
+        array<array<ll, 3>, 3> perms = {{{w, l, h},
+                                          {w, h, l},
+                                          {l, h, w}}};
+
+        for (auto &p : perms)
+        {
+            ll W = p[0], L = p[1], H = p[2];
+
+            if (W < cubes[0] || L < cubes[0] || H < cubes[0])
+            {
+                continue;
+            }
+
+            vector<Slot> freeSlots;
+            freeSlots.emplace_back(W, L, H);
+
+            bool possible = true;
+
+            for (ll side : cubes)
+            {
+                bool placed = false;
+
+                for (ll si = 0; si < (ll)freeSlots.size(); ++si)
+                {
+                    ll sw = freeSlots[si].w;
+                    ll sl = freeSlots[si].l;
+                    ll sh = freeSlots[si].h;
+                    if (sw >= side && sl >= side && sh >= side)
+                    {
+                        freeSlots.erase(freeSlots.begin() + si);
+
+                        if (sh > side)
+                        {
+                            freeSlots.emplace_back(side, side, sh - side);
+                        }
+                        if (sw > side)
+                        {
+                            freeSlots.emplace_back(sw - side, side, side);
+                        }
+                        if (sl > side)
+                        {
+                            freeSlots.emplace_back(sw, sl - side, side);
+                        }
+
+                        placed = true;
+                        break;
+                    }
+                }
+
+                if (!placed)
+                {
+                    possible = false;
+                    break;
+                }
+            }
+
+            if (possible)
+            {
+                boxFits = true;
+                break;
+            }
+        }
+
+        s.push_back(boxFits ? '1' : '0');
+    }
+
+    cout << s << "\n";
 }
 
 /************************************************************
@@ -63,7 +165,9 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    
+
+    tst
     Beche_achi();
 
     Goodbye
