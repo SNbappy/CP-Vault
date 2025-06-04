@@ -52,20 +52,29 @@ void Beche_achi()
 {
     ll n, x;
     cin >> n >> x;
-    vector<ll> a(n);
+    vector<pair<ll, ll>> a;
     for (ll i = 0; i < n; i++)
     {
-        cin >> a[i];
+        ll y;
+        cin >> y;
+        a.pb(make_pair(y, i + 1));
     }
-    map<ll, ll> mp;
-    for (ll i = 0; i < n; i++)
+    sort(all(a));
+    ll l = 0, r = n - 1;
+    while (l < r)
     {
-        ll y = x - a[i];
-        if(mp.find(y) != mp.end()){
-            cout << mp[y] + 1 << " " << i + 1 << el;
+        ll sum = a[l].first + a[r].first;
+        if (sum == x)
+        {
+            cout << a[l].second << " " << a[r].second << el;
             return;
         }
-        mp[a[i]] = i;
+        if (sum < x)
+        {
+            l++;
+        }
+        if (sum > x)
+            r--;
     }
     cout << "IMPOSSIBLE" << el;
 }
@@ -80,7 +89,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
