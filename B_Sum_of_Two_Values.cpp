@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-06-02 21:39:44
+Created: 2025-06-04 10:32:54
 */
 
 #include <bits/stdc++.h>
@@ -52,27 +52,21 @@ void Beche_achi()
 {
     ll n, x;
     cin >> n >> x;
-
-    vector<ll> a(n + 1);
-
+    vector<ll> a(n);
     for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-
     map<ll, ll> mp;
-
     for (ll i = 0; i < n; i++)
     {
         ll y = x - a[i];
-        if (mp.find(y) != mp.end())
-        {
+        if(mp.find(y) != mp.end()){
             cout << mp[y] + 1 << " " << i + 1 << el;
             return;
         }
         mp[a[i]] = i;
     }
-
     cout << "IMPOSSIBLE" << el;
 }
 
@@ -86,7 +80,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    // tst
+    //tst
     Beche_achi();
 
     Goodbye
