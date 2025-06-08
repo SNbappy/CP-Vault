@@ -51,30 +51,27 @@ int gcd(int a, int b)
 void Beche_achi()
 {
     ll n, k;
-    scanf("%lld %lld", &n, &k);
-    vector<ll> a(n);
-    for (ll i = 0; i < n; i++)
+    cin >> n >> k;
+    vector<ll> a(n + 1);
+
+    for (ll i = 1; i <= n; i++)
     {
-        scanf("%lld", &a[i]);
+        /* code */
+        cin >> a[i];
     }
-    ll i = 0, sum = 0, ans = 0;
-    ll p = -1, q = -1;
-    for (ll j = 0; j < n; j++)
+
+    ll freq[1000001];
+    ll distinct = 0;
+    ll bestL = 1, bestR = 1;
+    ll L = 1;
+
+    for (ll R = 1; R <= n; R++)
     {
-        sum += a[j];
-        while (j - i + 1 > k)
-        {
-            sum -= a[i];
-            ++i;
-        }
-        if(j - i + 1 > ans){
-            p = i + 1;
-            q = j + 1;
-            ans = j - i + 1;
-        }
+        if(freq[a[R]] == 0)
+            distinct++;
+        freq[a[R]]++;
     }
-    // cout << p << " " << q << el;
-    printf("%lld %lld\n", p, q);
+    
 }
 
 /************************************************************
