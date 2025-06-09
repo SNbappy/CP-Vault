@@ -65,11 +65,23 @@ void Beche_achi()
     fill(all(freq), 0);
     ll total = 0;
     ll end = n - 1;
-    for (ll i = 0; i < n; i++)
+    ll ans = 0;
+    for (ll i = n - 1; i >= 0; i--)
     {
-        
+        freq[a[i]]++;
+        if(freq[a[i]] == 1)
+            total++;
+        if(total == dist[end]){
+            for (ll j = i; j <= end; j++)
+            {
+                freq[a[j]] = 0;
+            }
+            end = i - 1;
+            ans++;
+            total = 0;
+        }
     }
-    
+    cout << ans << el; 
 }
 
 /*
