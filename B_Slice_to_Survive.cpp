@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-05-26 21:05:57
+Created: 2025-06-10 10:58:41
 */
 
 #include <bits/stdc++.h>
@@ -48,29 +48,25 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
+ll cuts_for(ll len, ll pos)
+{
+    ll cnt = 1;
+    ll half = min(pos, len - pos + 1);
+    while (half > 1)
+    {
+        half = (half + 1) / 2;
+        cnt++;
+    }
+    return cnt;
+}
+
 void Beche_achi()
 {
-    ll n;
-    cin >> n;
-    vector<ll> a(n);
-    for (ll i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-
-    ll maxi = LLONG_MIN;
-    ll cnt = 0;
-
-    for (ll i = 0; i < n; i++)
-    {
-        if (a[i] > maxi + 1)
-        {
-            cnt++;
-            maxi = a[i];
-        }
-    }
-
-    cout << cnt << el;
+    ll n, m, a, b;
+    cin >> n >> m >> a >> b;
+    ll opt1 = cuts_for(n, a) + cuts_for(m, (m + 1) / 2);
+    ll opt2 = cuts_for(m, b) + cuts_for(n, (n + 1) / 2);
+    cout << min(opt1, opt2) << el;
 }
 
 /************************************************************

@@ -53,25 +53,27 @@ void Beche_achi()
     ll n;
     cin >> n;
     vector<ll> a(n);
-    ll zero = 0;
-    bool ok = false;
     for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
-        if (a[i] == 0)
-        {
-            {
-                if (a[i] == a[i + 1])
-                    ok = true;
-            }
-            zero++;
+    }
+    for (ll i = 0; i < n - 1; i++)
+    {
+        if(a[i] == a[i + 1] and a[i] == 0){
+            yes;
+            return;
         }
     }
-    if (zero > 0 and (zero <= (n + 1) / 2) and !ok)
-        no;
-    else
+    ll cnt = 0;
+    for (ll i = 0; i < n; i++)
+    {
+        if(a[i] == 1)
+            cnt++;
+    }
+    if(cnt == n)
         yes;
-    // cout << zero << el;
+    else
+        no;
 }
 
 /************************************************************
