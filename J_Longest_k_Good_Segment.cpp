@@ -52,26 +52,38 @@ void Beche_achi()
 {
     ll n, k;
     cin >> n >> k;
-    vector<ll> a(n + 1);
+    vector<ll> a(n);
 
-    for (ll i = 1; i <= n; i++)
+    for (ll i = 0; i < n; i++)
     {
         /* code */
         cin >> a[i];
     }
 
-    ll freq[1000001];
-    ll distinct = 0;
-    ll bestL = 1, bestR = 1;
-    ll L = 1;
-
-    for (ll R = 1; R <= n; R++)
+    ll l = 0;
+    ll ansl = 0, ansr = 0;
+    ll dist = 0;
+    vector<ll> freq(1e6 + 5, 0);
+    for (ll r = 0; r < n; r++)
     {
-        if(freq[a[R]] == 0)
-            distinct++;
-        freq[a[R]]++;
+        if (freq[a[r]] == 0)
+            dist++;
+        freq[a[r]]++;
+        while (dist > k)
+        {
+            freq[a[l]]--;
+            if(freq[a[l]] == 0)
+            dist--;
+            l++;
+        }
+
+        if (r - l > ansr - ansl)
+        {
+            ansl = l;
+            ansr = r;
+        }
     }
-    
+    cout << ansl + 1 << " " << ansr + 1 << el;
 }
 
 /************************************************************
