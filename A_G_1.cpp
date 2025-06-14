@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-06-12 20:44:49
+Created: 2025-06-14 18:00:35
 */
 
 #include <bits/stdc++.h>
@@ -13,7 +13,7 @@ using namespace __gnu_pbds;
 
 #define ll long long
 #define tst   \
-    ll t;     \
+    int t;    \
     cin >> t; \
     while (t--)
 #define el '\n'
@@ -52,21 +52,20 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    cout << (2 * n - 3) << el;
-
-    ll x = 2;
-    for (ll i = 1; i < n; i++)
+    vector<ll> a(n);
+    for (ll i = 0; i < n; i++)
     {
-        cout << x << " " << 1 << " " << (i + 1) << el;
-        x++;
+        cin >> a[i];
     }
-
-    x = 1;
-    for (ll i = 1; i < n - 1; i++)
+    ll k;
+    cin >> k;
+    ll cnt = 0;
+    for (ll i = 0; i < n; i++)
     {
-        cout << x << " " << (i + 1) << " " << n << el;
-        x++;
+        if(a[i] >= k)
+            cnt++;
     }
+    cout << cnt << el;
 }
 
 /************************************************************
@@ -79,7 +78,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    tst
+    //tst
     Beche_achi();
 
     Goodbye

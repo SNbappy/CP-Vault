@@ -57,6 +57,12 @@ void Beche_achi()
     {
         cin >> a[i];
     }
+    ll i = 0;
+    ll ans = 0;
+    for (ll j = i + 1; j < n; j++)
+    {
+        if(a[j] - a[i])
+    }
     
 }
 

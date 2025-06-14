@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-06-12 20:44:49
+Created: 2025-06-14 18:09:09
 */
 
 #include <bits/stdc++.h>
@@ -13,7 +13,7 @@ using namespace __gnu_pbds;
 
 #define ll long long
 #define tst   \
-    ll t;     \
+    int t;    \
     cin >> t; \
     while (t--)
 #define el '\n'
@@ -50,23 +50,43 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n;
-    cin >> n;
-    cout << (2 * n - 3) << el;
-
-    ll x = 2;
-    for (ll i = 1; i < n; i++)
+    ll n, q;
+    cin >> n >> q;
+    vector<ll> a(q);
+    for (ll i = 0; i < q; i++)
     {
-        cout << x << " " << 1 << " " << (i + 1) << el;
-        x++;
+        cin >> a[i];
+    }
+    vector<pair<ll, ll>> v;
+    // v.reserve(n);
+    for (ll i = 0; i < n; i++)
+    {
+        v.pb({0, i});
     }
 
-    x = 1;
-    for (ll i = 1; i < n - 1; i++)
+    for (ll i = 0; i < q; i++)
     {
-        cout << x << " " << (i + 1) << " " << n << el;
-        x++;
+        if (a[i] >= 1)
+        {
+            cout << a[i] << " ";
+            v[a[i] - 1].first++;
+            
+        }
+        else
+        {
+            vector<pair<ll, ll>> c = v;
+            sort(all(c), [](const pair<ll, ll> &a, const pair<ll, ll> &b)
+                 {
+             if (a.first == b.first)
+                 return a.second < b.second; 
+             return a.first < b.first; });
+            ll idx = c[0].second;
+            v[idx].first++;
+            cout << idx + 1 << " ";
+        }
     }
+    cout << el;
+    
 }
 
 /************************************************************
@@ -79,7 +99,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    tst
+    // tst
     Beche_achi();
 
     Goodbye

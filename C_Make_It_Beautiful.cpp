@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-06-12 20:44:49
+Created: 2025-06-12 21:54:53
 */
 
 #include <bits/stdc++.h>
@@ -13,7 +13,7 @@ using namespace __gnu_pbds;
 
 #define ll long long
 #define tst   \
-    ll t;     \
+    int t;    \
     cin >> t; \
     while (t--)
 #define el '\n'
@@ -50,23 +50,55 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n;
-    cin >> n;
-    cout << (2 * n - 3) << el;
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> a(n);
+   for (ll i = 0; i < n; i++)
+   {
+       cin >> a[i];
+   }
+   
+    ll ans = 0;
+    for (auto x : a)
+        ans += __builtin_popcountll(x);
 
-    ll x = 2;
-    for (ll i = 1; i < n; i++)
+    vector<ll> s;
+
+    for (auto x : a)
     {
-        cout << x << " " << 1 << " " << (i + 1) << el;
-        x++;
+        ll a = x;
+        while (true)
+        {
+            ll b = ~a;
+            if (b == 0)
+                break;
+
+            ll p = 0;
+            ll vallagena = b;
+            while (vallagena % 2 == 0)
+            {
+                p++;
+                vallagena /= 2;
+            }
+            ll y = 1LL << p;
+            if (y > k)
+                break;
+
+            s.pb(y);
+            a += y;
+        }
     }
 
-    x = 1;
-    for (ll i = 1; i < n - 1; i++)
+    sort(all(s));
+    for (auto x : s)
     {
-        cout << x << " " << (i + 1) << " " << n << el;
-        x++;
+        if (x > k)
+            break;
+        k -= x;
+        ans++;
     }
+
+    cout << ans << el;
 }
 
 /************************************************************
