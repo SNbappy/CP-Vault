@@ -2,13 +2,16 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2024-11-16 06:12:12
+Created: 2025-06-15 21:46:10
 */
 
 #include <bits/stdc++.h>
 using namespace std;
 
-#define int long long
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
+
+#define ll long long
 #define tst   \
     int t;    \
     cin >> t; \
@@ -23,41 +26,52 @@ using namespace std;
 #define pb push_back
 const int MOD = 1e9 + 7;
 
+typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+/// change int to any data type
+/// less_equal for multiset increasing order
+/// less for set increasing order
+/// greater_equal for multiset decreasing order
+/// greater for set decreasing order
+
+/// cout<<*X.find_by_order(1)<<endl; // iterator to the k-th largest element
+/// cout<<X.order_of_key(-5)<<endl;  // number of items in a set that are strictly smaller than our item
+
 /************************************************************
  *                   Utility Function                      *
  ************************************************************/
 
+int gcd(int a, int b)
+{
+    if (b == 0)
+        return a;
+    else
+        return gcd(b, a % b);
+}
+
 void Beche_achi()
 {
-    int n, q;
-    cin >> n >> q;
-    vector<int> a(n), k(q);
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-    for (int i = 0; i < q; i++)
-    {
-        cin >> k[i];
-    }
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> a(n), b(k);
+    for (ll &x : a)
+        cin >> x;
+    for (ll &x : b)
+        cin >> x;
 
-    // Sort the array
-    sort(all(a));
-
-    // Compute prefix sums
-    vector<int> prefix_sum(n);
-    prefix_sum[0] = a[0];
-    for (int i = 1; i < n; i++)
+    vector<ll> pref(n), mxf(n);
+    pref[0] = mxf[0] = a[0];
+    for (ll i = 1; i < n; i++)
     {
-        prefix_sum[i] = prefix_sum[i - 1] + a[i];
+        pref[i] = pref[i - 1] + a[i];
+        mxf[i] = max(mxf[i - 1], a[i]);
     }
 
-    // Answer each query using binary search
-    for (int i = 0; i < q; i++)
+    for (ll j = 0; j < k; j++)
     {
-        int idx = upper_bound(all(a), k[i]) - a.begin() - 1;
-        if (idx >= 0)
-            cout << prefix_sum[idx] << " ";
+        ll leg = b[j];
+        ll pos = upper_bound(mxf.begin(), mxf.end(), leg) - mxf.begin() - 1;
+        if (pos >= 0)
+            cout << pref[pos] << " ";
         else
             cout << 0 << " ";
     }
