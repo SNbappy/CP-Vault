@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-06-04 10:32:54
+Created: 2025-06-15 21:29:54
 */
 
 #include <bits/stdc++.h>
@@ -50,31 +50,27 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, x;
-    cin >> n >> x;
-    vector<pair<ll, ll>> a;
+    ll n, m;
+    cin >> n >> m;
+    vector<pair<ll, ll>> a(n);
     for (ll i = 0; i < n; i++)
     {
-        ll y;
-        cin >> y;
-        a.pb(make_pair(y, i + 1));
+        cin >> a[i].first;
+        a[i].second = i;
     }
     sort(all(a));
-    ll l = 0, r = n - 1;
-    while (l < r)
+    ll i = 0, j = n - 1;
+    while (i < j)
     {
-        ll sum = a[l].first + a[r].first;
-        if (sum == x)
+        if (a[i].first + a[j].first == m)
         {
-            cout << a[l].second << " " << a[r].second << el;
+            cout << a[i].second + 1 << " " << a[j].second + 1 << el;
             return;
         }
-        if (sum < x)
-        {
-            l++;
-        }
-        if (sum > x)
-            r--;
+        else if (a[i].first + a[j].first < m)
+            i++;
+        else
+            j--;
     }
     cout << "IMPOSSIBLE" << el;
 }
