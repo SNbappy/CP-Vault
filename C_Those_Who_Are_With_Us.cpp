@@ -52,6 +52,58 @@ void Beche_achi()
 {
     ll n, m;
     cin >> n >> m;
+    ll a[n][m];
+    ll x = 0;
+    for (ll i = 0; i < n; i++)
+    {
+        for (ll j = 0; j < m; j++)
+        {
+            cin >> a[i][j];
+            x = max(x, a[i][j]);
+        }
+    }
+
+    vector<ll> cnt(m);
+    vector<ll> cnt1[n];
+
+    for (ll i = 0; i < n; i++)
+    {
+        for (ll j = 0; j < m; j++)
+        {
+            if (a[i][j] == x)
+            {
+                cnt[j]++;
+                cnt1[i].push_back(j);
+            }
+        }
+    }
+
+    ll k = 0;
+    for (ll j = 0; j < m; j++)
+    {
+        if (cnt[j] > 0)
+            k++;
+    }
+
+    bool ok = false;
+
+    for (ll i = 0; i < n && !ok; i++)
+    {
+        ll y = 0;
+        for (auto xl : cnt1[i])
+        {
+            if (cnt[xl] == 1)
+                y++;
+        }
+        if (k - y <= 1)
+        {
+            ok = true;
+        }
+    }
+    if (ok)
+        cout << x - 1 << el;
+    else
+        cout << x << el;
 }
 
 /************************************************************
@@ -64,7 +116,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
