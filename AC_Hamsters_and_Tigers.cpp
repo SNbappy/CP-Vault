@@ -54,16 +54,61 @@ void Beche_achi()
     cin >> n;
     string s;
     cin >> s;
-    ll h = 0, t = 0;
+
+    ll ans = LLONG_MAX;
+    map<char, ll> m;
+
     for (ll i = 0; i < n; i++)
     {
-        if(s[i] == 'H')
-            h++;
+        if (s[i] == 'T')
+        {
+            ll b = 0;
+            for (ll j = i; j < n; j++)
+            {
+                if (s[j] == 'H')
+                    b++;
+            }
+
+            ll a = 0;
+            ll j = n - 1;
+
+            while (j >= i)
+            {
+                ans = min(ans, max(m['T'] + a, b));
+                if (s[j] == 'T')
+                    a++;
+                else
+                    b--;
+                j--;
+            }
+        }
         else
-            t++;
+        {
+            ll b = 0;
+            for (ll j = i; j < n; j++)
+            {
+                if (s[j] == 'T')
+                    b++;
+            }
+
+            ll a = 0;
+            ll j = n - 1;
+
+            while (j >= i)
+            {
+                ans = min(ans, max(m['H'] + a, b));
+                if (s[j] == 'H')
+                    a++;
+                else
+                    b--;
+                j--;
+            }
+        }
+
+        m[s[i]]++;
     }
-    ll mn = min(h, t);
-    cout << mn / 2 << el;
+
+    cout << ans << el;
 }
 
 /************************************************************

@@ -57,7 +57,16 @@ void Beche_achi()
     {
         cin >> a[i];
     }
-    
+    map<pair<ll, ll>, ll> mp;
+    ll ans = 0;
+    for (ll i = 0; i < n; i++)
+    {
+        ll b = a[i] % x;
+        ll c = a[i] % y;
+        ans += mp[{(x - b) % x, c}];
+        mp[{b, c}]++;
+    }
+    cout << ans << el;
 }
 
 /************************************************************
@@ -70,7 +79,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye

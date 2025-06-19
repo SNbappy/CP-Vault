@@ -1,75 +1,103 @@
+/*
+بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
+
+Author: Depressed_C0der
+Created: 2025-06-19 15:54:03
+*/
+
 #include <bits/stdc++.h>
 using namespace std;
-using ll = long long;
 
-// Function to check whether all holes can be covered
-// using <= k strips of length L
-bool can_cover(const vector<ll> &x, int n, int k, ll L)
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
+
+#define ll long long
+#define tst   \
+    int t;    \
+    cin >> t; \
+    while (t--)
+#define el '\n'
+#define yes cout << "YES" << el
+#define no cout << "NO" << el
+#define Depressed_C0der int32_t main()
+#define Goodbye return 0;
+#define all(n) n.begin(), n.end()
+#define rall(n) n.rbegin(), n.rend()
+#define pb push_back
+const int MOD = 1e9 + 7;
+
+typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
+/// change int to any data type
+/// less_equal for multiset increasing order
+/// less for set increasing order
+/// greater_equal for multiset decreasing order
+/// greater for set decreasing order
+
+/// cout<<*X.find_by_order(1)<<endl; // iterator to the k-th largest element
+/// cout<<X.order_of_key(-5)<<endl;  // number of items in a set that are strictly smaller than our item
+
+/************************************************************
+ *                   Utility Function                      *
+ ************************************************************/
+
+int gcd(int a, int b)
 {
-    int used = 0; // number of strips used so far
-    int i = 0;    // current hole index to be covered
-    while (i < n)
-    {
-        used++;                      // use one more strip
-        ll cover_end = x[i] + L - 1; // this strip will cover from x[i] to x[i] + L - 1
-
-        // Move 'i' to the first hole that is NOT covered by the current strip
-        while (i < n && x[i] <= cover_end)
-        {
-            i++;
-        }
-
-        // If we've used more than k strips, it's not possible with this length
-        if (used > k)
-            return false;
-    }
-
-    // If we managed to cover all holes using <= k strips, it's valid
-    return true;
+    if (b == 0)
+        return a;
+    else
+        return gcd(b, a % b);
 }
 
-int main()
+void Beche_achi()
 {
-    ios::sync_with_stdio(false);
-    cin.tie(nullptr);
-
-    int T;
-    cin >> T; // number of test cases
-
-    while (T--)
+    ll n, k;
+    cin >> n >> k;
+    vector<ll> a(n);
+    for (ll i = 0; i < n; i++)
     {
-        int n, k;
-        cin >> n >> k; // number of holes and number of strips allowed
-
-        vector<ll> x(n); // positions of holes
-        for (int i = 0; i < n; i++)
-        {
-            cin >> x[i]; // hole positions are already sorted as per problem
-        }
-
-        // Binary search to find the minimum valid strip length L
-        ll low = 1;                    // minimum possible length
-        ll high = x[n - 1] - x[0] + 1; // maximum needed length (to cover all with 1 strip)
-
-        // Perform binary search to find the smallest L that can cover all holes using <= k strips
-        while (low < high)
-        {
-            ll mid = low + (high - low) / 2; // candidate strip length
-
-            // Check if it's possible to cover with this length
-            if (can_cover(x, n, k, mid))
-            {
-                high = mid; // try smaller length
-            }
-            else
-            {
-                low = mid + 1; // need longer strips
-            }
-        }
-
-        // 'low' is now the smallest strip length that works
-        cout << low << "\n";
+        cin >> a[i];
     }
+    ll l = 0, h = a[n - 1];
+    ll ans = LLONG_MAX;
+    while (l <= h)
+    {
+        ll mid = (l + h) / 2;
+        ll i = 0, j = 0;
+        ll cnt = 1;
+        while (j < n)
+        {
+            if (a[j] - a[i] + 1 > mid)
+            {
+                cnt++;
+                i = j;
+            }
+            j++;
+        }
+        if (cnt <= k)
+        {
+            ans = min(ans, mid);
+            h = mid - 1;
+        }
+        else
+        {
+            l = mid + 1;
+        }
+    }
+    cout << ans << el;
+}
 
-    return 0;
+/************************************************************
+ *                      Main Function                      *
+ ************************************************************/
+
+Depressed_C0der
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+
+    tst
+    Beche_achi();
+
+    Goodbye
 }
