@@ -57,21 +57,31 @@ void Beche_achi()
     {
         cin >> a[i];
     }
-    ll l = 0;
-    ll ans = 0, cnt = 0;
-    ll maxi = a[0], mini = a[0];
-    for (ll i = 0; i < n; i++)
-    {
-        maxi = max(maxi, a[i]);
-        mini = min(a[i], mini);
-        if(maxi - mini <= 1){
-            cnt++;
+    multiset<ll> ms;
+    ll head = -1, tail = 0;
+    ll mx = 1;
+    while(tail < n){
+        while (head + 1 < n){
+            ms.insert(a[head + 1]);
+            if(*ms.rbegin() - *ms.begin() <= 1){
+                head++;
+            }
+            else{
+                ms.erase(ms.find(a[head + 1]));
+                break;
+            }
         }
-        while(maxi - mini > 1){
-            
+        mx = max(mx, (ll)ms.size());
+        if(tail > head){
+            tail++;
+            head = tail - 1;
+        }
+        else{
+            ms.erase(ms.find(a[tail]));
+            tail++;
         }
     }
-    cout << ans << el;
+    cout << mx << el;
 }
 
 /************************************************************
