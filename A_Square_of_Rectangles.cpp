@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-06-20 19:50:33
+Created: 2025-06-21 20:35:39
 */
 
 #include <bits/stdc++.h>
@@ -50,26 +50,33 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, k;
-    cin >> n >> k;
-    vector<ll> a(n);
-    multiset<ll> m;
-    for (ll i = 0; i < n; i++)
+    ll l1, b1, l2, b2, l3, b3;
+    cin >> l1 >> b1 >> l2 >> b2 >> l3 >> b3;
+    if (l1 == l2 and l2 == l3)
     {
-        cin >> a[i];
-    }
-    ll mx = 0;
-    ll l = 0;
-    for (ll i = 0; i < n; i++)
-    {
-        m.insert(a[i]);
-        while(m.size() > k + 2){
-            m.erase(m.find(a[l]));
-            l++;
+        if (b1 + b2 + b3 == l1)
+        {
+            yes;
+            return;
         }
-        mx = max(mx, *m.rbegin() - *m.begin());
     }
-    cout << mx << el;
+    if (b1 == b2 and b2 == b3)
+    {
+        if (l1 + l2 + l3 == b1)
+        {
+            yes;
+            return;
+        }
+    }
+    if(b2 + b3 == b1 and l2 == l3 and l1 + l2 == b1 || b1 + b2 == b3 and l1 == l2 and l2 + l3 == b3 || b3 + b1 == b2 and l3 == l1 and l1 + l2 == b2){
+        yes;
+        return;
+    }
+    if (l2 + l3 == l1 and b2 == b3 and b1 + b2 == l1 || l1 + l2 == l3 and b1 == b2 and b2 + b3 == l3 || l3 + l1 == l2 and b3 == b1 and b1 + b2 == l2){
+        yes;
+        return;
+    }
+    no;
 }
 
 /************************************************************

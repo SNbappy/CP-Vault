@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-06-20 19:50:33
+Created: 2025-06-21 21:15:33
 */
 
 #include <bits/stdc++.h>
@@ -52,24 +52,15 @@ void Beche_achi()
 {
     ll n, k;
     cin >> n >> k;
-    vector<ll> a(n);
-    multiset<ll> m;
+    ll cnt = 0;
     for (ll i = 0; i < n; i++)
     {
-        cin >> a[i];
+        ll a, b, c, d;
+        cin >> a >> b >> c >> d;
+        if (c + d == k)
+            cnt++;
     }
-    ll mx = 0;
-    ll l = 0;
-    for (ll i = 0; i < n; i++)
-    {
-        m.insert(a[i]);
-        while(m.size() > k + 2){
-            m.erase(m.find(a[l]));
-            l++;
-        }
-        mx = max(mx, *m.rbegin() - *m.begin());
-    }
-    cout << mx << el;
+    cout << cnt << el;
 }
 
 /************************************************************

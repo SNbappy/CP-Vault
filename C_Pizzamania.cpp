@@ -57,32 +57,30 @@ void Beche_achi()
     {
         cin >> a[i];
     }
-    sort(all(a));
     ll sum = 0;
+    sort(all(a));
     ll cnt = 0;
+    if (k < 0)
+    {
+        for (ll i = 0; i < n; i++)
+        {
+            if (sum + a[i] < k || sum + a[i] > 0)
+                break;
+            sum += a[i];
+            // cout << sum << el;
+            cnt++;
+            // cerr << cnt << el;
+        }
+        cout << cnt / 2 << el;
+        return;
+    }
     for (ll i = 0; i < n; i++)
     {
-        if(k < 0){
-            if(a[i] < 0){
-                if(sum + a[i] >= k){
-                    sum += a[i];
-                    cnt++;
-                }
-            }
-            else if(sum + a[i] <= k){
-               { sum += a[i];
-                   cnt++;
-               }
-            }
-        }
-        else if(sum + a[i] <= k)
-            {sum += a[i];
-                cnt++;
-            }
-        else
+        if (sum + a[i] > k)
             break;
+        sum += a[i];
+        cnt++;
     }
-    
     cout << cnt / 2 << el;
 }
 
