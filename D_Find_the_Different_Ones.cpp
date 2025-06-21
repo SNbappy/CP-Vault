@@ -52,24 +52,17 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    vector<ll> a(n);
-    vector<pair<ll, ll>> dist(n);
-    set<ll> st;
-    ll cnt = 0;
+    vector<ll> a(n), p(n, -1);
     for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-    ll j = 0;
-    for (ll i = n - 1; i >= 0; i--)
+    for (ll i = 1; i < n; i++)
     {
-        st.insert(a[i]);
-        if ((ll)st.size() != cnt)
-        {
-            cnt++;
-            j = i;
+        p[i] = p[i - 1];
+        if(a[i] != a[i - 1]){
+            p[i] = i - 1;
         }
-        dist[i] = {cnt, j};
     }
     ll m;
     cin >> m;
@@ -77,17 +70,12 @@ void Beche_achi()
     {
         ll l, r;
         cin >> l >> r;
-        ll x = -1, y = -1;
-        if (abs(dist[r].first - dist[l].first) <= 1)
-        {
-            x = dist[l].second;
-            y = dist[r].second;
-        }
-        cout << x << " " << y << el;
+        --l, --r;
+        if(p[r] < l)
+            cout << -1 << " " << -1 << el;
+        else
+            cout << p[r] + 1 << " " << r + 1 << el;
     }
-    for (auto [x, y] : dist)
-        cout << x << " ";
-    cout << el;
     cout << el;
 }
 
