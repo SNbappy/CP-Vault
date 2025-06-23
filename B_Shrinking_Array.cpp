@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-06-22 19:14:54
+Created: 2025-06-23 20:43:18
 */
 
 #include <bits/stdc++.h>
@@ -50,51 +50,34 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, m;
-    cin >> n >> m;
-    if(m < n || m > (ll)n*(n + 1) / 2){
+    ll n;
+    cin >> n;
+    vector<ll> a(n);
+    for (ll i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    if(n == 2 and abs(a[0] - a[1]) > 1){
         cout << -1 << el;
         return;
     }
-    vector<ll> v(n);
-    for (ll i = 0; i < n; i++)
+    ll mn = LLONG_MAX;
+    for (ll i = 0; i < n - 1; i++)
     {
-        v[i] = i + 1;
+        mn = min(abs(a[i] - a[i + 1]), mn);
     }
-    ll rem = (ll)n * (n + 1) / 2 - m;
-    for (int i = n - 1; i >= 0; i--)
-    {
-        if (rem <= v[i] - 1)
-        {
-            v[i] -= rem;
-            rem = 0;
-        }
-        else
-        {
-            rem -= (v[i] - 1);
-            v[i] = 1;
-        }
-        if (rem <= 0)
-            break;
+    if(mn <= 1){
+        cout << 0 << el;
+        return;
     }
-
-    int root = *max_element(all(v));
-
-    cout << root << el;
-
-    for (int i = 0; i < n; i++)
-    {
-        if (v[i] == i + 1)
-        {
-            if (i + 1 == root)
-                continue;
-            cout << i + 1 << " " << root << el;
-        }
-        else
-        {
-            cout << i + 1 << " " << v[i] << el;
-        }
+    vector<ll> incr = a, decr = a;
+    sort(all(incr));
+    sort(rall(decr));
+    if(incr == a || decr == a){
+        cout << -1 << el;
+        return;
     }
+    cout << 1 << el;
 }
 
 /************************************************************

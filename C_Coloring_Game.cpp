@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-06-22 19:14:54
+Created: 2025-06-23 20:58:44
 */
 
 #include <bits/stdc++.h>
@@ -50,51 +50,32 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, m;
-    cin >> n >> m;
-    if(m < n || m > (ll)n*(n + 1) / 2){
-        cout << -1 << el;
-        return;
-    }
-    vector<ll> v(n);
+    ll n;
+    cin >> n;
+    vector<ll> a(n);
     for (ll i = 0; i < n; i++)
     {
-        v[i] = i + 1;
+        cin >> a[i];
     }
-    ll rem = (ll)n * (n + 1) / 2 - m;
-    for (int i = n - 1; i >= 0; i--)
+    ll cnt = 0;
+    sort(rall(a));
+    for (ll i = 0; i < n - 2; i++)
     {
-        if (rem <= v[i] - 1)
+        for (ll j = i + 1; j < n - 1; j++)
         {
-            v[i] -= rem;
-            rem = 0;
-        }
-        else
-        {
-            rem -= (v[i] - 1);
-            v[i] = 1;
-        }
-        if (rem <= 0)
-            break;
-    }
-
-    int root = *max_element(all(v));
-
-    cout << root << el;
-
-    for (int i = 0; i < n; i++)
-    {
-        if (v[i] == i + 1)
-        {
-            if (i + 1 == root)
-                continue;
-            cout << i + 1 << " " << root << el;
-        }
-        else
-        {
-            cout << i + 1 << " " << v[i] << el;
+            ll l = j + 1, r = n - 1;
+            while (l <= r)
+            {
+                ll k = (l + r) / 2;
+                if (a[i] + a[j] > a[k])
+                {
+                    cnt++;
+                    
+                }
+            }
         }
     }
+    cout << cnt << el;
 }
 
 /************************************************************
