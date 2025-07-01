@@ -50,22 +50,16 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    while(true){
-        ll n;
-        cin >> n;
-        if(n == 0)
-            break;
-        ll i = 0, j = 0;
-        ll sum = 0;
-        while(true){
-            ll x = i * i * i;
-            ll y = j * j * j;
-            ll sum = y - x;
-            if(sum == n){
-                cout << j << " " << i << el;
-                break;
-            }
-            if(sum < n){
+    ll n;
+    while (cin >> n and n != 0)
+    {
+        bool found = false;
+        for (ll y = 1; y * y * y < n; y++)
+        {
+            ll y3 = y * y * y;
+            ll x3 = n + y3;
+            ll x = isPerfectCube(x3);
+            if(x!=-1 and x>y){
                 
             }
         }
@@ -82,7 +76,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
