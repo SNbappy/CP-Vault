@@ -58,32 +58,10 @@ void Beche_achi()
         cin >> a[i];
     }
     j--;
-    ll x = a[j];
-    ll y = n;
-    sort(rall(a));
-    // if (a[0] == x and a[0] != a[1] and k == 1)
-    //     no;
-    // else
-    //     yes;
-    ll i = n - 1;
-    while (y > k and i >= 0)
-    {
-        if (a[i] == x)
-        {
-            --i;
-            continue;
-        }
-        else
-        {
-            a.pop_back();
-            --y;
-        }
-        i--;
-    }
-    if(y > k)
-        yes;
-    else
+    if(k == 1 and *max_element(all(a)) != a[j])
         no;
+    else
+        yes;
 }
 
 /************************************************************
