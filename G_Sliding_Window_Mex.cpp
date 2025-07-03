@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-03 16:32:32
+Created: 2025-07-03 18:37:58
 */
 
 #include <bits/stdc++.h>
@@ -50,72 +50,48 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    int n, k;
+    ll n, k;
     cin >> n >> k;
-    vector<int> a(n);
-    for (int &x : a)
-        cin >> x;
-
-    map<int, int> cnt;
-    map<int, set<int>> freq_map;
-    int max_freq = 0;
-
-    for (int i = 0; i < k; ++i)
+    vector<ll> a(n);
+    for (ll i = 0; i < n; i++)
     {
-        int x = a[i];
-        if (cnt.count(x))
-        {
-            int old_freq = cnt[x];
-            freq_map[old_freq].erase(x);
-            if (freq_map[old_freq].empty())
-                freq_map.erase(old_freq);
-            cnt[x]++;
-        }
-        else
-        {
-            cnt[x] = 1;
-        }
-        freq_map[cnt[x]].insert(x);
-        max_freq = max(max_freq, cnt[x]);
+        cin >> a[i];
+    }
+    vector<ll> cnt(k + 1, 0);
+    set<ll> missing;
+    for (ll i = 0; i <= k; i++)
+    {
+        missing.insert(i);
     }
 
-    cout << *freq_map[max_freq].begin() << " ";
-
-    for (int i = k; i < n; ++i)
+    for (ll i = 0; i < k; i++)
     {
-        int out = a[i - k];
-        int in = a[i];
-
-        int f_out = cnt[out];
-        freq_map[f_out].erase(out);
-        if (freq_map[f_out].empty())
-            freq_map.erase(f_out);
-        cnt[out]--;
-        if (cnt[out] == 0)
-            cnt.erase(out);
-        else
-            freq_map[cnt[out]].insert(out);
-
-        if (freq_map[max_freq].empty())
-            max_freq--;
-
-        if (cnt.count(in))
+        if (a[i] <= k)
         {
-            int old_freq = cnt[in];
-            freq_map[old_freq].erase(in);
-            if (freq_map[old_freq].empty())
-                freq_map.erase(old_freq);
+            cnt[a[i]]++;
+            missing.erase(a[i]);
+        }
+    }
+    cout << *missing.begin() << " ";
+    for (ll i = k; i < n; i++)
+    {
+        ll in = a[i];
+        ll out = a[i - k];
+
+        if (out <= k)
+        {
+            cnt[out]--;
+            if (cnt[out] == 0)
+                missing.insert(out);
+        }
+        if (in <= k)
+        {
             cnt[in]++;
+            missing.erase(in);
         }
-        else
-        {
-            cnt[in] = 1;
-        }
-        freq_map[cnt[in]].insert(in);
-        max_freq = max(max_freq, cnt[in]);
-
-        cout << *freq_map[max_freq].begin() << " ";
+        cout << *missing.begin() << " ";
     }
+    cout << el;
 }
 
 /************************************************************
