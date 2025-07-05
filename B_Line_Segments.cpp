@@ -50,41 +50,28 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    double n;
+    ll n;
     cin >> n;
-    vector<double> a(n);
-    double x, y, x1, y1;
+    ll x, y, x1, y1;
     cin >> x >> y >> x1 >> y1;
-    for (double i = 0; i < n; i++)
+    vector<ll> a(n);
+    ll sum = 0;
+    ll M = LLONG_MIN;
+    for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
+        sum += a[i];
+        if (a[i] > M)
+            M = a[i];
     }
-    double dis = sqrtl((x - x1) * (x - x1) + (y - y1) * (y - y1));
-    sort(all(a));
-    if (dis == 0)
-    {
-        ll janina = n;
-        if (a[0] == a[n - 1] and janina%2==0)
-            yes;
-        else
-            no;
-        return;
-    }
-    a.pb(dis);
-    sort(all(a));
-    if (n == 1)
-    {
-        if (dis == a[0])
-            yes;
-        else
-            no;
-        return;
-    }
-
-    if (a[0] + a[1] > a[n])
+    ll mx = sum;
+    ll mn = max(0LL, M - (sum - M));
+    ll dist = (x - x1) * (x - x1) + (y - y1) * (y - y1);
+    if (dist >= mn * mn and dist <= mx * mx)
         yes;
     else
         no;
+    // cout << dist << " " << mn << " " << mx << el;
 }
 
 /************************************************************
