@@ -52,7 +52,30 @@ void Beche_achi()
 {
     ll n, l, r, k;
     cin >> n >> l >> r >> k;
-    
+    if (n == 2)
+    {
+        cout << -1 << el;
+        return;
+    }
+    if (n % 2)
+    {
+        cout << l << el;
+        return;
+    }
+    ll x = 1;
+    while (x <= l)
+    {
+        x *= 2;
+    }
+    if (x > r)
+    {
+        cout << -1 << el;
+        return;
+    }
+    if (k <= n - 2)
+        cout << l << el;
+    else
+        cout << x << el;
 }
 
 /************************************************************
@@ -65,7 +88,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
