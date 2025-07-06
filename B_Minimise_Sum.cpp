@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-06 21:04:09
+Created: 2025-07-06 23:47:14
 */
 
 #include <bits/stdc++.h>
@@ -50,69 +50,17 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    int n;
+    ll n;
     cin >> n;
-    vector<int> a(n);
-
-    for (int i = 0; i < n; i++)
+    vector<ll> a(n);
+    for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-
-    // Precompute prefix minimums for original array
-    vector<int> prefix_min(n);
-    prefix_min[0] = a[0];
-    for (int i = 1; i < n; i++)
-    {
-        prefix_min[i] = min(prefix_min[i - 1], a[i]);
-    }
-
-    // Calculate original sum
-    int original_sum = 0;
-    for (int i = 0; i < n; i++)
-    {
-        original_sum += prefix_min[i];
-    }
-
-    int min_sum = original_sum;
-
-    // Try setting each position j to 0
-    for (int j = 1; j < n; j++)
-    {
-        // Calculate benefit of setting a[j] = 0
-        // All positions from j onwards will have minimum 0
-        int benefit = 0;
-        for (int k = j; k < n; k++)
-        {
-            benefit += prefix_min[k];
-        }
-
-        // Try adding a[j] to each position i < j
-        for (int i = 0; i < j; i++)
-        {
-            // Calculate cost of adding a[j] to position i
-            int cost = 0;
-            int current_min = (i == 0) ? a[0] + a[j] : a[0];
-
-            for (int k = 0; k < j; k++)
-            {
-                if (k == i)
-                {
-                    current_min = min(current_min, a[i] + a[j]);
-                }
-                else
-                {
-                    current_min = min(current_min, a[k]);
-                }
-                cost += current_min;
-            }
-
-            int new_sum = cost; // Sum up to j-1, then 0 for rest
-            min_sum = min(min_sum, new_sum);
-        }
-    }
-
-    cout << min_sum << "\n";
+    if (a[0] <= a[1])
+        cout << 2 * a[0] << el;
+    else
+        cout << a[0] + a[1] << el;
 }
 
 /************************************************************
