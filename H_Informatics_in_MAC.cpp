@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-07 14:19:36
+Created: 2025-07-07 16:03:46
 */
 
 #include <bits/stdc++.h>
@@ -52,38 +52,43 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    char a[3][n + 1];
-    for (ll i = 1; i <= 2; i++)
+
+    vector<ll> a(n);
+    vector<ll> cnt1(n + 1), cnt2(n + 2);
+
+    for (ll i = 0; i < n; i++)
     {
-        for (ll j = 1; j <= n; j++)
+        cin >> a[i];
+        cnt2[a[i]]++;
+    }
+
+    ll mex1 = 0, mex2 = 0;
+
+    while (cnt2[mex2])
+        mex2++;
+
+    for (ll i = 0; i < n; i++)
+    {
+        cnt1[a[i]]++;
+
+        while (--cnt2[a[i]] == 0 and mex2 > a[i])
+            mex2 = a[i];
+
+        while (mex2 and !cnt2[mex2 - 1])
+            mex2--;
+
+        while (cnt1[mex1])
+            mex1++;
+
+        if (mex1 == mex2)
         {
-            cin >> a[i][j];
-        }
-        
-    }
-    ll mx = n, mn = 1;
-    for (ll i = n; i >= 2; i--)
-    {
-        if (a[1][i] == '1' && a[2][i - 1] == '0'){
-            mx = i - 1;
+            cout << 2 << el;
+            cout << 1 << " " << i + 1 << el;
+            cout << i + 2 << " " << n << el;
+            return;
         }
     }
-    
-    for (ll i = 1; i < mx; i++)
-    {
-        if(a[2][i] == '1' && a[1][i + 1] == '0')
-            mn = i + 1;
-    }
-    for (ll i = 1; i <= mx; i++)
-    {
-        cout << a[1][i];
-    }
-    for (ll i = mx; i <= n; i++)
-    {
-        cout << a[2][i];
-    }
-    cout << el;
-    cout << mx - mn + 1 << el;
+    cout << -1 << el;
 }
 
 /************************************************************
