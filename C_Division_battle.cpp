@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-11 18:07:18
+Created: 2025-07-11 21:23:42
 */
 
 #include <bits/stdc++.h>
@@ -52,35 +52,15 @@ void Beche_achi()
 {
     ll n, m;
     cin >> n >> m;
-
-    vector<ll> a(n);
+    ll x = 0, y = 0;
     for (ll i = 0; i < n; i++)
-        cin >> a[i];
-
-    vector<ll> freq(n + 2, 0);
-    set<ll> st; 
-
-    for (ll i = 0; i <= n + 1; i++)
-        st.insert(i);
-
-    for (ll i = 0; i < m; i++)
     {
-        freq[a[i]]++;
-        st.erase(a[i]);
+        if ((i + 1) % m != 0)
+            x += i + 1;
+        else
+            y += i + 1;
     }
-
-    ll ans = *st.begin();
-
-    for (ll i = 0; i < n - m; i++)
-    {
-        freq[a[i]]--;
-        if (freq[a[i]] == 0)
-            st.insert(a[i]);
-        freq[a[i + m]]++;
-        st.erase(a[i + m]);
-        ans = min(ans, *st.begin());
-    }
-    cout << ans << el;
+    cout << x - y << el;
 }
 
 /************************************************************
@@ -93,7 +73,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    // tst
+    tst
     Beche_achi();
 
     Goodbye

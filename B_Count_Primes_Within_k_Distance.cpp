@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-11 18:07:18
+Created: 2025-07-11 21:09:41
 */
 
 #include <bits/stdc++.h>
@@ -48,39 +48,52 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
+bool isPrime(ll num)
+{
+    if (num <= 1)
+        return false;
+    if (num == 2)
+        return true;
+    if (num % 2 == 0)
+        return false;
+    for (ll i = 3; i <= sqrtl(num); i += 2)
+    {
+        if (num % i == 0)
+            return false;
+    }
+    return true;
+}
+
 void Beche_achi()
 {
-    ll n, m;
-    cin >> n >> m;
-
+    ll n, k;
+    cin >> n >> k;
     vector<ll> a(n);
     for (ll i = 0; i < n; i++)
+    {
         cin >> a[i];
-
-    vector<ll> freq(n + 2, 0);
-    set<ll> st; 
-
-    for (ll i = 0; i <= n + 1; i++)
-        st.insert(i);
-
-    for (ll i = 0; i < m; i++)
-    {
-        freq[a[i]]++;
-        st.erase(a[i]);
     }
+    ll cnt = 0;
+    ll l = 0;
+    // for (ll i = 0; i < n; i++)
+    // {
+    //     if (isPrime(a[i]))
+    //     {
+    //         cnt++;
+    //     }
+    //     if (i - l + 1 == k)
+    //     {
+    //         cout << cnt << " ";
+    //         if (isPrime(a[l]))
+    //             cnt--;
+    //         l++;
+    //     }
+    // }
+    // cout << el;
 
-    ll ans = *st.begin();
+    ll i = 0, j = 0;
 
-    for (ll i = 0; i < n - m; i++)
-    {
-        freq[a[i]]--;
-        if (freq[a[i]] == 0)
-            st.insert(a[i]);
-        freq[a[i + m]]++;
-        st.erase(a[i + m]);
-        ans = min(ans, *st.begin());
-    }
-    cout << ans << el;
+    
 }
 
 /************************************************************
@@ -93,7 +106,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    // tst
+    tst
     Beche_achi();
 
     Goodbye
