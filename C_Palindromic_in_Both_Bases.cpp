@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-12 17:18:48
+Created: 2025-07-12 18:18:12
 */
 
 #include <bits/stdc++.h>
@@ -48,22 +48,49 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
+bool isPalindrom(ll x)
+{
+    string s = to_string(x);
+    for (ll i = 0; i < s.size() / 2; i++)
+    {
+        if (s[i] != s[s.size() - i - 1])
+        {
+            return false;
+        }
+    }
+    return true;
+}
+
+ll Abased(ll x, ll a)
+{
+    string s = "";
+    while (x)
+    {
+        string c = to_string(x % a);
+        s += c;
+        x /= a;
+    }
+    reverse(all(s));
+    ll va = stoll(s);
+    return va;
+}
+
 void Beche_achi()
 {
-    ll n, m;
-    cin >> n >> m;
-    vector<ll> a(n);
-    for (ll i = 0; i < n; i++)
+    ll a, n;
+    cin >> a >> n;
+    ll x = Abased(n, a);
+    ll sum = 0;
+    for (ll i = 1; i <= n; i++)
     {
-        cin >> a[i];
+        if (isPalindrom(i))
+        {
+            if (isPalindrom(Abased(i, a)))
+                sum += i;
+            // cout << (Abased(i, a)) << el;
+        }
     }
-    map<ll, ll> mp();
-    set<ll> st;
-    for (ll i = 0; i <= n; i++)
-    {
-        
-    }
-    
+    cout << sum << el;
 }
 
 /************************************************************
@@ -76,7 +103,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
