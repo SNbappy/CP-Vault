@@ -53,17 +53,37 @@ void Beche_achi()
     ll n, m;
     cin >> n >> m;
     vector<ll> a(n);
+    map<ll, ll> mp;
     for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
+       
     }
-    map<ll, ll> mp();
+    
     set<ll> st;
     for (ll i = 0; i <= n; i++)
     {
-        
+        st.insert(i);
+    }
+
+    for (ll i = 0; i < m; i++)
+    {
+        mp[a[i]]++;
+        st.erase(a[i]);
     }
     
+
+    ll ans = *st.begin();
+    for (ll i = 0; i < n - m; i++)
+    {
+        mp[a[i]]--;
+        if(mp[a[i]] == 0)
+        st.insert(a[i]);
+        mp[a[i + m]]++;
+        st.erase(a[i + m]);
+        ans = min(ans, *st.begin());
+    }
+    cout << ans << el;
 }
 
 /************************************************************
