@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-13 21:10:02
+Created: 2025-07-13 21:44:13
 */
 
 #include <bits/stdc++.h>
@@ -58,17 +58,19 @@ void Beche_achi()
         cin >> a[i];
     }
 
-    ll x = a[0];
-    ll y = a[n - 1];
     sort(all(a));
-    ll sum = a[0] + a[1];
-
-    if (sum < x and sum < y)
+    ll ans = 0;
+    for (ll i = 0; i < n - 1; i++)
     {
-        cout << sum << el;
-        return;
+        for (ll j = 0; j < n - 1; j++)
+        {
+            if (a[n - 1] % (a[i] + a[j]) > ans and i != j)
+            {
+                ans = a[n - 1] % (a[i] + a[j]);
+            }
+        }
     }
-    cout << min(x, y) << el;
+    cout << max(ans, a[n - 2]) << el;
 }
 
 /************************************************************
