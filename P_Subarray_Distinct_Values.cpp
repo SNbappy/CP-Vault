@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-13 18:01:15
+Created: 2025-07-12 21:08:36
 */
 
 #include <bits/stdc++.h>
@@ -40,7 +40,7 @@ typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics
  *                   Utility Function                      *
  ************************************************************/
 
-ll gcd(ll a, ll b)
+int gcd(int a, int b)
 {
     if (b == 0)
         return a;
@@ -48,39 +48,16 @@ ll gcd(ll a, ll b)
         return gcd(b, a % b);
 }
 
-ll lcm(ll a, ll b)
-{
-    return (a / gcd(a, b)) * b;
-}
-
 void Beche_achi()
 {
-    ll n;
-    cin >> n;
+    ll n, k;
+    cin >> n >> k;
     vector<ll> a(n);
     for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-    vector<ll> v;
-    for (ll i = 0; i < n - 1; i++)
-    {
-        if (a[i + 1] % a[i] != 0)
-        {
-            ll x = a[i] / gcd(a[i], a[i + 1]);
-            v.pb(x);
-        }
-    }
-    ll ans = 1;
-    if (!v.empty())
-    {
-        ans = v[0];
-        for (ll i = 1; i < v.size(); i++)
-        {
-            ans = lcm(ans, v[i]);
-        }
-    }
-    cout << ans << el;
+    
 }
 
 /************************************************************
@@ -93,7 +70,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    tst
+    //tst
     Beche_achi();
 
     Goodbye
