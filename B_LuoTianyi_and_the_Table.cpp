@@ -58,13 +58,27 @@ void Beche_achi()
         cin >> a[i];
     }
     sort(all(a));
-    // cout << a[n - 2] << " " << a[0] << " " <<  a[n - 1] << el;
-    ll x;
-    // if(a[0] < 0)
-    // x = a[n * m - 2] + (a[n * m - 1] - a[0]) * (n * m - 2);
-    // else
-    // x = a[n * m - 2] - a[0] + (a[n * m - 1] - a[0]) * (n * m - 2);
-    cout << x << el;
+    ll large = a[n*m - 1];
+    ll secondLarge = a[n*m - 2];
+    ll small = a[0];
+    ll secondSmall = a[1];
+
+    if(n > m){
+        ll ans = (large - small) * (n - 1) * m;
+        ans += (large - secondSmall) * (m - 1);
+
+        ll ans1 = (large - small) * (n - 1) * m;
+        ans1 += (secondLarge - small) * (m - 1);
+        cout << max(ans, ans1) << el;
+    }
+    else{
+        ll ans = (large - small) * (m - 1) * n;
+        ans += (large - secondSmall) * (n - 1);
+
+        ll ans1 = (large - small) * (m - 1) * n;
+        ans1 += (secondLarge - small) * (n - 1);
+        cout << max(ans, ans1) << el;
+    }
 }
 
 /************************************************************
