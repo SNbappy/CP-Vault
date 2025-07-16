@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-06-24 19:59:27
+Created: 2025-07-16 20:36:41
 */
 
 #include <bits/stdc++.h>
@@ -50,36 +50,22 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll w, h, a, b;
-    cin >> w >> h >> a >> b;
-    ll x1, y1, x2, y2;
-    cin >> x1 >> y1 >> x2 >> y2;
-    if (x1 == x2)
+    ll n, m;
+    cin >> n >> m;
+    vector<ll> a(n);
+    for (ll i = 0; i < n; i++)
     {
-        if (abs(y1 - y2) % b == 0)
-        {
-            yes;
-        }
-        else
-            no;
-        return;
+        cin >> a[i];
     }
-    if (y1 == y2)
+    map<ll, ll> mp;
+    for (ll i = 0; i < n; i++)
     {
-        if (abs(x1 - x2) % a == 0)
-        {
-            yes;
-        }
-        else
-            no;
-        return;
+        mp[a[i]]++;
     }
-    if (abs(x1 - x2) % a==0 || abs(y1 - y2) % b==0)
-    {
-        yes;
-        return;
-    }
-    no;
+    if (m - mp.size() >= 0)
+        cout << m - mp.size() << el;
+    else
+        cout << 0 << el;
 }
 
 /************************************************************
