@@ -57,7 +57,24 @@ void Beche_achi()
     {
         cin >> a[i];
     }
-    
+    ll dist = 0;
+    map<ll, ll> mp;
+    ll ans = 0, l = 0;
+    for (ll i = 0; i < n; i++)
+    {
+        mp[a[i]]++;
+        if(mp[a[i]] == 1){
+            dist++;
+        }
+        while(dist > k){
+            mp[a[l]]--;
+            if(mp[a[l]] == 0)
+                --dist;
+            l++;
+        }
+        ans += i - l + 1;
+    }
+    cout << ans << el;
 }
 
 /************************************************************
