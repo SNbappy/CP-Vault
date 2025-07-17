@@ -52,7 +52,41 @@ void Beche_achi()
 {
     string s;
     cin >> s;
-    
+    ll fiz = -1, fio = -1;
+    ll n = s.size();
+    for (ll i = 0; i < n; i++)
+    {
+        if (fiz == -1 && s[i] == '0')
+            fiz = i;
+        if (fiz != -1 && s[i] == '1')
+        {
+            fio = i;
+            break;
+        }
+    }
+
+    cout << 1 << " " << n << " ";
+
+    if (fiz == -1)
+    {
+        cout << 1 << " " << 1 << el;
+        return;
+    }
+
+    ll len_needed = n - fiz;
+
+    if (fio == -1)
+    {
+        cout << 1 << " " << len_needed << el;
+        return;
+    }
+
+    ll dist = fio - fiz;
+    ll start = fiz - dist;
+    if (start < 0)
+        start = 0;
+
+    cout << start + 1 << " " << start + len_needed << el;
 }
 
 /************************************************************
