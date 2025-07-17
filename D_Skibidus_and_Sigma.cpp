@@ -53,28 +53,31 @@ void Beche_achi()
     ll n, m;
     cin >> n >> m;
     vector<vector<ll>> a(n, vector<ll>(m));
+    vector<pair<ll, ll>> v;
+
     for (ll i = 0; i < n; i++)
     {
+        ll sum = 0;
         for (ll j = 0; j < m; j++)
         {
             cin >> a[i][j];
+            sum += a[i][j];
         }
+        v.pb({sum, i});
     }
-    sort(a.begin(), a.end(), [](const vector<ll> &x, const vector<ll> &y)
-         { return x[0] < y[0]; });
+
+    sort(rall(v));
+    ll ans = 0;
     ll sum = 0;
-    ll prev = 0;
-    for (ll i = 0; i < n; i++)
-    {
+    for(auto [x, y] : v){
         for (ll j = 0; j < m; j++)
         {
-            cout << sum << el;
-            cout << a[i][j] << el;
-            cout << el;
-            sum += (sum + a[i][j]);
+            sum += a[y][j];
+            ans += sum;
         }
+        
     }
-    cout << sum << el;
+    cout << ans << el;
 }
 
 /************************************************************
