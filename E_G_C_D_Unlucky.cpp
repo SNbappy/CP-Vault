@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-17 21:06:53
+Created: 2025-07-17 21:59:17
 */
 
 #include <bits/stdc++.h>
@@ -50,24 +50,60 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, k;
-    cin >> n >> k;
-    vector<pair<ll, pair<ll, ll>>> v;
+    ll n;
+    cin >> n;
+    vector<ll> a(n), b(n);
     for (ll i = 0; i < n; i++)
     {
-        ll x, y, z;
-        cin >> x >> y >> z;
-        v.pb({x, {y, z}});
+        cin >> a[i];
     }
-    sort(all(v));
-    ll ache = k;
-    for (auto [x, y] : v)
+    for (ll i = 0; i < n; i++)
     {
-        if(x <= ache and y.first >= ache){
-            ache = max(ache, y.second);
+        cin >> b[i];
+    }
+    vector<ll> v;
+    for (ll i = 0; i < n; i++)
+    {
+        ll x = lcm(a[i], b[i]);
+        v.pb(x);
+    }
+
+    ll pref = v[0];
+
+    if (v[0] != a[0])
+    {
+        no;
+        return;
+    }
+
+    for (ll i = 1; i < n; i++)
+    {
+         pref = gcd(pref, v[i]);
+        if (pref != a[i])
+        {
+            no;
+            return;
         }
     }
-    cout << ache << el;
+
+    ll suff = v[n - 1];
+
+    if (v[n - 1] != b[n - 1])
+    {
+        no;
+        return;
+    }
+
+    for (ll i = n - 2; i >= 0; i--)
+    {
+         suff = gcd(v[i], suff);
+        if (suff != b[i])
+        {
+            no;
+            return;
+        }
+    }
+    yes;
 }
 
 /************************************************************
