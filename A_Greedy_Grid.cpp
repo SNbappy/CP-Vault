@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-16 20:39:50
+Created: 2025-07-19 20:43:28
 */
 
 #include <bits/stdc++.h>
@@ -50,38 +50,12 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n;
-    cin >> n;
-    vector<ll> arr(n + 1, 0), pref(n + 1, 0);
-    for (ll i = 1; i <= n; i++)
-    {
-        cin >> arr[i];
-    }
-    
-    sort(rall(arr));
-
-    for (ll i = 1; i <= n; i++)
-    {
-        pref[i] = arr[i - 1] + pref[i - 1];
-    }
-    
-    vector<ll> res(2*n + 1, 0);
-
-    for (ll i = 2*n; i >= 1; i--)
-    {
-        ll ans = 0;
-        for (ll j = min(n, i); j >= 1; j--)
-        {
-            ll rem_coin = i - j;
-            rem_coin = min(j, rem_coin);
-
-            ll sub = j - rem_coin;
-
-            ll sum = ()
-        }
-        
-    }
-    
+    ll n, m;
+    cin >> n >> m;
+    if (n == 1 || m == 1 || (n == 2 and m == 2))
+        no;
+    else
+        yes;
 }
 
 /************************************************************

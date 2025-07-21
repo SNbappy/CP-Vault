@@ -1,0 +1,1 @@
+{"name":"Local: 1","url":"d:\\Coding\\CP\\1.py","tests":[{"id":1752940739111,"input":"3\n2\n1 3 1 2\n1 1 1 2\n3\n2 0 2 2\n0 1 1 0\n1 1 0 0\n3\n1 2 1 2\n3 4 3 4\n0 0 0 0\n","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Coding\\CP\\1.py","group":"local","local":true}

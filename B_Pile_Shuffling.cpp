@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-16 20:39:50
+Created: 2025-07-19 21:06:57
 */
 
 #include <bits/stdc++.h>
@@ -52,36 +52,23 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    vector<ll> arr(n + 1, 0), pref(n + 1, 0);
-    for (ll i = 1; i <= n; i++)
+    ll sum = 0;
+    for (ll i = 0; i < n; i++)
     {
-        cin >> arr[i];
-    }
-    
-    sort(rall(arr));
-
-    for (ll i = 1; i <= n; i++)
-    {
-        pref[i] = arr[i - 1] + pref[i - 1];
-    }
-    
-    vector<ll> res(2*n + 1, 0);
-
-    for (ll i = 2*n; i >= 1; i--)
-    {
-        ll ans = 0;
-        for (ll j = min(n, i); j >= 1; j--)
+        ll a, b, c, d;
+        cin >> a >> b >> c >> d;
+        ll x;
+        if (b > d)
         {
-            ll rem_coin = i - j;
-            rem_coin = min(j, rem_coin);
-
-            ll sub = j - rem_coin;
-
-            ll sum = ()
+            x = a + b - d;
         }
-        
+        else
+        {
+            x = max(0LL, a - c);
+        }
+        sum += x;
     }
-    
+    cout << sum << el;
 }
 
 /************************************************************
