@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-22 17:16:47
+Created: 2025-07-25 17:16:46
 */
 
 #include <bits/stdc++.h>
@@ -50,43 +50,36 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, k;
-    cin >> n >> k;
-    ll x, a, b, c;
-    cin >> x >> a >> b >> c;
-
-    ll answer = 0;
-    ll cur = x;
-    ll maxStart = n - k + 1;
-
-    for (ll j = 1; j <= n; j++)
+    ll n;
+    cin >> n;
+    vector<ll> a(n);
+    for (ll i = 0; i < n; i++)
     {
-        ll cj;
-        if (j < k)
-        {
-            cj = min(j, maxStart);
-        }
-        else if (j <= maxStart)
-        {
-            cj = k;
-        }
-        else
-        {
-            cj = maxStart - (j - k + 1) + 1;
-        }
-
-        if (cj & 1LL)
-        {
-            answer ^= cur;
-        }
-
-        if (j < n)
-        {
-            cur = (a * cur + b) % c;
-        }
+        cin >> a[i];
+    }
+    vector<ll> b = a;
+    sort(all(b));
+    if(a == b){
+        cout << 0 << el;
     }
 
-    cout << answer << el;
+    ll ek = 1, arek = 1;
+    ll l = 0, j = 1;
+    ll li = -1, ji = 0;
+    
+    while(l <= n - 1){
+        if (a[l] <= a[l + 1]){
+            ek++;
+        }
+        else{
+            li = l;
+        }
+        if(li != -1){
+            if(a[li] <= a[li + 1]){
+                arek++;
+            }
+        }
+    }
 }
 
 /************************************************************

@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-03 14:47:08
+Created: 2025-07-25 14:00:11
 */
 
 #include <bits/stdc++.h>
@@ -52,60 +52,43 @@ void Beche_achi()
 {
     ll n, k;
     cin >> n >> k;
+
     ll x, a, b, c;
     cin >> x >> a >> b >> c;
 
     vector<ll> arr(n);
     arr[0] = x;
-    for (ll i = 1; i < n; ++i)
+    for (ll i = 1; i < n; i++)
     {
         arr[i] = (a * arr[i - 1] + b) % c;
     }
 
-    int B = 512;
-    int blocks = (n + B - 1) / B;
-    vector<ll> block_or(blocks, 0);
+    deque<ll> dq;
+    ll result = 0;
 
-    for (int i = 0; i < n; ++i)
+    for (ll i = 0; i < n; i++)
     {
-        block_or[i / B] |= arr[i];
-    }
-
-    auto range_or = [&](ll l, ll r) -> ll
-    {
-        ll res = 0;
-        int start_block = l / B;
-        int end_block = r / B;
-
-        if (start_block == end_block)
+        while (!dq.empty() and dq.front() <= i - k)
         {
-            for (ll i = l; i <= r; ++i)
-                res |= arr[i];
-            return res;
+            dq.pop_front();
         }
 
-        int end_start_block = (start_block + 1) * B - 1;
-        for (ll i = l; i <= end_start_block; ++i)
-            res |= arr[i];
+        dq.push_back(i);
 
-        int start_end_block = end_block * B;
-        for (ll i = start_end_block; i <= r; ++i)
-            res |= arr[i];
+        if (i >= k - 1)
+        {
+            ll window_or = 0;
 
-        for (int b = start_block + 1; b < end_block; ++b)
-            res |= block_or[b];
-
-        return res;
-    };
-
-    ll result = 0;
-    for (ll i = 0; i <= n - k; ++i)
-    {
-        ll window_or = range_or(i, i + k - 1);
-        result ^= window_or;
+            for (ll j = i - k + 1; j <= i; j++)
+            {
+                /* code */
+                window_or |= arr[j];
+            }
+            result ^= window_or;
+        }
     }
 
-    cout << result << '\n';
+    cout << result << el;
 }
 
 /************************************************************
@@ -118,7 +101,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye

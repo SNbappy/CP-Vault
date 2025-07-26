@@ -1,0 +1,1 @@
+{"name":"Local: AlmostSorted","url":"d:\\Coding\\CP\\AlmostSorted.cpp","tests":[{"id":1753442188179,"input":"5\n3 4 2 5 1","output":"1"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Coding\\CP\\AlmostSorted.cpp","group":"local","local":true}

@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-22 17:16:47
+Created: 2025-07-25 21:10:08
 */
 
 #include <bits/stdc++.h>
@@ -50,43 +50,37 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, k;
-    cin >> n >> k;
-    ll x, a, b, c;
-    cin >> x >> a >> b >> c;
-
-    ll answer = 0;
-    ll cur = x;
-    ll maxStart = n - k + 1;
-
-    for (ll j = 1; j <= n; j++)
+    string s;
+    cin >> s;
+    ll n = s.size();
+    vector<ll> pref(n);
+    ll sum = 0;
+    ll x = 0;
+    // if (s[n - 1] == '0')
+    // {
+    //     pref[n - 1] = 1;
+    //     sum = 1;
+    // }
+    // else
+    //     pref[n - 1] = 0;
+    for (ll i = n - 1; i >= 0; i--)
     {
-        ll cj;
-        if (j < k)
-        {
-            cj = min(j, maxStart);
-        }
-        else if (j <= maxStart)
-        {
-            cj = k;
-        }
-        else
-        {
-            cj = maxStart - (j - k + 1) + 1;
-        }
-
-        if (cj & 1LL)
-        {
-            answer ^= cur;
-        }
-
-        if (j < n)
-        {
-            cur = (a * cur + b) % c;
-        }
+        if (s[i] == '0')
+            sum++;
+        // cout << sum << " ";
+        pref[i] = sum;
     }
-
-    cout << answer << el;
+    // cout << el;
+    ll ans = 0;
+    // for (auto x : pref)
+    //     cout << x << " ";
+    // cout << el;
+    for (ll i = 0; i < n; i++)
+    {
+        if (s[i] == '1')
+            ans += pref[i];
+    }
+    cout << ans << el;
 }
 
 /************************************************************
@@ -99,7 +93,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye

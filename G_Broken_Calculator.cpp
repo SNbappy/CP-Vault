@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-22 17:16:47
+Created: 2025-07-25 21:52:36
 */
 
 #include <bits/stdc++.h>
@@ -50,43 +50,54 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    ll n, k;
-    cin >> n >> k;
-    ll x, a, b, c;
-    cin >> x >> a >> b >> c;
+    string s;
+    cin >> s;
 
-    ll answer = 0;
-    ll cur = x;
-    ll maxStart = n - k + 1;
+    vector<ll> v;
+    vector<char> chinho;
+    string st = "";
 
-    for (ll j = 1; j <= n; j++)
+    for (ll i = 0; i < s.size(); i++)
     {
-        ll cj;
-        if (j < k)
+        if (s[i] < '0' || s[i] > '9')
         {
-            cj = min(j, maxStart);
+            v.push_back(stoll(st));
+            chinho.push_back(s[i]);
+            st = "";
         }
-        else if (j <= maxStart)
+        else
+            st += s[i];
+    }
+    v.push_back(stoll(st));
+
+    vector<ll> vr;
+    vector<char> chinhor;
+
+    vr.push_back(v[0]);
+
+    for (int i = 0; i < chinho.size(); i++)
+    {
+        if (chinho[i] == '*')
         {
-            cj = k;
+            vr.back() *= v[i + 1];
         }
         else
         {
-            cj = maxStart - (j - k + 1) + 1;
-        }
-
-        if (cj & 1LL)
-        {
-            answer ^= cur;
-        }
-
-        if (j < n)
-        {
-            cur = (a * cur + b) % c;
+            chinhor.push_back(chinho[i]);
+            vr.push_back(v[i + 1]);
         }
     }
 
-    cout << answer << el;
+    ll ans = vr[0];
+    for (int i = 0; i < chinhor.size(); i++)
+    {
+        if (chinhor[i] == '+')
+            ans += vr[i + 1];
+        else if (chinhor[i] == '-')
+            ans -= vr[i + 1];
+    }
+
+    cout << ans << el;
 }
 
 /************************************************************
@@ -99,7 +110,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye

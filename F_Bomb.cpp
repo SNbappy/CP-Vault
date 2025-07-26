@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-22 17:16:47
+Created: 2025-07-23 21:05:27
 */
 
 #include <bits/stdc++.h>
@@ -52,41 +52,53 @@ void Beche_achi()
 {
     ll n, k;
     cin >> n >> k;
-    ll x, a, b, c;
-    cin >> x >> a >> b >> c;
 
-    ll answer = 0;
-    ll cur = x;
-    ll maxStart = n - k + 1;
+    vector<ll> a(n), b(n);
 
-    for (ll j = 1; j <= n; j++)
+    for (ll i = 0; i < n; i++)
     {
-        ll cj;
-        if (j < k)
-        {
-            cj = min(j, maxStart);
-        }
-        else if (j <= maxStart)
-        {
-            cj = k;
-        }
-        else
-        {
-            cj = maxStart - (j - k + 1) + 1;
-        }
-
-        if (cj & 1LL)
-        {
-            answer ^= cur;
-        }
-
-        if (j < n)
-        {
-            cur = (a * cur + b) % c;
-        }
+        cin >> a[i];
     }
 
-    cout << answer << el;
+    for (ll i = 0; i < n; i++)
+    {
+        cin >> b[i];
+    }
+
+    ll ok = 0, ng = 1e9 + 1;
+
+    while (ng - ok > 1)
+    {
+        int mid = (ok + ng) / 2;
+
+        ll sum = 0;
+
+        for (ll i = 0; i < n; i++)
+        {
+            if (a[i] >= mid)
+                sum += (a[i] - mid) / b[i] + 1;
+        }
+
+        if (sum >= k)
+            ok = mid;
+        else
+            ng = mid;
+    }
+
+    ll ans = 0, s = 0;
+
+    for (ll i = 0; i < n; i++)
+    {
+        if (a[i] >= ok)
+        {
+            int m = (a[i] - ok) / b[i] + 1;
+
+            ans += 1LL * m * a[i] - 1LL * m * (m - 1) / 2 * b[i];
+            s += m;
+        }
+    }
+    ans -= 1LL * ok * (s - k);
+    cout << ans << el;
 }
 
 /************************************************************
@@ -99,7 +111,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
