@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-27 21:55:41
+Created: 2025-08-01 21:11:54
 */
 
 #include <bits/stdc++.h>
@@ -52,26 +52,19 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    vector<ll> a(n);
-    for (ll i = 0; i < n; i++)
-    {
-        cin >> a[i];
+    if(n == 1)
+        {cout << 1 << el;
+    return;}
+    if(n <= 3){
+        cout << "NO SOLUTION" << el;
+        return;
     }
-    vector<ll> b = a;
-    ll mn = b[0];
-    for (ll i = 0; i < n; i++)
-    {
-        mn = min(mn, b[i]);
-        b[i] = mn;
-    }
-    for (ll i = 0; i < n; i++)
-    {
-        if(a[i] >= b[i] * 2){
-            no;
-            return;
-        }
-    }
-    yes;
+
+    for (ll i = 2; i <= n; i += 2)
+        cout << i << ' ';
+    for (ll i = 1; i <= n; i += 2)
+        cout << i << " ";
+    cout << el;
 }
 
 /************************************************************
@@ -84,7 +77,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    tst
+    //tst
     Beche_achi();
 
     Goodbye

@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-27 21:55:41
+Created: 2025-08-01 21:23:21
 */
 
 #include <bits/stdc++.h>
@@ -48,30 +48,41 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
+// ll rev_ll(ll x)
+// {
+//     ll r = 0;
+//     while (x > 0)
+//     {
+//         r = r * 10 + (x % 10);
+//         x /= 10;
+//     }
+//     return r;
+// }
+
 void Beche_achi()
 {
-    ll n;
-    cin >> n;
-    vector<ll> a(n);
-    for (ll i = 0; i < n; i++)
+    string a, b;
+    cin >> a >> b;
+
+    reverse(all(a));
+    reverse(all(b));
+    ll x = stoll(a);
+    ll y = stoll(b);
+
+    ll sum = x + y;
+    string ans = to_string(sum);
+    reverse(all(ans));
+    bool started = false;
+    for (char c : ans)
     {
-        cin >> a[i];
+        if (c != '0')
+            started = true;
+        if (started)
+            cout << c;
     }
-    vector<ll> b = a;
-    ll mn = b[0];
-    for (ll i = 0; i < n; i++)
-    {
-        mn = min(mn, b[i]);
-        b[i] = mn;
-    }
-    for (ll i = 0; i < n; i++)
-    {
-        if(a[i] >= b[i] * 2){
-            no;
-            return;
-        }
-    }
-    yes;
+    if (!started)
+        cout << '0';
+    cout << el;
 }
 
 /************************************************************

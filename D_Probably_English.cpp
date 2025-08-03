@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-07-27 21:55:41
+Created: 2025-07-31 13:50:04
 */
 
 #include <bits/stdc++.h>
@@ -52,26 +52,21 @@ void Beche_achi()
 {
     ll n;
     cin >> n;
-    vector<ll> a(n);
+    vector<string> s(n);
+    // and, not, that, the, or you
+    bool ok = false;
     for (ll i = 0; i < n; i++)
     {
-        cin >> a[i];
-    }
-    vector<ll> b = a;
-    ll mn = b[0];
-    for (ll i = 0; i < n; i++)
-    {
-        mn = min(mn, b[i]);
-        b[i] = mn;
-    }
-    for (ll i = 0; i < n; i++)
-    {
-        if(a[i] >= b[i] * 2){
-            no;
-            return;
+        cin >> s[i];
+        if (s[i] == "and" || s[i] == "not" || s[i] == "that" || s[i] == "the" || s[i] == "you")
+        {
+            ok = true;
         }
     }
-    yes;
+    if (ok)
+        cout << "Yes" <<el;
+    else
+        cout << "No" << el;
 }
 
 /************************************************************
@@ -84,7 +79,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    tst
+    // tst
     Beche_achi();
 
     Goodbye
