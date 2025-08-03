@@ -50,7 +50,32 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    
+    ll n, k;
+    string s;
+    cin >> n >> k >> s;
+
+    set<char> ch(all(s));
+
+    if (s.size() >= k)
+    {
+        while (true)
+        {
+            auto it = ch.upper_bound(s.back());
+            s.pop_back();
+            if (it != ch.end())
+            {
+                s.push_back(*it);
+                break;
+            }
+        }
+    }
+
+    if (s.size() < k)
+    {
+        s += string(k - s.size(), *ch.begin());
+    }
+
+    cout << s << el;
 }
 
 /************************************************************
