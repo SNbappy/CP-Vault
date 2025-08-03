@@ -52,7 +52,27 @@ void Beche_achi()
 {
     ll n, x, y;
     cin >> n >> x >> y;
-    
+
+    ll first = min(x, y);
+    n--;
+
+    if (n == 0)
+    {
+        cout << first << el;
+        return;
+    }
+
+    ll lo = 0, hi = max(x, y) * n;
+    while (lo < hi)
+    {
+        ll mid = lo + (hi - lo) / 2;
+        if (mid / x + mid / y >= n)
+            hi = mid;
+        else
+            lo = mid + 1;
+    }
+
+    cout << (first + lo) << el;
 }
 
 /************************************************************
