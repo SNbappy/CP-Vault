@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-08-04 18:49:13
+Created: 2025-08-07 20:35:29
 */
 
 #include <bits/stdc++.h>
@@ -48,40 +48,21 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
-ll len[20];
-
-char getChar(ll n, ll k){
-    if(n == 1){
-        return 'A';
-    }
-
-    ll leftSize = len[n -1];
-    ll mid = leftSize + 1;
-    if(mid == k)
-        return 'A' + n - 1;
-    else if(k < mid)
-        return getChar(n - 1, k);
-    else
-        return getChar(n - 1, k - mid);
-}
-
 void Beche_achi()
 {
     ll n;
     cin >> n;
-    len[1] = 1;
-    for (ll i = 2; i <= n; i++)
+    vector<ll> a(n);
+    ll sum = 0;
+    for (ll i = 0; i < n; i++)
     {
-        len[i] = len[i - 1] * 2 + 1;
+        cin >> a[i];
+        sum += a[i];
     }
-
-    ll total = len[n];
-
-    for (ll i = 1; i <= total; i++)
-    {
-        cout << getChar(n, i);
-    }
-    
+    if (sum > 0)
+        no;
+    else
+        yes;
 }
 
 /************************************************************
@@ -94,7 +75,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye

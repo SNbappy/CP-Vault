@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-08-04 18:49:13
+Created: 2025-08-06 20:36:21
 */
 
 #include <bits/stdc++.h>
@@ -48,40 +48,33 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
-ll len[20];
-
-char getChar(ll n, ll k){
-    if(n == 1){
-        return 'A';
-    }
-
-    ll leftSize = len[n -1];
-    ll mid = leftSize + 1;
-    if(mid == k)
-        return 'A' + n - 1;
-    else if(k < mid)
-        return getChar(n - 1, k);
-    else
-        return getChar(n - 1, k - mid);
-}
-
 void Beche_achi()
 {
-    ll n;
-    cin >> n;
-    len[1] = 1;
-    for (ll i = 2; i <= n; i++)
+    ll a1, b1, a2, b2;
+    cin >> a1 >> b1 >> a2 >> b2;
+    if (a1 == a2 and b1 == b2)
     {
-        len[i] = len[i - 1] * 2 + 1;
+        cout << "Yes" << el;
+        return;
     }
 
-    ll total = len[n];
-
-    for (ll i = 1; i <= total; i++)
+    if (a1 > b1 and b2 > a2)
     {
-        cout << getChar(n, i);
+        while (a1)
+        {
+            --a1;
+            b1 += 5;
+            if (a1 < b1)
+                break;
+        }
+        if (a1 - a2 == b1 - b2)
+        {
+            cout << "Yes" << el;
+            return;
+        }
     }
-    
+
+    cout << "No" << el;
 }
 
 /************************************************************
@@ -94,7 +87,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    tst
     Beche_achi();
 
     Goodbye
