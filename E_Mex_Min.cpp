@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-08-09 22:12:20
+Created: 2025-08-10 06:52:11
 */
 
 #include <bits/stdc++.h>
@@ -48,64 +48,36 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
-multiset<ll> leftSet, rightSet;
-
-void balance(){
-    while(leftSet.size() > rightSet.size() + 1){
-        rightSet.insert(*leftSet.rbegin());
-        leftSet.erase(prev(leftSet.end()));
-    }
-    while (leftSet.size() < rightSet.size())
-    {
-        leftSet.insert(*rightSet.begin());
-        rightSet.erase(rightSet.begin());
-    }
-    
-}
-
 void Beche_achi()
 {
-    ll n, k;
-    cin >> n >> k;
+    ll n, m;
+    cin >> n >> m;
     vector<ll> a(n);
-
     for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-
-    for (ll i = 0; i < k; i++)
+    vector<ll> cnt(n + 2, 0);
+    for (ll i = 0; i < m; i++)
     {
-        leftSet.insert(a[i]);
+        cnt[a[i]]++;
     }
 
-    while (leftSet.size() > (k + 1) / 2)
+    ll mex = 0;
+    while (cnt[mex] > 0)
+        mex++;
+    ll ans = mex;
+    for (ll i = m; i < n; i++)
     {
-        rightSet.insert(*leftSet.rbegin());
-        leftSet.erase(prev(leftSet.end()));
+        cnt[a[i - m]]--;
+        cnt[a[i]]++;
+        if (a[i - m] < mex and cnt[a[i - m]] == 0)
+            mex = a[i - m];
+        while (cnt[mex] > 0)
+            mex++;
+        ans = min(mex, ans);
     }
-
-    cout << *leftSet.rbegin();
-
-    for (ll i = k; i < n; i++)
-    {
-        if (leftSet.find(a[i - k]) != leftSet.end())
-        {
-            leftSet.erase(leftSet.find(a[i - k]));
-        }
-        else
-            rightSet.erase(rightSet.find(a[i - k]));
-
-        if (!leftSet.empty() and a[i] <= *leftSet.rbegin())
-            leftSet.insert(a[i]);
-        else
-            rightSet.insert(a[i]);
-
-        balance();
-
-        cout << " " << *leftSet.rbegin();
-    }
-    cout << el;
+    cout << ans << el;
 }
 
 /************************************************************
