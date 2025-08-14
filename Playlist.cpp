@@ -57,7 +57,24 @@ void Beche_achi()
     {
         cin >> a[i];
     }
-    
+    ll l = 0;
+    map<ll, ll> mp;
+    ll mx = 0;
+    ll dist = 0;
+    for (ll i = 0; i < n; i++)
+    {
+        mp[a[i]]++;
+        if(mp[a[i]] == 1)
+            dist++;
+        while(mp[a[i]] > 1){
+            mp[a[l]]--;
+            if(mp[a[l]] == 0)
+                dist--;
+            l++;
+        }
+        mx = max(mx, dist);
+    }
+    cout << mx << el;
 }
 
 /************************************************************
