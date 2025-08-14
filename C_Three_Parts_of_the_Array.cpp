@@ -57,7 +57,27 @@ void Beche_achi()
     {
         cin >> a[i];
     }
-    
+    ll sum = 0, sum1 = 0;
+    ll sumF = 0;
+    ll l = -1, r = n;
+    while (l < r)
+    {
+        if (sum == sum1)
+        {
+            sumF = sum;
+            sum += a[++l];
+            sum1 += a[--r];
+        }
+        else if (sum < sum1)
+        {
+            sum += a[++l];
+        }
+        else
+        {
+            sum1 += a[--r];
+        }
+    }
+    cout << sumF << el;
 }
 
 /************************************************************
@@ -70,7 +90,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
