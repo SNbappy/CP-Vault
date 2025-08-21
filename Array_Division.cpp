@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2025-08-18 17:50:15
+Created: 2025-08-19 22:39:42
 */
 
 #include <bits/stdc++.h>
@@ -45,19 +45,52 @@ int gcd(int a, int b)
     if (b == 0)
         return a;
     else
-        return gcd(b, a % b);
+        return gcd(b, a %
+                          b);
+}
+
+bool canDivide(vector<ll> &a, ll k, ll maxSum)
+{
+    ll current = 0;
+    ll count = 1;
+    for (auto x : a)
+    {
+        if (current + x > maxSum)
+        {
+            count++;
+            current = 0;
+        }
+        current += x;
+    }
+    return count <= k;
 }
 
 void Beche_achi()
 {
-    ll n, l, r, x;
-    cin >> n >> l >> r >> x;
+    ll n, k;
+    cin >> n >> k;
     vector<ll> a(n);
     for (ll i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-    
+    ll lo = *max_element(all(a));
+    ll hi = accumulate(all(a), 0LL);
+    ll ans = hi;
+
+    while (lo <= hi)
+    {
+        ll mid = (lo + hi) / 2;
+
+        if (canDivide(a, k, mid))
+        {
+            ans = mid;
+            hi = mid - 1;
+        }
+        else
+            lo = mid + 1;
+    }
+    cout << ans << el;
 }
 
 /************************************************************
@@ -70,7 +103,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
