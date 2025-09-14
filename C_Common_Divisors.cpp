@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2024-12-09 09:51:34
+Created: 2025-09-14 09:14:20
 */
 
 #include <bits/stdc++.h>
@@ -11,7 +11,7 @@ using namespace std;
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
 
-#define int long long
+#define ll long long
 #define tst   \
     int t;    \
     cin >> t; \
@@ -50,14 +50,26 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    int n;
+    ll n;
     cin >> n;
-    vector<int>a(n);
-    for (int i = 0; i < n; i++)
+    ll g = 0;
+    for (ll i = 0; i < n; i++)
     {
-        cin >> a[i];
+        ll x;
+        cin >> x;
+        g = gcd(g, x);
     }
-    
+    ll ans = 0;
+    for (ll i = 1; i*i <= g; i++)
+    {
+        if(g % i == 0){
+            ans++;
+
+            if(g/i != i)
+                ans++;
+        }
+    }
+    cout << ans << el;
 }
 
 /************************************************************
@@ -70,7 +82,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye

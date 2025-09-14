@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2024-12-10 00:52:04
+Created: 2025-09-14 09:28:38
 */
 
 #include <bits/stdc++.h>
@@ -11,7 +11,7 @@ using namespace std;
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
 
-#define int long long
+#define ll long long
 #define tst   \
     int t;    \
     cin >> t; \
@@ -50,50 +50,7 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    int t;
-    cin >> t;
-    while (t--)
-    {
-        int n;
-        cin >> n;
-        vector<int> v;
-        map<int, int> mp;
-        // int sum = 0;
-        for (int i = 2; i * i <= n; i++)
-        {
-            if (n % i == 0)
-            {
-                v.push_back(i);
-                mp[i]++;
-                n /= i;
-                while (n % i == 0)
-                {
-                    v.push_back(i);
-                    mp[i]++;
-                    n /= i;
-                }
-            }
-        }
-        if (n > 1)
-        {
-            v.push_back(n);
-            mp[n]++;
-        }
-        sort(all(v));
-        cout << v[0] << " " << v[v.size() - 1] << " " << mp.size() << " " << v.size() << " ";
-
-        int cnt = 1;
-        int sum = 1;
-
-        for (auto x : mp)
-        {
-            cnt *= (x.second + 1);
-            int k = pow(x.first, x.second + 1) - 1;
-            int l = x.first - 1;
-            sum *= (k / l);
-        }
-        cout << cnt << " " << sum << el;
-    }
+    
 }
 
 /************************************************************
@@ -106,7 +63,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    // tst
+    //tst
     Beche_achi();
 
     Goodbye

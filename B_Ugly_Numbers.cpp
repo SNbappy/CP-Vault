@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2024-12-09 08:39:38
+Created: 2025-09-14 08:59:41
 */
 
 #include <bits/stdc++.h>
@@ -11,7 +11,7 @@ using namespace std;
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
 
-#define int long long
+#define ll long long
 #define tst   \
     int t;    \
     cin >> t; \
@@ -25,7 +25,6 @@ using namespace __gnu_pbds;
 #define rall(n) n.rbegin(), n.rend()
 #define pb push_back
 const int MOD = 1e9 + 7;
-const int MAX = 1e18;
 
 typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
 /// change int to any data type
@@ -51,27 +50,23 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    int p1 = 1;
-    vector<int> v;
-    for (int i = 0; p1 < MAX; i++, p1 *= 2)
+    const int n = 1500;
+    vector<ll> v;
+    v.pb(1);
+    for (ll i = 1; i < n; i++)
     {
-        // cout << p1 << el;
-        int p2 = 1;
-        for (int j = 0; p1 *  p2 <= MAX; j++, p2 *= 3)
-        {
-            int p3 = 1;
-            // cout << p2 << el;
-            for (int k = 0; p1 * p2 * p3 <= MAX; k++, p3 *= 5)
-            {
-                // cout << p1 << "" << p2 << " " << p3 << el;
-                v.pb(p1 * p2 * p3);
-            }
-        }
+        v.pb(2 * i);
+    }
+    for (ll i = 1; i < n; i++)
+    {
+        v.pb(3 * i);
+    }
+    for (ll i = 1; i < n; i++)
+    {
+        v.pb(5 * i);
     }
     sort(all(v));
     cout << v[1500 - 1] << el;
-    // for (int i = 0; i < 20; i++)
-    //     cout << v[i] << " ";
 }
 
 /************************************************************
@@ -84,7 +79,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    // tst
+    //tst
     Beche_achi();
 
     Goodbye
