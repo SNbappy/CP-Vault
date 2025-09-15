@@ -2,7 +2,7 @@
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 
 Author: Depressed_C0der
-Created: 2024-12-10 00:19:21
+Created: 2025-09-15 15:43:03
 */
 
 #include <bits/stdc++.h>
@@ -11,7 +11,7 @@ using namespace std;
 #include <ext/pb_ds/assoc_container.hpp>
 using namespace __gnu_pbds;
 
-#define int long long
+#define ll long long
 #define tst   \
     int t;    \
     cin >> t; \
@@ -50,37 +50,36 @@ int gcd(int a, int b)
 
 void Beche_achi()
 {
-    int t;
-    cin >> t;
-    for (int j = 1; j <= t; j++)
+    ll p, l;
+    cin >> p >> l;
+
+    vector<ll> q;
+
+    ll n = p - l;
+
+    for (ll i = 1; i * i <= n; i++)
     {
-        int p, l;
-        cin >> p >> l;
-        int x = p - l;
-        vector<int> div;
-        for (int i = 1; i * i <= x; i++)
+        if (n % i == 0)
         {
-            if (x % i == 0)
+            if (l < i)
+                q.pb(i);
+            if (i != n / i)
             {
-                if (l < i)
-                    div.push_back(i);
-                if (x / i != i and l < x / i)
-                {
-                    div.push_back(x / i);
-                }
+                if(l < n / i)
+                q.pb(n / i);
             }
         }
-        if(div.size() == 0){
-            cout << "Case " << j << ": " << "impossible" << el;
+    }
+    sort(all(q));
+    if (q.empty())
+        cout << "impossible" << el;
+    else
+    {
+        for (auto x : q)
+        {
+            cout << x << " ";
         }
-        else{
-            cout << "Case " << j << ": ";
-            sort(all(div));
-            for(auto c: div){
-                cout << c << " ";
-            }
-            cout << el;
-        }
+        cout << el;
     }
 }
 
@@ -94,8 +93,13 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    // tst
-    Beche_achi();
+    ll t;
+    cin >> t;
+    for (int k = 0; k < t; k++)
+    {
+        cout << "Case " << k + 1 << ": ";
+        Beche_achi();
+    }
 
     Goodbye
 }

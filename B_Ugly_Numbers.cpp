@@ -48,25 +48,35 @@ int gcd(int a, int b)
         return gcd(b, a % b);
 }
 
+const ll MAX = 1e18;
+
 void Beche_achi()
 {
-    const int n = 1500;
-    vector<ll> v;
-    v.pb(1);
-    for (ll i = 1; i < n; i++)
+    vector<ll> ugly_nums;
+
+    ll p2 = 1;
+    for (ll x = 0; p2 <= MAX; x++, p2 *= 2)
     {
-        v.pb(2 * i);
+        ll p3 = 1;
+        for (ll y = 0; p2 * p3 <= MAX; y++, p3 *= 3)
+        {
+            /* code */
+            ll p5 = 1;
+            for (ll z = 0; p2 * p3 * p5 <= MAX; z++, p5 *= 5)
+            {
+                ugly_nums.pb(p2 * p3 * p5);
+            }
+        }
     }
-    for (ll i = 1; i < n; i++)
-    {
-        v.pb(3 * i);
-    }
-    for (ll i = 1; i < n; i++)
-    {
-        v.pb(5 * i);
-    }
-    sort(all(v));
-    cout << v[1500 - 1] << el;
+    sort(all(ugly_nums));
+    cout << "The 1500'th ugly number is " << ugly_nums[1500 - 1] << "." << el;
+
+    // for (ll i = 0; i < 20; i++)
+    // {
+    //     cout << ugly_nums[i] << " ";
+    // }
+
+    // cout << ugly_nums.size() << el;
 }
 
 /************************************************************
@@ -79,7 +89,7 @@ Depressed_C0der
     cin.tie(0);
     cout.tie(0);
 
-    //tst
+    // tst
     Beche_achi();
 
     Goodbye
