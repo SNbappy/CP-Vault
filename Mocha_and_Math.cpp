@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-10-20 11:09:03
+Created: 2025-10-20 12:23:58
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -14,15 +14,24 @@ using namespace std;
 #endif
 
 void Solve() {
-    int q, s, a, b;
-    cin >> q >> s >> a >> b;
-    
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    int ans = a[0];
+    for (int i = 1; i < n; i++){
+        ans &= a[i];
+    }
+    cout << ans << '\n';
 }
 signed main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
 
     for (int i = 1; i <= tc; i++) {
         // Cout << \"Case \" << i << \": \";
