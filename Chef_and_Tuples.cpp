@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-09-21 23:53:19
+Created: 2025-09-25 09:41:52
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -13,32 +13,20 @@ using namespace std;
 #define debug(...)
 #endif
 
-const int N = 1e6;
-int cnt[N + 1], freq[N + 1];
-
+void Solve() {
+    int n, a, b, c;
+    cin >> n >> a >> b >> c;
+    
+}
 signed main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
-    int n;
-    cin >> n;
-    for (int i = 0; i < n; i++)
-    {
-        int x;
-        cin >> x;
-        freq[x]++;
-    }
-    for (int i = 1; i <= N; i++)
-    {
-        for (int j = i; j <= N; j+=i)
-        {
-            cnt[i] += freq[j];
-        }
-    }
+    int tc = 1;
+    cin >> tc;
 
-    for (int i = 1; i <= N; i++)
-    {
-        cout << cnt[i] << '\n';
+    for (int i = 1; i <= tc; i++) {
+        // Cout << \"Case \" << i << \": \";
+        Solve();
     }
-    
     return 0;
 }
