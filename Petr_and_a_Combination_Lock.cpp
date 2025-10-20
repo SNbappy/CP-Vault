@@ -8,12 +8,15 @@ using namespace std;
 #define int long long
 #define all(n) n.begin(), n.end()
 #ifndef ONLINE_JUDGE
-#define debug(...) cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; _print(__VA_ARGS__)
+#define debug(...)                                                  \
+    cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; \
+    _print(__VA_ARGS__)
 #else
 #define debug(...)
 #endif
 
-void Solve() {
+void Solve()
+{
     int n;
     cin >> n;
     vector<int> a(n);
@@ -21,15 +24,36 @@ void Solve() {
     {
         cin >> a[i];
     }
-    
+    for (int i = 0; i < (1 << n); i++)
+    {
+        int sum = 0;
+        for (int j = 0; j < n; j++)
+        {
+            if (i & (1 << j))
+            {
+                sum += a[j];
+            }
+            else
+                sum -= a[j];
+        }
+        if (sum == 0 || sum % 360 == 0)
+        {
+            cout << "YES" << '\n';
+            return;
+        }
+    }
+    cout << "NO" << '\n';
 }
-signed main() {
+signed main()
+{
     ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+    cin.tie(0);
+    cout.tie(0);
     int tc = 1;
     // cin >> tc;
 
-    for (int i = 1; i <= tc; i++) {
+    for (int i = 1; i <= tc; i++)
+    {
         // Cout << \"Case \" << i << \": \";
         Solve();
     }
