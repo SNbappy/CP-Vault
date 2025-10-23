@@ -8,12 +8,15 @@ using namespace std;
 #define int long long
 #define all(n) n.begin(), n.end()
 #ifndef ONLINE_JUDGE
-#define debug(...) cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; _print(__VA_ARGS__)
+#define debug(...)                                                  \
+    cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; \
+    _print(__VA_ARGS__)
 #else
 #define debug(...)
 #endif
 
-void Solve() {
+void Solve()
+{
     int n;
     cin >> n;
     vector<int> a(n);
@@ -25,34 +28,39 @@ void Solve() {
     pref[0] = a[0];
     for (int i = 1; i < n; i++)
     {
-        pref[i] ^= pref[i - 1];
+        pref[i] = pref[i - 1] ^ a[i];
     }
-    if(pref[n - 1] == 0){
+    if (pref[n - 1] == 0)
+    {
         cout << "YES" << '\n';
         return;
     }
-    for (int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++)
+    {
         int x = pref[i];
         for (int j = i + 1; j < n; j++)
         {
             int y = pref[j] ^ pref[i];
             int z = pref[n - 1] ^ pref[j];
-            if(x == y and y == z){
+            if (x == y and y == z)
+            {
                 cout << "YES" << '\n';
                 return;
             }
         }
-        
     }
     cout << "NO" << '\n';
 }
-signed main() {
+signed main()
+{
     ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+    cin.tie(0);
+    cout.tie(0);
     int tc = 1;
     cin >> tc;
 
-    for (int i = 1; i <= tc; i++) {
+    for (int i = 1; i <= tc; i++)
+    {
         // Cout << \"Case \" << i << \": \";
         Solve();
     }
