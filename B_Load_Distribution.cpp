@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-10-20 16:03:56
+Created: 2025-10-23 12:28:55
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,30 +17,26 @@ using namespace std;
 
 void Solve()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
+    int n, l;
+    char c;
+    cin >> n >> l >> c;
+    int x, y, z;
+    if (c == 'L')
     {
-        cin >> a[i];
+        z = (n - l);
+        int pos = (l - 1) / 2 + 1;
+        x = pos;
+        y = l - pos + 1;
+        cout << pos << " " << pos << " " << z << endl;
     }
-    vector<int> pref(n);
-    pref[0] = a[0];
-    for (int i = 1; i < n; i++)
+    else
     {
-        pref[i] = max(a[i], pref[i - 1]);
+        x = (l - 1);
+        int pos = (n - l) / 2 + 1;
+        y = pos - l + 1;
+        z = n - pos + 1;
+        cout << x << " " << pos << " " << pos << endl;
     }
-    int ans = 0;
-    for (int i = 0; i < n; i+= 2)
-    {
-        int dif = -1;
-        if (i > 0)
-            dif = max(dif, a[i] - pref[i - 1]);
-        if (i < n - 1)
-            dif = max(dif, a[i] - pref[i + 1]);
-        ans += dif + 1;
-    }
-    cout << ans << '\n';
 }
 signed main()
 {
@@ -48,7 +44,7 @@ signed main()
     cin.tie(0);
     cout.tie(0);
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {

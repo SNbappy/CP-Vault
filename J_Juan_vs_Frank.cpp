@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-10-20 16:03:56
+Created: 2025-10-23 13:25:26
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,30 +17,38 @@ using namespace std;
 
 void Solve()
 {
-    int n;
-    cin >> n;
+    int n, k;
+    cin >> n >> k;
     vector<int> a(n);
+    vector<int> even(n, 0), odd(n, 0);
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
+        if (a[i] % 2 == 0)
+            even[i]++;
+        else
+            odd[i]++;
     }
-    vector<int> pref(n);
-    pref[0] = a[0];
-    for (int i = 1; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-        pref[i] = max(a[i], pref[i - 1]);
+        char c;
+        int x, y;
+        cin >> c >> x >> y;
+        if (c == 'R')
+        {
+            x--;
+            if ((a[x] % 2 == 0 and (a[x] + y) % 2 == 1))
+            {
+                even[x]--;
+                odd[x]++;
+            }
+            if ((a[x] % 2 == 1 and (a[x] + y) % 2 == 0))
+            {
+                even[x]++;
+                odd[x]--;
+            }
+        }
     }
-    int ans = 0;
-    for (int i = 0; i < n; i+= 2)
-    {
-        int dif = -1;
-        if (i > 0)
-            dif = max(dif, a[i] - pref[i - 1]);
-        if (i < n - 1)
-            dif = max(dif, a[i] - pref[i + 1]);
-        ans += dif + 1;
-    }
-    cout << ans << '\n';
 }
 signed main()
 {
@@ -48,7 +56,7 @@ signed main()
     cin.tie(0);
     cout.tie(0);
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {

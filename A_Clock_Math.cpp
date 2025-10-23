@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-10-20 16:03:56
+Created: 2025-10-23 10:19:54
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,38 +17,27 @@ using namespace std;
 
 void Solve()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-    vector<int> pref(n);
-    pref[0] = a[0];
-    for (int i = 1; i < n; i++)
-    {
-        pref[i] = max(a[i], pref[i - 1]);
-    }
-    int ans = 0;
-    for (int i = 0; i < n; i+= 2)
-    {
-        int dif = -1;
-        if (i > 0)
-            dif = max(dif, a[i] - pref[i - 1]);
-        if (i < n - 1)
-            dif = max(dif, a[i] - pref[i + 1]);
-        ans += dif + 1;
-    }
-    cout << ans << '\n';
+    double a, b;
+    cin >> a >> b;
+    double x = abs(((a / 12.0) * 360) - ((b / 60.0) * 360));
+    // cout << x << endl;
+    // cout << z << endl;
+    double pain;
+    if (a > b / 12.0)
+        pain = x + ((b / (12.0 * 60.0)) * 360);
+    else
+        pain = x - ((b / (12.0 * 60.0)) * 360);
+    pain = min(pain, 360 - pain);
+    cout << fixed << setprecision(7) << pain << endl;
 }
+
 signed main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {

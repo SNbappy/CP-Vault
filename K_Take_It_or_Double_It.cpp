@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-10-20 16:03:56
+Created: 2025-10-23 10:25:35
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,30 +17,12 @@ using namespace std;
 
 void Solve()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-    vector<int> pref(n);
-    pref[0] = a[0];
-    for (int i = 1; i < n; i++)
-    {
-        pref[i] = max(a[i], pref[i - 1]);
-    }
-    int ans = 0;
-    for (int i = 0; i < n; i+= 2)
-    {
-        int dif = -1;
-        if (i > 0)
-            dif = max(dif, a[i] - pref[i - 1]);
-        if (i < n - 1)
-            dif = max(dif, a[i] - pref[i + 1]);
-        ans += dif + 1;
-    }
-    cout << ans << '\n';
+    int x, d;
+    cin >> x >> d;
+    if (x * 2 > d)
+        cout << "take it" << endl;
+    else
+        cout << "double it" << endl;
 }
 signed main()
 {
@@ -48,7 +30,7 @@ signed main()
     cin.tie(0);
     cout.tie(0);
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
