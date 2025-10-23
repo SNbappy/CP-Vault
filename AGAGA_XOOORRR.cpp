@@ -36,7 +36,7 @@ void Solve() {
         for (int j = i + 1; j < n; j++)
         {
             int y = pref[j] ^ pref[i];
-            int z = pref[n] ^ pref[j];
+            int z = pref[n - 1] ^ pref[j];
             if(x == y and y == z){
                 cout << "YES" << '\n';
                 return;
