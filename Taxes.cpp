@@ -19,15 +19,25 @@ void Solve()
 {
     int n;
     cin >> n;
-    int x = n / 3;
-    int y = n % 3;
-    int slice = y;
-    while (x > 2)
-    {
-        slice += x % 3;
-        x /= 3;
+    int mx = 0;
+    if(n < 3){
+        cout << 1 << endl;
+        return;
     }
-    cout << slice << endl;
+    int x = 0;
+    for (int i = 2; i < n; i++)
+    {
+        int cnt = 0;
+        while(n % i == 0){
+            cnt++;
+            n /= i;
+        }
+        if(cnt > mx){
+            mx = cnt;
+            x = i;
+        }
+    }
+    cout << max(x, 1LL) << endl;
 }
 signed main()
 {
