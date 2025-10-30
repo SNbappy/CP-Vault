@@ -17,7 +17,24 @@ using namespace std;
 
 void Solve()
 {
-    
+    int n;
+    cin >> n;
+    int slice = 0;
+    while (1)
+    {
+        if (n % 3 == 0 and n > 2)
+        {
+            slice += n / 3;
+            n = (n / 3);
+        }
+        else if(n > 2) {
+            slice += n / 3;
+            n = (n / 3) + 1;
+        }
+        else
+            break;
+    }
+    cout << slice << endl;
 }
 signed main()
 {

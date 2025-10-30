@@ -1,18 +1,17 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-const int N = 1e5 + 10;
-vector<int> adj[N];
-bool visited[N];
+const int N = 1e5 + 9;
+vector<int> g[N];
+bool vis[N];
 
-void dfs(int node)
+void dfs(int u)
 {
-    visited[node] = true;
-    cout << node << " ";
-    for (int neighbour : adj[node])
+    vis[u] = true;
+    for (auto v : g[u])
     {
-        if (!visited[neighbour])
-            dfs(neighbour);
+        if (!vis[v])
+            dfs(v);
     }
 }
 
@@ -20,12 +19,22 @@ int main()
 {
     int n, m;
     cin >> n >> m;
-    for (int i = 0; i < m; i++)
+    while (m--)
     {
         int u, v;
         cin >> u >> v;
-        adj[u].push_back(v);
-        adj[v].push_back(u);
+        g[u].push_back(v);
+        g[v].push_back(u);
     }
     dfs(1);
+    for (int i = 1; i <= n; i++)
+    {
+        if (!vis[i])
+        {
+            cout << "Disconnected Graph\n";
+            return 0;
+        }
+    }
+    cout << "Connected Graph\n";
+    return 0;
 }
