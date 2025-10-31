@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-10-31 15:41:45
+Created: 2025-10-31 15:19:13
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -19,42 +19,28 @@ void Solve()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    deque<int> d;
+    vector<int> a(n), b(n);
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
-        d.push_back(a[i]);
+        b[i] = a[i];
     }
-    int ans = 0;
+    sort(all(b));
+    int cnt = 0;
     for (int i = 0; i < n; i++)
     {
-        int x = d.front();
-        int y = d.back();
-        d.pop_front();
-        d.pop_back();
-        d.push_back(x);
-        d.push_front(y);
-        int sum = 0;
-        int cnt = 0;
-        for (int i = 0; i < n; i++)
+        if (a[i] != b[i])
         {
-            sum += d[i];
-            if (sum >= 0)
-            {
-                cnt++;
-            }
-            else
-                break;
-        }
-        if (cnt == n)
-        {
-            ans++;
+            cnt++;
         }
     }
-    cout << ans << '\n';
+    if (cnt <= 2)
+    {
+        cout << "Sorted" << '\n';
+    }
+    else
+        cout << "Failed" << '\n';
 }
-
 signed main()
 {
     ios_base::sync_with_stdio(0);

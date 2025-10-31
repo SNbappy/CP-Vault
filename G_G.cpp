@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-10-31 15:41:45
+Created: 2025-10-31 17:15:19
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,40 +17,39 @@ using namespace std;
 
 void Solve()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    deque<int> d;
-    for (int i = 0; i < n; i++)
+    int y, k;
+    cin >> y >> k;
+    vector<int> div;
+    for (int i = 1; i * i <= y; i++)
     {
-        cin >> a[i];
-        d.push_back(a[i]);
-    }
-    int ans = 0;
-    for (int i = 0; i < n; i++)
-    {
-        int x = d.front();
-        int y = d.back();
-        d.pop_front();
-        d.pop_back();
-        d.push_back(x);
-        d.push_front(y);
-        int sum = 0;
-        int cnt = 0;
-        for (int i = 0; i < n; i++)
+        if (y % i == 0)
         {
-            sum += d[i];
-            if (sum >= 0)
+            div.push_back(i);
+            if (y / i != i)
             {
-                cnt++;
+                div.push_back(y / i);
             }
-            else
-                break;
         }
-        if (cnt == n)
+    }
+    sort(all(div));
+    // for (auto x : div)
+    //     cout << x << " ";
+    // cout << '\n';
+    int ans = k + 1;
+    int lastK = 0;
+    for (auto x : div)
+    {
+        if (ans >= x and x != div.back())
         {
-            ans++;
+            ans += x - 1;
+            // cout << x << " " << ans << '\n';
         }
+        else
+            break;
+    }
+    int x = (k - y) + 1;
+    if(x > 0){
+        ans += ((y - 1) * x);
     }
     cout << ans << '\n';
 }

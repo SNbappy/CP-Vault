@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-10-31 15:41:45
+Created: 2025-10-30 22:35:25
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,51 +17,32 @@ using namespace std;
 
 void Solve()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    deque<int> d;
-    for (int i = 0; i < n; i++)
+    int r, x, d, n;
+    string s;
+    cin >> r >> x >> d >> n >> s;
+    int cnt = 0;
+    for (int i = 0; i < s.size(); i++)
     {
-        cin >> a[i];
-        d.push_back(a[i]);
-    }
-    int ans = 0;
-    for (int i = 0; i < n; i++)
-    {
-        int x = d.front();
-        int y = d.back();
-        d.pop_front();
-        d.pop_back();
-        d.push_back(x);
-        d.push_front(y);
-        int sum = 0;
-        int cnt = 0;
-        for (int i = 0; i < n; i++)
+        if (r >= x and s[i] == '1')
         {
-            sum += d[i];
-            if (sum >= 0)
-            {
-                cnt++;
-            }
-            else
-                break;
+            cnt++;
+            r = r - d;
         }
-        if (cnt == n)
+        else if (r < x)
         {
-            ans++;
+            cnt++;
+            r = r - d;
         }
     }
-    cout << ans << '\n';
+    cout << cnt << '\n';
 }
-
 signed main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
