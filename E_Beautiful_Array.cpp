@@ -14,13 +14,16 @@ using namespace std;
 #endif
 
 void Solve() {
-    
+    int a, b;
+    cin >> a >> b;
+    cout << 3 << '\n';
+    cout << b << " " << b << " " << (3 * a - 2 * b) << '\n';
 }
 signed main() {
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++) {
         // Cout << \"Case \" << i << \": \";
