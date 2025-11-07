@@ -1,55 +1,63 @@
+/*
+بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
+Author: Depressed_C0der
+Created: 2025-11-06 19:30:45
+*/
 #include <bits/stdc++.h>
 using namespace std;
+#define int long long
+#define all(n) n.begin(), n.end()
+#ifndef ONLINE_JUDGE
+#define debug(...)                                                  \
+    cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; \
+    _print(__VA_ARGS__)
+#else
+#define debug(...)
+#endif
 
-#define Faster                        \
-    ios_base::sync_with_stdio(false); \
-    cin.tie(0);                       \
-    cout.tie(0);
-#define in_range(i, x, y) for (int i = x; i <= y; i++)
-#define checkmate return 0;
-
-int main()
+void Solve()
 {
-    Faster;
-    int t;
-    cin >> t;
-    while (t--)
+    int n;
+    cin >> n;
+    vector<vector<int>> a(n, vector<int>(n));
+    for (int i = 0; i < n; i++)
     {
-        int n;
-        cin >> n;
-        vector<string> s(n);
-        for (auto &row : s)
-            cin >> row;
-
-        int ans = 0;
-        for (int layer = 0; layer < n / 2; ++layer)
+        for (int j = 0; j < n; j++)
         {
-            for (int i = 0; i < n - 2 * layer - 1; ++i)
-            {
-                int one = 0, zero = 0;
-
-                // Get coordinates for the four corners
-                vector<pair<int, int>> coords = {
-                    {layer, layer + i},
-                    {layer + i, n - 1 - layer},
-                    {n - 1 - layer, n - 1 - layer - i},
-                    {n - 1 - layer - i, layer}};
-
-                // Count ones and zeros
-                for (auto [x, y] : coords)
-                {
-                    if (s[x][y] == '1')
-                        one++;
-                    else
-                        zero++;
-                }
-
-                // Add the minimum flips needed
-                ans += min(one, zero);
-            }
+            char c;
+            cin >> c;
+            a[i][j] = c - '0';
         }
-
-        cout << ans << endl;
+        
     }
-    checkmate;
+    if (n == 1)
+    {
+        cout << 0 << '\n';
+        return;
+    }
+    int ans = 0;
+    for (int j = 0; j < (n + 1) / 2; j++)
+    {
+        for (int k = 0; k < n / 2; k++)
+        {
+            int s = a[j][k] + a[k][n - 1 - j] + a[n - 1 - j][n - 1 - k] + a[n - 1 - k][j];
+            ans += min(s, 4 - s);
+        }
+    }
+    cout << ans << '\n';
+}
+signed main()
+{
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    cout.tie(0);
+    int tc = 1;
+    cin >> tc;
+
+    for (int i = 1; i <= tc; i++)
+    {
+        // Cout << \"Case \" << i << \": \";
+        Solve();
+    }
+    return 0;
 }

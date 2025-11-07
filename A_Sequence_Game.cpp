@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-11-02 21:41:05
+Created: 2025-11-07 10:57:20
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -15,30 +15,52 @@ using namespace std;
 #define debug(...)
 #endif
 
-const int L = 232792560;
-
 void Solve()
 {
     int n;
     cin >> n;
-    vector<int> k(n), x(n);
-    int sum = 0;
+    vector<int> a(n);
     for (int i = 0; i < n; i++)
     {
-        cin >> k[i];
-        x[i] = L / k[i];
-        sum += x[i];
+        cin >> a[i];
     }
-    if (sum < L)
+    int x;
+    cin >> x;
+    bool ok = false;
+    bool ok1 = false;
+    if (n == 1)
     {
-        for (int i = 0; i < n; i++)
+        if (a[0] == x)
+            cout << "YES" << '\n';
+        else
+            cout << "NO" << '\n';
+        return;
+    }
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] == x)
         {
-            cout << x[i] << ' ';
+            cout << "YES" << '\n';
+            return;
         }
-        cout << '\n';
+        if (!ok and a[i] < x)
+        {
+            ok = true;
+            continue;
+        }
+        if (!ok1 and a[i] > x)
+        {
+            ok1 = true;
+            continue;
+        }
+        
+    }
+    if (ok and ok1)
+    {
+        cout << "YES" << '\n';
     }
     else
-        cout << -1 << '\n';
+        cout << "NO" << '\n';
 }
 signed main()
 {
