@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-11-16 11:00:56
+Created: 2025-11-16 20:36:02
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -14,25 +14,17 @@ using namespace std;
 #endif
 
 void Solve() {
-    int n, k;
-    cin >> n >> k;
-    vector<int> a(n), b(n);
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    map<int, int> mp;
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        mp[s[i]]++;
     }
-    for (int i = 0; i < n; i++)
-    {
-        cin >> b[i];
-    }
-    int sum = 0, mx = 0, ans = 0;
-    for (int i = 0; i < n and i <= k - 1; i++)
-    {
-        sum += a[i];
-        mx = max(mx, b[i]);
-        ans = max(ans, sum + mx * (k - i - 1));
-    }
-    cout << ans << '\n';
+    int x = mp[s[n - 1]];
+    cout << n - x << '\n';
 }
 signed main() {
     ios_base::sync_with_stdio(0);
