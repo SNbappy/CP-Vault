@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-11-19 08:57:21
+Created: 2025-11-23 15:57:11
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -14,16 +14,34 @@ using namespace std;
 #endif
 
 void Solve() {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
+    int n, x, y;
+    cin >> n >> x >> y;
     string s;
     cin >> s;
-    
+    x = abs(x);
+    y = abs(y);
+    int et = 0, fr = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if(s[i] == '4')
+            fr++;
+        else
+            et++;
+    }
+    x -= et;
+    y -= et;
+    if(x <= 0 and y <= 0){
+        cout << "YES" << '\n';
+        return;
+    }
+    else{
+        x = max(0LL, x);
+        y = max(0LL, y);
+        if(fr >= (x + y))
+        cout << "YES" << '\n';
+        else
+            cout << "NO" << '\n';
+    }
 }
 signed main() {
     ios_base::sync_with_stdio(0);
