@@ -1,105 +1,74 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
-
 Author: Depressed_C0der
-Created: 2025-05-09 20:06:43
+Created: 2025-11-29 10:57:07
 */
-
 #include <bits/stdc++.h>
 using namespace std;
-
-#include <ext/pb_ds/assoc_container.hpp>
-using namespace __gnu_pbds;
-
-#define ll long long
-#define tst   \
-    int t;    \
-    cin >> t; \
-    while (t--)
-#define el '\n'
-#define yes cout << "YES" << el
-#define no cout << "NO" << el
-#define Depressed_C0der int32_t main()
-#define Goodbye return 0;
+#define int long long
 #define all(n) n.begin(), n.end()
-#define rall(n) n.rbegin(), n.rend()
-#define pb push_back
-const int MOD = 1e9 + 7;
+#ifndef ONLINE_JUDGE
+#define debug(...)                                                  \
+    cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; \
+    _print(__VA_ARGS__)
+#else
+#define debug(...)
+#endif
 
-typedef tree<int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> ordered_set;
-/// change int to any data type
-/// less_equal for multiset increasing order
-/// less for set increasing order
-/// greater_equal for multiset decreasing order
-/// greater for set decreasing order
-
-/// cout<<*X.find_by_order(1)<<endl; // iterator to the k-th largest element
-/// cout<<X.order_of_key(-5)<<endl;  // number of items in a set that are strictly smaller than our item
-
-/************************************************************
- *                   Utility Function                      *
- ************************************************************/
-
-int gcd(int a, int b)
+void Solve()
 {
-    if (b == 0)
-        return a;
-    else
-        return gcd(b, a % b);
-}
-
-void Beche_achi()
-{
-    ll n, m;
+    int n, m;
     cin >> n >> m;
-    if (n >= m)
+
+    if (m <= n)
     {
-        cout << abs(n - m) << el;
+        cout << n - m << '\n';
         return;
     }
-    ll x = -1;
-    ll y = m;
-    ll cnt = 0;
-    while (y > n)
+
+    const int mx = 2 * m + 5;
+
+    vector<int> dist(mx, -1);
+    queue<int> q;
+
+    q.push(n);
+    dist[n] = 0;
+
+    while (!q.empty())
     {
-        if (y % 2 == 0)
+        int x = q.front();
+        q.pop();
+
+        if (x == m)
         {
-            y /= 2;
-            cnt++;
+            cout << dist[x] << '\n';
+            return;
         }
-        else
-            break;
+        int nxt = x * 2;
+        if (nxt < mx and dist[nxt] == -1){
+            dist[nxt] = dist[x] + 1;
+            q.push(nxt);
+        }
+        int nxt1 = x - 1;
+        if(nxt1 > 0 and dist[nxt1] == -1){
+            dist[nxt1] = dist[x] + 1;
+            q.push(nxt1);
+        }
     }
-    ll z;
-    if (y <= n)
-        z = abs(y - n) + cnt;
-    else
-        z = LLONG_MAX;
-    ll a = n;
-    cnt = 0;
-    while (a < m)
-    {
-        a *= 2;
-        // cout << a << el;
-        cnt++;
-    }
-    ll b = abs(a - m) + cnt;
-    cout << b << " " << z << el;
-    cout << min(z, b) << el;
 }
 
-/************************************************************
- *                      Main Function                      *
- ************************************************************/
-
-Depressed_C0der
+signed main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
+    int tc = 1;
+    // cin >> tc;
 
-    // tst
-    Beche_achi();
-
-    Goodbye
+    for (int i = 1; i <= tc; i++)
+    {
+        // Cout << \"Case \" << i << \": \";
+        Solve();
+    }
+    return 0;
 }

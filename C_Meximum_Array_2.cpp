@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-11-23 16:15:24
+Created: 2025-11-25 11:44:37
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -19,31 +19,39 @@ void Solve()
 {
     int n, k, q;
     cin >> n >> k >> q;
-    vector<int> a(n + 1);
+    vector<pair<int, int>> a, b;
     for (int i = 0; i < q; i++)
     {
         int c, l, r;
         cin >> c >> l >> r;
         if (c == 1)
-        {
-            for (int i = l; i <= r; i++)
-            {
-                a[i] = k;
-            }
-        }
+            a.push_back(make_pair(l - 1, r - 1));
         else
-        {
-            int cnt = k - 1;
-            for (int i = l; i <= r; i++)
-            {
-                a[i] = cnt;
-                if (cnt > 0)
-                    cnt--;
-            }
-        }
+            b.push_back(make_pair(l - 1, r - 1));
     }
-    for (int i = 1; i <= n; i++)
-        cout << a[i] << ' ';
+    vector<int> ans(n);
+    for(auto [l,r]: a){
+        for (int i = l; i <= r; i++)
+        {
+            ans[i] = k;
+        }
+        
+    }
+
+    auto temp = ans;
+    for(auto [l, r] : b){
+        for (int i = l; i <= r; i++)
+        {
+            if(temp[i] == k)
+                ans[i] = k + 1;
+            else
+                ans[i] = i % k;
+        }
+        
+    }
+
+    for(auto x: ans)
+        cout << x << ' ';
     cout << '\n';
 }
 signed main()

@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-11-29 09:38:27
+Created: 2025-11-28 20:40:14
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -19,22 +19,21 @@ void Solve()
 {
     int n;
     cin >> n;
-    map<int, int> mp;
-    int mx = 0;
-    for (int i = 1; i <= n; i++)
+    if (n == 2)
     {
-        int x;
-        cin >> x;
-        mp[x]++;
-        mx = max(mx, x);
+        cout << 9 << '\n';
+        return;
     }
-    vector<int> dp(100005, 0);
-    dp[1] = mp[1];
-    for (int i = 2; i <= mx; i++)
-    {
-        dp[i] = max(dp[i - 2] + mp[i] * i, dp[i - 1]);
-    }
-    cout << dp[mx] << '\n';
+    int x = max(n * n, 0LL);
+    int y = max(n * n - 1, 0LL);
+    int z = max(n * n - 2, 0LL);
+    int a = max(n * n - n - 1, 0LL);
+    int xx = x + y + z + a;
+    int yy = max(n * n - n - 1, 0LL) + max(n * n - n, 0LL) + max(n * n - n - 2, 0LL) + max(n * n - 1, 0LL) + max(n * n - 2 * n - 1, 0LL);
+    // cout << max(n * n - n - 1, 0LL) << " " << max(n * n - n, 0LL) << " " << max(n * n - n - 2, 0LL) << " " << max(n * n - 1, 0LL)  << " " << max(n * n - 2*n - 1, 0LL) << '\n';
+    cout << max(xx, yy) << '\n';
+    // cout << n * n - 1 << '\n';
+    // cout << xx << '\n';
 }
 signed main()
 {
@@ -42,7 +41,7 @@ signed main()
     cin.tie(0);
     cout.tie(0);
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {

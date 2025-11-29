@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-11-29 09:38:27
+Created: 2025-11-26 21:37:41
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -19,22 +19,27 @@ void Solve()
 {
     int n;
     cin >> n;
-    map<int, int> mp;
-    int mx = 0;
-    for (int i = 1; i <= n; i++)
+    vector<int> a(n), b(n);
+    for (int i = 0; i < n; i++)
     {
-        int x;
-        cin >> x;
-        mp[x]++;
-        mx = max(mx, x);
+        cin >> a[i];
     }
-    vector<int> dp(100005, 0);
-    dp[1] = mp[1];
-    for (int i = 2; i <= mx; i++)
+    for (int i = 0; i < n; i++)
     {
-        dp[i] = max(dp[i - 2] + mp[i] * i, dp[i - 1]);
+        cin >> b[i];
     }
-    cout << dp[mx] << '\n';
+    for (int i = 0; i < n - 1; i++)
+    {
+        int x = a[i] - a[i + 1];
+        int y = b[i] - b[i + 1];
+
+        if ((x < 0 and y > 0) || (x > 0 and y < 0))
+        {
+            cout << "No" << '\n';
+            return;
+        }
+    }
+    cout << "Yes" << '\n';
 }
 signed main()
 {
@@ -42,7 +47,7 @@ signed main()
     cin.tie(0);
     cout.tie(0);
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
