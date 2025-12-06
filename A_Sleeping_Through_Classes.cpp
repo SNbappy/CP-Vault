@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-12-06 12:08:34
+Created: 2025-12-05 14:36:21
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,21 +17,29 @@ using namespace std;
 
 void Solve()
 {
-    int n, ans = 0, sum = 0;
-    cin >> n;
+    int n, k;
+    cin >> n >> k;
     string s;
     cin >> s;
-    map<int, int> cnt;
+    int cnt = 0;
+    int ans = 0;
     for (int i = 0; i < n; i++)
     {
-        int d = s[i] - '0';
-        sum += d;
-        ans += cnt[sum - i];
-        if (sum == i + 1)
+        if (s[i] == '0' and cnt == 0)
+        {
             ans++;
-        cnt[sum - i]++;
+        }
+        else if (s[i] == '1')
+        {
+            cnt = k;
+        }
+        else
+        {
+            if (cnt != 0)
+                cnt--;
+        }
     }
-    cout << ans << endl;
+    cout << ans << '\n';
 }
 signed main()
 {
