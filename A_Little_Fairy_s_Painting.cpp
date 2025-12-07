@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-12-06 17:30:07
+Created: 2025-12-06 21:35:21
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -16,27 +16,24 @@ using namespace std;
 void Solve() {
     int n;
     cin >> n;
-    vector<int> a(n), b(n);
+    set<int> s;
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        int a;
+        cin >> a;
+        s.insert(a);
     }
-    for (int i = 0; i < n; i++)
-    {
-        cin >> b[i];
+    if(s.count(s.size()))
+        cout << s.size() << '\n';
+    else{
+        for (auto x: s){
+            if(x > s.size()){
+                cout << x << '\n';
+                return;
+            }
+        }
+        cout << *s.rend() << '\n';
     }
-    int mn = 0;
-    int mx = 0;
-    for (int i = 0; i < n; i++)
-    {
-        int x = mx - a[i];
-        int y = mn - a[i];
-        int xx = b[i] - mx;
-        int yy = b[i] - mn;
-        mx = max(x, yy);
-        mn = min(xx, y);
-    }
-    cout << max(mx, mn) << '\n';
 }
 signed main() {
     ios_base::sync_with_stdio(0);
