@@ -37,8 +37,8 @@ void Depressed_C0der()
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
-        if(a[i] == k)
-            cnt++;
+        // if(a[i] == k)
+        //     cnt++;
     }
     map<int, int> mp;
     for (int i = 0; i < n; i++)
@@ -46,11 +46,25 @@ void Depressed_C0der()
         mp[a[i]]++;
     }
     
-    for(auto [x, y]: mp){
-        if(x != k and y > 1)
-            cnt += y;
+    for (int i = 0; i < k; i++)
+    {
+        if(mp[i] == 0)
+            cnt++;
     }
-    cout << cnt << "\n";
+    int ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if(a[i] == k)
+        {
+            if(cnt > 0)
+            {
+                cnt--;
+            }
+            ans++;
+        }
+    }
+    
+    cout << ans + cnt << "\n";
 }
 
 signed main()
