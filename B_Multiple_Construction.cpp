@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-12-27 13:24:54
+Created: 2025-12-28 16:07:10
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -28,47 +28,11 @@ using namespace std;
 #define debug(...)
 #endif
 
-const int N = 1000000;
-bool isPrime[N + 1];
-
-void sieve()
-{
-    for (int i = 0; i <= N; i++)
-        isPrime[i] = true;
-
-    isPrime[0] = isPrime[1] = false;
-
-    for (int i = 2; i * i <= N; i++)
-    {
-        if (isPrime[i])
-        {
-            for (int j = i * i; j <= N; j += i)
-            {
-                isPrime[j] = false;
-            }
-        }
-    }
-}
-
 void Depressed_C0der()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-    for(int x: {2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53}){
-        for (int i = 0; i < n; i++)
-        {
-            if(a[i] % x != 0){
-                cout << x << "\n";
-                return;
-            }   
-        }
-        
-    }    
+    
 }
 
 signed main()
