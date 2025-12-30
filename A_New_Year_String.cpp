@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-12-28 16:07:10
+Created: 2025-12-29 20:36:39
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -32,15 +32,25 @@ void Depressed_C0der()
 {
     int n;
     cin >> n;
-    for (int i = 0; i < n; i++)
+    string s;
+    cin >> s;
+    for (int i = 0; i < n - 3; i++)
     {
-        cout << n - i << " ";
+        if(s[i] == '2' and s[i + 1] == '0' and s[i + 2] == '2' and s[i + 3] == '6'){
+            cout << "0" << "\n";
+            return;
+        }
     }
-    cout << n << " ";
-    for (int i = 0; i < n - 1; i++)
+    
+    for (int i = 0; i < n - 3; i++)
     {
-        cout << i + 1 << " \n"[i == n - 2];
+        if (s[i] == '2' and s[i + 1] == '0' and s[i + 2] == '2' and s[i + 3] == '5')
+        {
+            cout << "1" << "\n";
+            return;
+        }
     }
+    cout << "0" << "\n";
 }
 
 signed main()

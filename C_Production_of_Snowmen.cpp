@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-12-28 16:07:10
+Created: 2025-12-29 21:30:53
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -32,15 +32,24 @@ void Depressed_C0der()
 {
     int n;
     cin >> n;
+    vector<int> a(n), b(n), c(n);
+
     for (int i = 0; i < n; i++)
     {
-        cout << n - i << " ";
+        cin >> a[i];
     }
-    cout << n << " ";
-    for (int i = 0; i < n - 1; i++)
+    
+    for (int i = 0; i < n; i++)
     {
-        cout << i + 1 << " \n"[i == n - 2];
+        cin >> b[i];
     }
+    
+    for (int i = 0; i < n; i++)
+    {
+        cin >> c[i];
+    }
+    
+   
 }
 
 signed main()
