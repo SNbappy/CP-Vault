@@ -34,11 +34,40 @@ void Depressed_C0der()
     string s;
     cin >> n >> q >> s;
     vector<int> a(q);
-    for (int i = 0; i < q; i++)
+    int cnt = 0;
+    for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        if(s[i] == 'B')
+            cnt++;
     }
     
+    for (int i = 0; i < q; i++)
+    {
+        int x;
+        cin >> x;
+        int ct = 0;
+        int j = 0;
+        if(cnt == 0){
+            cout << x << "\n";
+            continue;
+        }
+        while (1)
+        {
+            if (x == 0)
+                break;
+            if (s[j] == 'A')
+            {
+                x -= 1;
+            }
+            else
+                x /= 2;
+            ct++;
+            j++;
+            j %= n;
+        }
+        cout << ct << "\n";
+    }
+    // cout << cnt << "\n";
 }
 
 signed main()
