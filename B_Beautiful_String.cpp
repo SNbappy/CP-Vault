@@ -34,7 +34,17 @@ void Depressed_C0der()
     cin >> n;
     string s;
     cin >> s;
-    
+    vector<int> st;
+    for (int i = 0; i < n; i++)
+    {
+        if(s[i] == '1')
+            st.push_back(i + 1);
+    }
+    cout << st.size() << "\n";
+    for(auto x: st){
+        cout << x << " ";
+    }
+    cout << "\n";
 }
 
 signed main()
