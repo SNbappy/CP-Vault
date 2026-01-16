@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-01-15 18:11:16
+Created: 2026-01-15 18:34:57
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,66 +30,56 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n, k;
-    cin >> n >> k;
-    string s;
-    cin >> s;
-
-    if(k == n){
-        vector<char> ss(n, '-');
-        for(auto x: ss)
-            cout << x;
-        cout << "\n";
-        return;
-    }
-
-    int a = count(all(s), '0');
-    int b = count(all(s), '1');
-    int c = count(all(s), '2');
-
-    vector<char> st(n, '+');
-
-
-    for (int i = 0; i < a; i++)
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    map<int, int> mp;
+    for (int i = 0; i < n; i++)
     {
-        st[i] = '-';
+        cin >> a[i];
+        mp[a[i]]++;
     }
+    // int cnt = 1;
+    vector<int> b;
+    for (int i = 0; i < n; i++)
+    {
+        if(mp[i + 1] == 0){
+            b.push_back(i + 1);
+        }
+    }
+    sort(rall(b));
     int cnt = 0;
-    int ind = n;
-    // cout << ind << "\n";
+    for (int i = 0; i < n; i++)
+    {
+        if(a[i] == 0){
+            a[i] = b[cnt];
+            cnt++;
+        }
+    }
+
+    auto c = a;
+    sort(all(c));
+    int l = 0, h = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if(a[i] != c[i]){
+            l = i;
+            break;
+        }
+    }
+    
     for (int i = n - 1; i >= 0; i--)
     {
-        cnt++;
-        if (cnt == b + 1)
+        if(a[i] != c[i]){
+            h = i;
             break;
-        st[i] = '-';
-        ind = i;
+        }
     }
-    cnt = 0;
-    for (int i = a; i < n; i++)
-    {
-        cnt++;
-        if (cnt == c + 1)
-            break;
-        if (st[i] != '-')
-            st[i] = '?';
-        // cout << i << " ";
-    }
-    // cout << "\n";
-    cnt = 0;
-    for (int i = ind - 1; i >= 0; i--)
-    {
-        cnt++;
-        if (cnt == c + 1)
-            break;
-        else if (st[i] != '-')
-            st[i] = '?';
-        // cout << i << " ";
-    }
-    // cout << "\n";
-    for (auto x : st)
-        cout << x;
-    cout << "\n";
+    
+    if(l == h)
+        cout << 0 << "\n";
+    else
+        cout << h - l + 1 << "\n";
 }
 
 signed main()
