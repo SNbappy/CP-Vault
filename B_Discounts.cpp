@@ -43,7 +43,7 @@ void Depressed_C0der()
         cin >> b[i];
     }
 
-    sort(all(a));
+    sort(rall(a));
     sort(all(b));
 
     
