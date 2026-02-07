@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-01-24 12:31:04
+Created: 2026-02-07 17:17:27
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -28,8 +28,18 @@ using namespace std;
 #define debug(...)
 #endif
 
-void Depressed_C0der() {
-    
+void Depressed_C0der()
+{
+    int n, a, b;
+    cin >> n >> a >> b;
+    string s;
+    cin >> s;
+    if(b >= 0){
+        cout << a * n + b*n << "\n";
+        return;
+    }
+    int m = unique(all(s)) - s.begin();
+    cout << n * a + max(b * n, ((m / 2) + 1) * b) << "\n";
 }
 
 signed main()

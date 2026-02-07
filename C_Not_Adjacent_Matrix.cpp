@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-01-24 12:31:04
+Created: 2026-02-07 20:59:23
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -28,7 +28,48 @@ using namespace std;
 #define debug(...)
 #endif
 
-void Depressed_C0der() {
+void Depressed_C0der()
+{
+    int n;
+    cin >> n;
+    int cnt = 1;
+    if(n == 2){
+        cout << -1 << "\n";
+        return;
+    }
+    vector<vector<int>> a((n + 1), vector<int>(n + 1));
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= n; j++)
+        {
+            if ((i + j) % 2 == 0)
+            {
+                a[i][j] = cnt;
+                cnt++;
+            }
+        }
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= n; j++)
+        {
+            if ((i + j) % 2 != 0)
+            {
+                a[i][j] = cnt;
+                cnt++;
+            }
+        }
+    }
+
+    for (int i = 1; i <= n; i++)
+    {
+        for (int j = 1; j <= n; j++)
+        {
+            cout << a[i][j] << " ";
+        }
+        cout << "\n";
+    }
     
 }
 
