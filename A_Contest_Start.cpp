@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-02-08 09:55:22
+Created: 2026-02-08 15:57:49
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,38 +30,20 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    string s, st;
-    cin >> s >> st;
-
-    int n = s.size();
-    int m = st.size();
-
-    int xx = lcm(n, m);
-
-    string ss = "";
-    int aa = xx / n;
-    for (int i = 0; i < aa; i++)
-    {
-        ss += s;
+    int n, x, tt;
+    cin >> n >> x >> tt;
+    int xx = tt / x;
+    if(xx > n){
+        cout << n * (n - 1) / 2 << "\n";
     }
-
-    string stt = "";
-    int repeat_st = xx / m;
-    for (int i = 0; i < repeat_st; i++)
-    {
-        stt += st;
-    }
-
-    if (ss == stt)
-    {
-        cout << ss << "\n";
-    }
-    else
-    {
-        cout << -1 << "\n";
+    else{
+        int ans = 0;
+        ans += (n - xx) * xx;
+        ans += (xx * (xx - 1)) / 2;
+        cout << ans << "\n";
     }
 }
- 
+
 signed main()
 {
     ios_base::sync_with_stdio(0);
