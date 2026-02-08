@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-02-07 22:04:11
+Created: 2026-02-07 22:25:11
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -37,13 +37,13 @@ void Depressed_C0der()
     {
         cin >> a[i];
     }
-    int y = *min_element(all(a));
-    sort(rall(a));
-    for (int i = 0; i < n/2; i++)
+    sort(all(a));
+    int ans = a[0];
+    for (int i = 0; i < n - 1; i++)
     {
-        cout << a[i] << " " << y << "\n";
+        ans = max(ans, a[i + 1] - a[i]);
     }
-    
+    cout << ans << "\n";
 }
 
 signed main()
