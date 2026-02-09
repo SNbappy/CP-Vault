@@ -30,7 +30,25 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    deque<int> dq;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    dq.push_back(a[0]);
+    for (int i = 1; i < n; i++)
+    {
+        if (*dq.begin() > a[i])
+            dq.push_front(a[i]);
+        else
+            dq.push_back(a[i]);
+    }
+    for (auto x : dq)
+        cout << x << " ";
+    cout << "\n";
 }
 
 signed main()
