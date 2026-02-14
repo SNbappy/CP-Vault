@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-02-09 09:44:16
+Created: 2026-02-13 20:36:57
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -32,36 +32,43 @@ void Depressed_C0der()
 {
     int n;
     cin >> n;
-    vector<char> c;
-    for (int i = 0; i < n; i++)
-    {
-        char ch;
-        cin >> ch;
-        c.push_back(ch);
-    }
-    auto x = c;
-    sort(all(x));
-    if (x == c)
-    {
-        cout << 0 << "\n";
-        return;
-    }
+    int x = 1 + n;
 
-    vector<int> idx;
-    for (int i = 0; i < n; i++)
+    while (1)
     {
-        if(x[i] != c[i]){
-            idx.push_back(i + 1);
+        bool ok = true;
+        for (int i = 2; i * i <= x; i++)
+        {
+            if (x % i == 0)
+            {
+                x++;
+                ok = false;
+                break;
+            }
         }
+        if (ok)
+            break;
     }
     
+    int y = x + n;
 
-    sort(all(idx));
-    cout << 1 << "\n";
-    cout << idx.size() << " ";
-    for (auto x : idx)
-        cout << x << " ";
-    cout << "\n";
+    while (1)
+    {
+        bool ok = true;
+        for (int i = 2; i * i <= y; i++)
+        {
+            if (y % i == 0)
+            {
+                y++;
+                ok = false;
+                break;
+            }
+        }
+        if (ok)
+            break;
+    }
+
+    cout << x * y << "\n";
 }
 
 signed main()
