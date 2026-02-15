@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-02-15 13:39:08
+Created: 2026-02-15 13:44:05
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,43 +30,30 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n;
-    cin >> n;
     string s;
     cin >> s;
-    vector<int> id;
-    for (int i = 0; i < n; i++)
+    if (s.size() % 2 != 0 || s[0] == ')' || s[s.size() - 1] == '(')
     {
-        if(s[i] == '2')
-            id.push_back(i);
-    }
-
-    int k = id.size();
-
-    if(k == 2 || k == 1){
         cout << "NO" << "\n";
         return;
     }
 
-    vector<string> t(n, string(n, '='));
-    for (int i = 0; i < n; i++)
+    int l = 0, r = 0, q = 0;
+    for (int i = 0; i < s.size(); i++)
     {
-        t[i][i] = 'X';
-    }
-    
-    for (int i = 0; i < k; i++)
-    {
-        int x = id[i];
-        int y = id[(i + 1) % k];
-        t[x][y] = '+';
-        t[y][x] = '-';
+        if (s[i] == '(')
+            l++;
+        else if (s[i] == ')')
+            r++;
+        else
+            q++;
+        if (l + q < r)
+        {
+            cout << "NO" << "\n";
+            return;
+        }
     }
     cout << "YES" << "\n";
-    for (int i = 0; i < n; i++)
-    {
-        cout << t[i] << "\n";
-    }
-    
 }
 
 signed main()
