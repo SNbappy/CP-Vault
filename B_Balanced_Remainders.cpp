@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-02-16 09:57:17
+Created: 2026-02-16 10:25:27
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -33,25 +33,11 @@ void Depressed_C0der()
     int n;
     cin >> n;
     vector<int> a(n);
-    int mxa = 0, mxb = 0;
-    int ans = 0;
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
-        ans += a[i];
-        mxa = max(ans, mxa);
     }
-    int m;
-    cin >> m;
-    vector<int> b(m);
-    ans = 0;
-    for (int i = 0; i < m; i++)
-    {
-        cin >> b[i];
-        ans += b[i];
-        mxb = max(ans, mxb);
-    }
-    cout << mxa + mxb << "\n";
+    
 }
 
 signed main()
