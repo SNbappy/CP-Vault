@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-02-16 10:25:27
+Created: 2026-02-18 15:04:57
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -33,11 +33,33 @@ void Depressed_C0der()
     int n;
     cin >> n;
     vector<int> a(n);
+    map<int, int> mp;
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
+        mp[a[i] % 3]++;
     }
-    
+    vector<int> cnt(3);
+    cnt[0] = mp[0];
+    cnt[1] = mp[1];
+    cnt[2] = mp[2];
+
+    int z = n / 3;
+    int ans = 0;
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if(cnt[j] > z){
+                int d = cnt[j] - z;
+                cnt[j] -= d;
+                cnt[(j + 1) % 3] += d;
+                ans += d;
+            }
+        }
+        
+    }
+    cout << ans << "\n";
 }
 
 signed main()
