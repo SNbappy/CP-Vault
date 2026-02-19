@@ -41,11 +41,21 @@ void Depressed_C0der()
     sort(all(a));
     if (n % 2 == 1)
     {
-        
+        cout << n / 2 << "\n";
+        for (int i = 0; i < n / 2; i++)
+        {
+            cout << a[n - i - 1] << " " << a[i] << " ";
+        }
+        cout << a[n / 2] << "\n";
     }
     else
     {
         cout << n / 2 - 1 << "\n";
+        for (int i = 0; i < n/2; i++)
+        {
+            cout << a[n - i - 1] << " " << a[i] << " ";
+        }
+        cout << "\n";
     }
 }
 
