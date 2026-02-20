@@ -32,7 +32,20 @@ void Depressed_C0der()
 {
     int n;
     cin >> n;
-    
+    cout << 2 << "\n";
+    vector<int> a(n);
+    for (int i = 1; i <= n; i++)
+    {
+        a[i - 1] = i;
+    }
+
+    sort(rall(a));
+
+    for (int i = 0; i < n - 1; i++)
+    {
+        cout << a[i] << " " << a[i + 1] << "\n";
+        a[i + 1] = (a[i] + a[i + 1] + 1) / 2;
+    }
 }
 
 signed main()
