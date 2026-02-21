@@ -30,7 +30,25 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    g
+    int n, m, k;
+    cin >> n >> m >> k;
+    int x = n / k;
+    if (m == 0)
+    {
+        cout << 0 << "\n";
+        return;
+    }
+    if (m <= x)
+    {
+        cout << m << "\n";
+        return;
+    }
+    m -= x;
+    --k;
+    int xx = m / k;
+    if (m % k != 0)
+        ++xx;
+    cout << x - xx << "\n";
 }
 
 signed main()
