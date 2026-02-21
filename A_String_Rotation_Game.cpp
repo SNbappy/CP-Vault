@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-02-21 14:51:38
+Created: 2026-02-21 21:25:46
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -32,7 +32,28 @@ void Depressed_C0der()
 {
     int n;
     cin >> n;
-    
+    deque<char> d;
+    for (int i = 0; i < n; i++)
+    {
+        char c;
+        cin >> c;
+        d.push_back(c);
+    }
+    int mx = 1;
+    for (int i = 0; i < n; i++)
+    {
+        int cnt = 1;
+        for (int i = 0; i < n - 1; i++)
+        {
+            if (d[i] != d[i + 1])
+                cnt++;
+        }
+        mx = max(cnt, mx);
+        char temp = d.back();
+        d.pop_back();
+        d.push_front(temp);
+    }
+    cout << mx << "\n";
 }
 
 signed main()
