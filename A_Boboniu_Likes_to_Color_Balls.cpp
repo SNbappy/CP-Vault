@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-02-21 11:55:21
+Created: 2026-02-21 14:23:12
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,16 +30,50 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
-    if(a < c)
-        cout << 1 << " ";
-    else
-        cout << -1 << " ";
-    if (c < a * b)
-        cout << b << "\n";
-    else
-        cout << -1 << "\n";
+    int r, b, g, w;
+    cin >> r >> g >> b >> w;
+    int cnt = 0;
+    if (r & 1)
+        cnt++;
+    if (b & 1)
+        cnt++;
+    if (g & 1)
+        cnt++;
+    if (w & 1)
+        cnt++;
+
+    if (cnt <= 1)
+    {
+        cout << "Yes" << "\n";
+        return;
+    }
+    if (r <= 0 || g <= 0 || b <= 0)
+    {
+        cout << "No" << "\n";
+        return;
+    }
+
+    --r;
+    --b;
+    --g;
+    w += 3;
+    cnt = 0;
+    if (r & 1)
+        cnt++;
+    if (b & 1)
+        cnt++;
+    if (g & 1)
+        cnt++;
+    if (w & 1)
+        cnt++;
+
+    if (cnt <= 1)
+    {
+        cout << "Yes" << "\n";
+        return;
+    }
+
+    cout << "No" << "\n";
 }
 
 signed main()
