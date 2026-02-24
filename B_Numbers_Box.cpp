@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-02-21 22:06:16
+Created: 2026-02-24 21:45:37
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,15 +30,32 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n, h, k;
-    cin >> n >> h >> k;
-    vector<int> a(n);
+    int n, m;
+    cin >> n >> m;
+    vector<vector<int>> v(n, vector<int>(m));
+    int sum = 0;
+    int cnt = 0;
+    int mn = LLONG_MAX;
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        for (int j = 0; j < m; j++)
+        {
+            cin >> v[i][j];
+            if (v[i][j] < 0)
+            {
+                cnt++;
+            }
+            sum += abs(v[i][j]);
+            mn = min(abs(v[i][j]), mn);
+        }
     }
-    
-    
+
+    if (cnt % 2 == 0)
+    {
+        cout << sum << "\n";
+        return;
+    }
+    cout << sum - 2 * mn << "\n";
 }
 
 signed main()
