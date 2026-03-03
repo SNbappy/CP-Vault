@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-02-27 14:00:43
+Created: 2026-02-27 20:35:42
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -32,60 +32,16 @@ void Depressed_C0der()
 {
     int n;
     cin >> n;
-
-    vector<int> a(n), b(n), c(n);
-
+    vector<int> a(n);
+    map<int, int> mp;
+    int mx = LLONG_MIN;
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
+        mx = max(mx, a[i]);
+        mp[a[i]]++;
     }
-
-    for (int i = 0; i < n; i++)
-    {
-        cin >> b[i];
-    }
-
-    for (int i = 0; i < n; i++)
-    {
-        cin >> c[i];
-    }
-
-    // sort(all(a));
-    // sort(all(b));
-    // sort(all(c));
-
-    int cnt = 0;
-
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            for (int k = 0; k < n; k++)
-            {
-                if (a[i] < b[j] and b[j] < c[k])
-                {
-                    // cout << a[i] << " " << b[j] << " " << c[k] << '\n';
-                    cnt++;
-                }
-            }
-        }
-    }
-
-    // {
-    //     if (a[i] < b[j])
-    //     {
-    //         if (b[j] < c[k])
-    //         {
-    //             cnt += (n - k - 1);
-    //         }
-    //         else
-    //             k++;
-    //     }
-    //     else
-    //         j++;
-    //     i++;
-    // }
-    cout << cnt << "\n";
+    cout << mp[mx] << "\n";
 }
 
 signed main()

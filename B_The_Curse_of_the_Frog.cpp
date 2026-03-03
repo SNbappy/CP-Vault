@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-02-27 14:00:43
+Created: 2026-03-03 21:28:22
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,62 +30,35 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n;
-    cin >> n;
-
+    int n, x;
+    cin >> n >> x;
     vector<int> a(n), b(n), c(n);
 
+    int mx = LLONG_MIN;
+    int xx = 0;
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i];
+        cin >> a[i] >> b[i] >> c[i];
+        mx = max(mx, a[i] * b[i] - c[i]);
+        xx += (a[i] * (b[i] - 1));
     }
 
-    for (int i = 0; i < n; i++)
-    {
-        cin >> b[i];
+    x -= xx;
+
+    if(x <= 0) {
+        cout << 0 << "\n";
+        return;
     }
 
-    for (int i = 0; i < n; i++)
-    {
-        cin >> c[i];
+    if(mx <= 0) {
+        cout << -1 << "\n";
     }
-
-    // sort(all(a));
-    // sort(all(b));
-    // sort(all(c));
-
-    int cnt = 0;
-
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < n; j++)
-        {
-            for (int k = 0; k < n; k++)
-            {
-                if (a[i] < b[j] and b[j] < c[k])
-                {
-                    // cout << a[i] << " " << b[j] << " " << c[k] << '\n';
-                    cnt++;
-                }
-            }
-        }
+    else {
+        int ans = x / mx;
+        if(x % mx != 0)
+            ++ans;
+        cout << ans << "\n";
     }
-
-    // {
-    //     if (a[i] < b[j])
-    //     {
-    //         if (b[j] < c[k])
-    //         {
-    //             cnt += (n - k - 1);
-    //         }
-    //         else
-    //             k++;
-    //     }
-    //     else
-    //         j++;
-    //     i++;
-    // }
-    cout << cnt << "\n";
 }
 
 signed main()
