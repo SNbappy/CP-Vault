@@ -32,18 +32,78 @@ void Depressed_C0der()
 {
     string s, tt;
     cin >> s >> tt;
-    map<char, int> mp, st;
-    for (int i = 0; i < tt.size(); i++)
-    {
-        mp[tt[i]]++;
-    }
+
+    map<char, int> mp;
 
     for (int i = 0; i < s.size(); i++)
     {
-        st[tt[i]]++;
+        mp[s[i]]++;
     }
-    
-    
+
+    string st = "";
+
+    for (int i = 0; i < tt.size(); i++)
+    {
+        if (mp[tt[i]] > 0)
+        {
+            mp[tt[i]]--;
+        }
+        else
+            st += tt[i];
+    }
+
+    sort(all(st));
+
+    int j = 0, k = 0;
+    string ans = "";
+    int next_diff = 0;
+    while (j < s.size() || k < st.size())
+    {
+        if (j == s.size())
+        {
+            ans += st[k++];
+        }
+        else if (k == st.size())
+        {
+            ans += s[j++];
+        }
+        else if (s[j] < st[k])
+        {
+            ans += s[j++];
+        }
+        else if (st[k] < s[j])
+        {
+            ans += st[k++];
+        }
+        else
+        {
+            if (next_diff <= j)
+            {
+                next_diff = j;
+                while (next_diff < s.size() && s[next_diff] == s[j])
+                {
+                    next_diff++;
+                }
+            }
+
+            if (next_diff < s.size() && s[next_diff] < s[j])
+            {
+                ans += s[j++];
+            }
+            else
+            {
+                ans += st[k++];
+            }
+        }
+    }
+
+    auto xxx = ans;
+    sort(all(xxx));
+    sort(all(tt));
+    if(xxx == tt)
+    cout << ans << "\n";
+    else
+        cout << "Impossible" << "\n";
 }
 
 signed main()
