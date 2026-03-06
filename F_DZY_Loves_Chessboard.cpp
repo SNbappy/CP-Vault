@@ -30,7 +30,56 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    
+    int n, m;
+    cin >> n >> m;
+    vector<vector<char>> a(n, vector<char>(m));
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < m; j++)
+        {
+            char c;
+            cin >> c;
+            if (i % 2 == 0)
+            {
+                if (c != '-')
+                {
+                    if (j % 2 == 0)
+                    {
+                        a[i][j] = 'B';
+                    }
+                    else
+                    {
+                        a[i][j] = 'W';
+                    }
+                }
+                else
+                    a[i][j] = '-';
+            }
+            else
+            {
+                if (c != '-')
+                {
+                    if (j % 2 == 0)
+                    {
+                        a[i][j] = 'W';
+                    }
+                    else
+                    {
+                        a[i][j] = 'B';
+                    }
+                }
+                else
+                    a[i][j] = '-';
+            }
+        }
+    }
+
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cout << a[i][j];
+        }
+        cout << '\n';
+    }
 }
 
 signed main()
@@ -40,7 +89,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
