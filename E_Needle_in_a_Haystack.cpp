@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-03-06 14:31:36
+Created: 2026-03-06 19:07:27
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,14 +30,17 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n;
-    cin >> n;
-
-    vector<int> a(n);
-
-    for (int i = 0; i < n; i++)
+    string s, tt;
+    cin >> s >> tt;
+    map<char, int> mp, st;
+    for (int i = 0; i < tt.size(); i++)
     {
-        cin >> a[i];
+        mp[tt[i]]++;
+    }
+
+    for (int i = 0; i < s.size(); i++)
+    {
+        st[tt[i]]++;
     }
     
     
