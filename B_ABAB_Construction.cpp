@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-02-23 21:03:10
+Created: 2026-03-07 13:28:51
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,36 +34,43 @@ void Depressed_C0der()
     cin >> n;
     string s;
     cin >> s;
-    deque<char> d;
-    for (int i = 0; i < n; i++)
-    {
-        if(i % 2 == 0)
-            d.push_back('a');
+
+    deque<char> st;
+    
+    for (int i = 0; i < n; i++) {
+        if(i % 2)
+            st.push_back('b');
         else
-            d.push_back('b');
+            st.push_back('a');
     }
 
-    int cnta = 0, cntb = 0, cntq = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (s[i] == 'a')
-            cnta++;
-        else if (s[i] == 'b')
-            cntb++;
-        else
-            cntq++;
-    }
+    int i = 0;
     
-    if(n % 2 == 0) {
-        if (cnta + cntq >= cntb and cntb + cntq >= cnta){
-            if(s[0] )
+    while (!st.empty()) {
+        if (s[i] == *st.begin()) {
+            st.pop_front();
+            i++;
         }
-        else
-        {
-            cout << "NO" << "\n";
+        else if (s[i] == *st.rbegin()) {
+            st.pop_back();
+            i++;
+        }
+        else if (s[i] == '?') {
+            if(i < n - 1 and s[i + 1] == *st.begin()) {
+                st.pop_back();
+                i++;
+            }
+            else {
+                st.pop_front();
+                i++;
+            }
+        }
+        else {
+            cout << "NO" << '\n';
             return;
         }
     }
+    cout << "YES" << '\n';
 }
 
 signed main()
