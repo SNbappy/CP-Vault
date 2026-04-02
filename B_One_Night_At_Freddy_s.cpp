@@ -38,22 +38,24 @@ void Depressed_C0der()
         cin >> a[i];
 
     vector<int> lvls(m, 0);
+
     int curr = n;
 
     for (int i = 0; i < l; i++)
     {
         lvls[min(m, curr + 1) - 1]++;
 
-        sort(lvls.rbegin(), lvls.rend());
+        sort(rall(lvls));
 
         if (curr > 0 && a[n - curr] - 1 == i)
         {
             lvls[0] = 0;
-            sort(lvls.rbegin(), lvls.rend());
+
+            sort(rall(lvls));
+
             curr--;
         }
     }
-
     cout << lvls[0] << '\n';
 }
 
