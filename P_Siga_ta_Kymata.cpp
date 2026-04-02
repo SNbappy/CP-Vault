@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-03-08 20:41:41
+Created: 2026-03-17 10:16:11
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,31 +30,57 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n, m, l;
-    cin >> n >> m >> l;
-
+    int n;
+    cin >> n;
     vector<int> a(n);
     for (int i = 0; i < n; i++)
-        cin >> a[i];
-
-    vector<int> lvls(m, 0);
-    int curr = n;
-
-    for (int i = 0; i < l; i++)
     {
-        lvls[min(m, curr + 1) - 1]++;
+        cin >> a[i];
+    }
 
-        sort(lvls.rbegin(), lvls.rend());
-
-        if (curr > 0 && a[n - curr] - 1 == i)
+    string x;
+    cin >> x;
+    map<int, int> mp;
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (a[i] < a[i + 1])
         {
-            lvls[0] = 0;
-            sort(lvls.rbegin(), lvls.rend());
-            curr--;
+            mp[a[i]]++;
+            mp[a[i + 1]]++;
         }
     }
 
-    cout << lvls[0] << '\n';
+    vector<pair<int, int>> v;
+    for (int i = 0; i < n - 1; i++)
+    {
+        if (x[i] == '1')
+        {
+            if (a[i] < a[i + 1])
+                v.emplace_back(i + 1, i + 2);
+            else if (i != 0 and a[i] > a[i - 1])
+                v.emplace_back(i, i + 1);
+            else if (i != 0 and a[i] > a[i + 1] and a[i] < a[i - 1])
+                v.emplace_back(i, i + 2-);
+                x[i] = '0';
+        }
+    }
+    for (auto y : x)
+        cout << y;
+    cout << '\n';
+    for (int i = 0; i < n; i++)
+    {
+        if (x[i] == '1')
+        {
+            cout << -1 << '\n';
+            return;
+        }
+    }
+
+    cout << v.size() << '\n';
+    for (auto [x, y] : v)
+    {
+        cout << x << ' ' << y << '\n';
+    }
 }
 
 signed main()

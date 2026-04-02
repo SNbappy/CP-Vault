@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-03-08 20:41:41
+Created: 2026-03-21 20:35:35
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,31 +30,14 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n, m, l;
-    cin >> n >> m >> l;
-
+    int n, c, k;
+    cin >> n >> c >> k;
     vector<int> a(n);
     for (int i = 0; i < n; i++)
-        cin >> a[i];
-
-    vector<int> lvls(m, 0);
-    int curr = n;
-
-    for (int i = 0; i < l; i++)
     {
-        lvls[min(m, curr + 1) - 1]++;
-
-        sort(lvls.rbegin(), lvls.rend());
-
-        if (curr > 0 && a[n - curr] - 1 == i)
-        {
-            lvls[0] = 0;
-            sort(lvls.rbegin(), lvls.rend());
-            curr--;
-        }
+        cin >> a[i];
     }
-
-    cout << lvls[0] << '\n';
+    
 }
 
 signed main()
