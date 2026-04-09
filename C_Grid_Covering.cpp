@@ -32,12 +32,25 @@ void Depressed_C0der()
 {
     int n, m, a, b;
     cin >> n >> m >> a >> b;
-    int x = n % a;
-    int y = m % b;
-    if (x % 2 == 0 || y % 2 == 0)
+    if (gcd(n, a) != 1)
+    {
         cout << "NO" << '\n';
-    else
+        return;
+    }
+
+    if (gcd(m, b) != 1)
+    {
+        cout << "NO" << '\n';
+        return;
+    }
+
+    if (gcd(n, m) <= 2)
+    {
         cout << "YES" << '\n';
+        return;
+    }
+
+    cout << "NO" << '\n';
 }
 
 signed main()
