@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-04-09 08:59:41
+Created: 2026-04-10 11:45:02
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -32,30 +32,24 @@ void Depressed_C0der()
 {
     int n;
     cin >> n;
-    vector<int> a(n), b(n);
+    vector<int> a(n);
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
     }
+    int mx = *max_element(all(a));
+    mx++;
     for (int i = 0; i < n; i++)
     {
-        cin >> b[i];
+        int cnt = 0;
+        for (int j = i + 1; j < n; j++)
+        {
+            if ((abs(a[i] - mx) > abs(a[j] - mx)) or (abs(a[i] + mx) > abs(a[j] + mx)))
+                cnt++;
+        }
+        cout << cnt << ' ';
     }
-    int cnt = 0;
-    for (int i = 1; i < n - 1; i++)
-    {
-        int x = lcm(gcd(a[i], a[i - 1]), gcd(a[i], a[i + 1]));
-        if (x < a[i])
-            cnt++;
-    }
-    int x = gcd(a[0], a[1]);
-    if (x < a[0])
-        cnt++;
-    x = gcd(a[n - 2], a[n - 1]);
-    if (x < a[n - 1])
-        cnt++;
-
-    cout << cnt << '\n';
+    cout << '\n';
 }
 
 signed main()

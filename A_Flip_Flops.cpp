@@ -37,7 +37,28 @@ void Depressed_C0der()
     {
         cin >> a[i];
     }
-    
+    sort(all(a));
+    for (int i = 0; i < n; i++)
+    {
+        if(k == 0)
+            break;
+        if(a[i] > c)
+            break;
+        int x = min(k, c - a[i]);
+        if (x < 0)
+            break;
+        a[i] += x;
+        k -= x;
+    }
+    sort(all(a));
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] <= c)
+            c += a[i];
+        else
+            break;
+    }
+    cout << c << '\n';
 }
 
 signed main()
