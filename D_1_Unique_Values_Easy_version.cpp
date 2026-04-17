@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-04-17 10:51:15
+Created: 2026-04-17 12:20:46
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -28,23 +28,9 @@ using namespace std;
 #define debug(...)
 #endif
 
-void Depressed_C0der() 
+void Depressed_C0der()
 {
-    int p, q;
-    cin >> p >> q;
-    int s = p + 2 * q;
-    for (int i = 1; i <= sqrt(s); i++)
-    {
-        int x = s - i;
-        int y = 2 * i + 1;
-        if (x % y == 0) {
-            if (abs(x/y - i) <= p) {
-                cout << i << ' ' << x / y << '\n';
-                return;
-            }
-        }
-    }
-    cout << -1 << '\n';
+    
 }
 
 signed main()
