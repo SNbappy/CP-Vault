@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-04-17 12:20:46
+Created: 2026-04-17 14:28:32
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -28,9 +28,83 @@ using namespace std;
 #define debug(...)
 #endif
 
+int ask (vector<int> v) {
+    cout << "? ";
+    cout << v.size() << endl;
+    for (auto x: v)
+        cout << x << ' ';
+    cout << endl;
+
+    int x;
+    cin >> x;
+    return x;
+}
+
 void Depressed_C0der()
 {
-    
+    int n;
+    cin >> n;
+    int last = -1;
+    int l = 3, h = 2 * n + 1;
+    while(l <= h) {
+        int mid = (l + h) / 2;
+        vector<int> v;
+        for (int i = 1; i <= mid; i++)
+        {
+            v.push_back(i);
+        }
+        int ans = ask(v);
+        if ((v.size() - ans) % 2 == 1) {
+            last = mid;
+            h = mid - 1;
+        }
+        else
+            l = mid + 1;
+    }
+
+    int first = -1;
+    l = 1, h = last - 2;
+
+    while(l <= h) {
+        int mid = (l + h) / 2;
+        vector<int> v;
+        //
+        for (int i = mid; i <= last; i++)
+        {
+            v.push_back(i);
+        }
+        int ans = ask(v);
+        if ((v.size() - ans) % 2 == 1) {
+            first = mid;
+            l = mid + 1;
+        }
+        else
+            h = mid - 1;
+    }
+
+    int middle = -1;
+    l = first, h = last - 1;
+
+    while (l <= h)
+    {
+        int mid = (l + h) / 2;
+        vector<int> v;
+        for (int i = first; i <= mid; i++)
+        {
+            v.push_back(i);
+        }
+        v.push_back(last);
+        int ans = ask(v);
+        if ((v.size() - ans) % 2 == 1)
+        {
+            middle = mid;
+            h = mid - 1;
+        }
+        else
+            l = mid + 1;
+    }
+
+    cout << "! " << first << " " << middle << " " << last << endl;
 }
 
 signed main()
