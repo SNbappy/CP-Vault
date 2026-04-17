@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-04-17 18:25:31
+Created: 2026-04-17 19:03:29
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,7 +30,59 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    
+    int n, k;
+    cin >> n >> k;
+    vector<int> a(n + 1), b(n + 1);
+    for (int i = 1; i <= n; i++)
+    {
+        cin >> a[i];
+    }
+    for (int i = 1; i <= n; i++)
+        cin >> b[i];
+
+    bool ok = true;
+    int l = n - k + 1;
+    int r = k;
+    if (l <= r)
+    {
+        vector<bool> x(n + 1, false), y(n + 1, false);
+        for (int i = l; i <= r; i++)
+        {
+            x[a[i]] = true;
+        }
+
+        for (int i = 1; i <= n; i++)
+        {
+            if (i < l || i > r)
+            {
+                if (b[i] != -1 and b[i] != a[i])
+                    ok = false;
+            }
+            else
+            {
+                if (b[i] != -1)
+                {
+                    if (b[i] < 1 || b[i] > n || !x[b[i]] || y[b[i]])
+                        ok = false;
+                    else
+                        y[b[i]] = true;
+                }
+            }
+        }
+    }
+    else
+    {
+        for (int i = 1; i <= n; i++)
+        {
+            if (b[i] != -1 and b[i] != a[i])
+                ok = false;
+        }
+    }
+
+    if (ok)
+        cout << "YES\n";
+    else
+        cout << "NO\n";
 }
 
 signed main()
