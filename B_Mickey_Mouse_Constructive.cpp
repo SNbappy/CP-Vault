@@ -28,11 +28,36 @@ using namespace std;
 #define debug(...)
 #endif
 
+const int MOD = 676767677;
+
 void Depressed_C0der()
 {
     int x, y;
     cin >> x >> y;
-    
+    int sum = 0;
+    int xx = abs(x - y);
+    for (int i = 1; i <= sqrt(xx); i++)
+    {
+        if (xx % i == 0){
+            ++sum;
+            if (xx / i != i)
+                ++sum;
+        }
+    }
+    sum %= MOD;
+    cout << max(sum, 1LL) << '\n';
+    for (int i = 0; i < x; i++)
+    {
+        cout << 1 << ' ';
+       
+    }
+
+    for (int i = 0; i < y; i++)
+    {
+        cout << -1 << ' ';
+    }
+
+    cout << '\n';
 }
 
 signed main()
