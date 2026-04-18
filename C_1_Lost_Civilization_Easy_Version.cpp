@@ -33,11 +33,22 @@ void Depressed_C0der()
     int n;
     cin >> n;
     vector<int> a(n);
-    for (int i = 0; i < n; i++)
-    {
+    for (int i = 0; i < n; i++) {
         cin >> a[i];
     }
-    
+
+    vector<int> st;
+    int ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+        while (!st.empty() and st.back() + 1 != a[i]) {
+            st.pop_back();
+        }
+        if (st.empty())
+            ans++;
+        st.push_back(a[i]);
+    }
+    cout << ans << '\n';
 }
 
 signed main()
