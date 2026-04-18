@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-04-18 09:56:49
+Created: 2026-04-18 10:31:21
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,49 +30,14 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n, h;
-    cin >> n >> h;
-
+    int n;
+    cin >> n;
     vector<int> a(n);
-
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
     }
-
-    vector<int> sum(n);
-
-    for (int i = 0; i < n; i++)
-    {
-        int mx = a[i];
-        sum[i] = h - a[i];
-        for (int j = i + 1; j < n; j++)
-        {
-            mx = max(mx, a[j]);
-            sum[i] += h - mx;
-        }
-        mx = a[i];
-        for (int j = i - 1; j >= 0; j--) 
-        {
-            mx = max(mx, a[j]);
-            sum[i] += h - mx;
-        }
-    }
-    // for (auto x: sum)
-    //     cout << x << ' ';
-    // cout << '\n';
-    int ans = 0;
-    for (int i = 0; i < n; i++)
-    {
-        int mx = a[i], idx = i;
-        for (int j = i; j < n; j++)
-        {
-            if (a[j] > mx)
-                mx = a[j], idx = j;
-            ans = max(ans, sum[i] + sum[j] - sum[idx]);
-        }
-    }
-    cout << ans << '\n';
+    
 }
 
 signed main()
@@ -90,4 +55,4 @@ signed main()
         Depressed_C0der();
     }
     return 0;
-} 
+}
