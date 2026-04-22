@@ -36,18 +36,19 @@ void Depressed_C0der()
     while (n--) {
         int x;
         cin >> x;
-        vector<int> nibo;
+        vector<int> temp, nibo;
         set<int> s;
         while(x--) {
             int xx;
             cin >> xx;
-            if (!s.count(xx)) {
-                s.insert(xx);
-                nibo.push_back(xx);
-            }
+            temp.push_back(xx);
         }
-        reverse(all(nibo));
-        arr.insert(nibo);
+        for (int i = temp.size() - 1; i >= 0; i--)
+        {
+            if(!s.count(temp[i]))
+                s.insert(temp[i]), nibo.push_back(temp[i]);
+        }
+            arr.insert(nibo);
     }
 
     vector<int> ans;
