@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-04-20 11:28:06
+Created: 2026-04-21 20:38:30
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,45 +30,27 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n, k;
-    cin >> n >> k;
-    vector<int> a(n);
-    map<int, int> mp;
-    int xx = n - k + 1;
-    for (int i = 0; i < n; i++)
+    int x, y;
+    cin >> x >> y;
+    int xx = y - 1;
+    int cnt = 1;
+    while (true)
     {
-        cin >> a[i];
-        mp[a[i]]++;
-    }
-    if (n == k)
-    {
-        sort(all(a));
-        cout << a[n - 1] + 1 << "\n";
-        return;
-    }
-    int cnt = 0;
-    vector<int> x;
-    for (int i = 0; i < n; i++)
-    {
-        if (xx <= 0)
-            break;
-        if (mp[a[i]] > 1)
+        cnt++;
+        int xxx = x * cnt;
+
+        if (xxx < y)
         {
-            mp[a[i]]--;
-            xx--;
+            if (y % xxx != 0)
+            {
+                cout << "YES" << "\n";
+                return;
+            }
         }
         else
-            x.push_back(a[i]);
+            break;
     }
-
-    sort(all(x));
-
-    while (xx--)
-    {
-        x.pop_back();
-    }
-
-    cout << x[x.size() - 1] + 1 << "\n";
+    cout << "NO" << "\n";
 }
 
 signed main()
