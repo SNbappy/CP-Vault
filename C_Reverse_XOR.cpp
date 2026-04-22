@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-02-21 22:06:16
+Created: 2026-04-22 20:48:12
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,45 +30,27 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n, h, k;
-    cin >> n >> h >> k;
-    vector<pair<int, int>> a(n);
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i].first;
-        a[i].second = i;
+    int n;
+    cin >> n;
+    auto x = n;
+    string s = "";
+    while(x) {
+        int xx = x % 2;
+        if (xx == 1)
+            s += "1";
+        else
+            s += "0";
+        x /= 2;
     }
-    auto b = a;
-    sort(rall(b));
-    for (int i = 0; i < n; i++)
-    {
-        if (b[i] != a[i])
-        {
-            swap(a[i].first, a[b[i].second].first);
-            break;
-        }
-    }
-    // for (auto [x, y] : a)
-    // {
-    //     cout << x << ' ';
-    // }
-    // cout << "\n";
-    int cnt = 0;
+
     int ans = 0;
-    while (h > cnt)
+
+    for (int i = s.size() - 1; i >= 0; i--)
     {
-        for (int i = 0; i < n; i++)
-        {
-            cnt += a[i].first;
-            ++ans;
-            if(cnt >= h)
-                break;
-        }
-        if (cnt >= h)
-            break;
-        ans += k;
+        if (s[i] == '1')
+            ans += pow(2, i);
     }
-    cout << ans << "\n";
+    
 }
 
 signed main()

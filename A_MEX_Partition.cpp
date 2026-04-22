@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-02-21 22:06:16
+Created: 2026-04-22 20:27:45
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,45 +30,24 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n, h, k;
-    cin >> n >> h >> k;
-    vector<pair<int, int>> a(n);
+    int n;
+    cin >> n;
+    vector<int> v(n);
+    set<int> a;
     for (int i = 0; i < n; i++)
     {
-        cin >> a[i].first;
-        a[i].second = i;
+        cin >> v[i];
+        a.insert(v[i]);
     }
-    auto b = a;
-    sort(rall(b));
     for (int i = 0; i < n; i++)
     {
-        if (b[i] != a[i])
+        if (!a.count(i))
         {
-            swap(a[i].first, a[b[i].second].first);
-            break;
+            cout << i << '\n';
+            return;
         }
     }
-    // for (auto [x, y] : a)
-    // {
-    //     cout << x << ' ';
-    // }
-    // cout << "\n";
-    int cnt = 0;
-    int ans = 0;
-    while (h > cnt)
-    {
-        for (int i = 0; i < n; i++)
-        {
-            cnt += a[i].first;
-            ++ans;
-            if(cnt >= h)
-                break;
-        }
-        if (cnt >= h)
-            break;
-        ans += k;
-    }
-    cout << ans << "\n";
+    cout << n << "\n";
 }
 
 signed main()
