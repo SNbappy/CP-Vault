@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-04-21 21:16:06
+Created: 2026-04-23 11:06:43
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,74 +30,7 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n;
-    cin >> n;
-    string s1, s2;
-    cin >> s1 >> s2;
-    int R = 0, B = 0;
-    for (int i = 0; i < n; i++)
-    {
-        if (s1[i] == 'R')
-            R++;
-        else
-            B++;
-        if (s2[i] == 'R')
-            R++;
-        else
-            B++;
-    }
     
-    vector<pair<char, char>> v;
-    for (int i = 0; i < n; i++)
-    {
-        v.push_back({s1[i], s2[i]});
-    }
-    int cnt = 0;
-    map<int, int> mp, mt;
-    for (int i = 0; i < n; i++)
-    {
-        if (v[i].first == v[i].second and mt[i] == 0 and mp[i] == 0)
-        {
-            // cout << v[i].first << " " << v[i].second << "\n";
-            cnt += 2;
-            mp[i]++;
-            mt[i]++;
-        }
-        else if (i != 0 and v[i].first == v[i - 1].first and mp[i] == 0 and mp[i - 1] == 0)
-        {
-            // cout << v[i].first << " " << v[i - 1].first << "\n";
-            cnt += 2;
-            mp[i]++;
-            mp[i - 1]++;
-        }
-        else if (i != n - 1 and v[i].first == v[i + 1].first and mp[i] == 0 and mp[i + 1] == 0)
-        {
-            // cout << v[i].first << " " << v[i + 1].first << "\n";
-            cnt += 2;
-            mp[i]++;
-            mp[i + 1]++;
-        }
-    }
-
-    for (int i = 0; i < n; i++)
-    {
-        if (i != 0 and v[i].second == v[i - 1].second and mt[i] == 0 and mt[i - 1] == 0)
-        {
-            // cout << v[i].second << " " << v[i - 1].second << "\n";
-            cnt += 2;
-            mt[i]++;
-            mt[i - 1]++;
-        }
-        else if (i != n - 1 and v[i].second == v[i + 1].second and mt[i] == 0 and mt[i + 1] == 0)
-        {
-            // cout << v[i].second << " " << v[i + 1].second << "\n";
-            // cout << mt[i] << " " << mt[i + 1] << "\n";
-            cnt += 2;  
-            mt[i]++;
-            mt[i - 1]++;
-        }
-    }
-    cout << (2 * n - cnt) / 2 << "\n";
 }
 
 signed main()

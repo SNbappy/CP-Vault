@@ -32,23 +32,27 @@ void Depressed_C0der()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
+    vector<int> a(n), b;
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
     }
     int cnt = 1;
-    cout << 1 << " ";
+    b.push_back(1);
     for (int i = 1; i < n; i++)
     {
-        if (a[i] == a[i - 1])
-            cout << cnt << " ";
+        int ct = a[i] - a[i - 1];
+        if (ct > b.size()) {
+            ++cnt;
+            b.push_back(cnt);
+        }
         else
         {
-            ++cnt;
-            cout << cnt << " ";
+            b.push_back(b[b.size() - ct]);
         }
     }
+    for (auto x: b)
+        cout << x << " ";
     cout << "\n";
 }
 
