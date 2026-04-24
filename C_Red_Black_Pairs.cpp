@@ -30,7 +30,30 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    
+    int n;
+    cin >> n;
+    string a, b;
+    cin >> a >> b;
+    vector<int> dp(n, LLONG_MAX);
+    for (int i = 0; i < n; i++)
+    {
+        if (a[i] == b[i])
+            dp[i] = 0;
+        else
+            dp[i] = 1;
+        if (i)
+            dp[i] += dp[i - 1];
+        if (i)
+        {
+            int x = 0;
+            if (a[i] != a[i - 1])
+                x++;
+            if (b[i] != b[i - 1])
+                x++;
+            dp[i] = min(dp[i], x + (i >= 2 ? dp[i - 2] : 0));
+        }
+    }
+    cout << dp[n - 1] << "\n";
 }
 
 signed main()
