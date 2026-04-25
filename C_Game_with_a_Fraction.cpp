@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-04-24 21:13:38
+Created: 2026-04-25 11:52:00
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,57 +30,18 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n, h, k;
-    cin >> n >> h >> k;
-    vector<int> a(n);
-    vector<int> prefA(n);
-
-    for (int i = 0; i < n; i++)
+    int p, q;
+    cin >> p >> q;
+    if (p >= q)
     {
-        cin >> a[i];
-        prefA[i] = a[i];
-        if (i - 1 >= 0)
-        {
-            prefA[i] += prefA[i - 1];
-        }
+        cout << "Alice" << "\n";
     }
-
-    int sum = prefA[n - 1];
-
-    int wMag = (h - 1) / sum;
-
-    int tMag = n * wMag + k * wMag;
-
-    h -= wMag * sum;
-
-    if (h <= 0)
+    else if (3 * p >= 2 * q)
     {
-        cout << tMag << "\n";
-        return;
+        cout << "Bob" << "\n";
     }
-
-    vector<int> mRight(n + 1);
-    mRight[n - 1] = a[n - 1];
-
-    for (int i = n - 2; i >= 0; i--)
-    {
-        mRight[i] = max(mRight[i + 1], a[i]);
-    }
-
-    int mLeft = a[0];
-
-    for (int i = 0; i < n; i++)
-    {
-        mLeft = min(mLeft, a[i]);
-
-        int cSum = prefA[i] - mLeft + mRight[i + 1];
-
-        if (h <= cSum || h <= prefA[i])
-        {
-            cout << tMag + i + 1 << "\n";
-            return;
-        }
-    }
+    else
+        cout << "Alice" << "\n";
 }
 
 signed main()
