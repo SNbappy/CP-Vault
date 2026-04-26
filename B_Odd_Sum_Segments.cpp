@@ -36,7 +36,34 @@ void Depressed_C0der()
     for (int i = 0; i < n; i++)
         cin >> a[i];
 
-    
+    int sum = 0;
+    int cnt = 0;
+    vector<int> pos(k - 1);
+    int j = 0;
+    for (int i = 0; i < n; i++)
+    {
+        sum += a[i];
+        if (sum % 2){
+            if (j <= k - 2) {
+                if (sum % 2){
+                    pos[j] = i;
+                    j++;
+                    sum = 0;
+                }
+            }
+        }
+    }
+    // cout << j << "\n";
+    if (sum % 2 and j == k - 1) {
+        cout << "YES" << "\n";
+        for (auto x: pos)
+            cout << x + 1 << " ";
+        cout << n << "\n";
+        // cout << "\n";
+        return;
+    }
+
+    cout << "NO" << "\n";
 }
 
 signed main()
