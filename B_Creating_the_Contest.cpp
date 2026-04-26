@@ -34,20 +34,20 @@ void Depressed_C0der()
     cin >> n;
     vector<int> a(n);
     for (int i = 0; i < n; i++)
-    {
         cin >> a[i];
-    }
-    int cnt = 0;
-    int mx = 0;
-    int j = 0;
-    for (int i = 0; i < n, j < n; i++) {
-        while (2*a[i] >= a[j]) {
-            j++;
-            cnt++;
+
+    int l = 0, ans = 1;
+
+    for (int r = 1; r < n; r++)
+    {
+        if (a[r] > 2 * a[r - 1])
+        {
+            l = r;
         }
-        mx = max(cnt, mx);
+        ans = max(ans, r - l + 1);
     }
-    cout << mx << "\n";
+
+    cout << ans << '\n';
 }
 
 signed main()
@@ -57,7 +57,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
