@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-04-26 21:53:17
+Created: 2026-04-28 21:02:59
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -33,25 +33,39 @@ void Depressed_C0der()
     int n;
     cin >> n;
     vector<int> a(n);
-    map<int, int> mp;
     for (int i = 0; i < n; i++) {
         cin >> a[i];
-        mp[a[i]]++;
     }
-    vector<pair<int,int>> v;
-    for (auto x: mp) {
-        v.push_back({x.second, x.first});
+    // vector<int> prefMx(n, 0), prefMn(n, 0);
+    int prefMx = a[0];
+    int prefMn = a[0];
+    int gcd = a[0];
+    int cnt = 0;
+    for (int i = 1; i < n; i++)
+    {
+        prefMx = max(a[i], prefMx);
+        prefMn = min(a[i], prefMn);
+        gcd = __gcd(gcd, a[i]);
+
+        if (prefMx - prefMn == gcd)
+            cnt++;
     }
-    sort(rall(v));
-    if (v.size() == 1){
-        cout << v[0].second << "\n";
-        return;
+    
+    int suffMx = a[n - 1];
+    int suffMn = a[n - 1];
+    gcd = a[n - 1];
+    int cmt = 0;
+    for (int i = n - 1; i >= 0; i--)
+    {
+        suffMx = max(a[i], suffMx);
+        suffMn = min(a[i], suffMn);
+        gcd = __gcd(gcd, a[i]);
+
+        if (suffMx - suffMn == gcd)
+            cmt++;
     }
-    if (v[0].first != v[1].first){
-        cout << v[0].second << "\n";
-    }
-    else
-        cout << -1 << "\n";
+
+    cout << cnt + cmt << "\n";
 }
 
 signed main()

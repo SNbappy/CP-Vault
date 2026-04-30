@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-04-26 21:53:17
+Created: 2026-04-28 20:41:39
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -33,25 +33,17 @@ void Depressed_C0der()
     int n;
     cin >> n;
     vector<int> a(n);
-    map<int, int> mp;
-    for (int i = 0; i < n; i++) {
+    int sum = 0;
+    for (int i = 0; i < n; i++)
+    {
         cin >> a[i];
-        mp[a[i]]++;
+        if (a[i] != 1)
+            sum += a[i];
     }
-    vector<pair<int,int>> v;
-    for (auto x: mp) {
-        v.push_back({x.second, x.first});
-    }
-    sort(rall(v));
-    if (v.size() == 1){
-        cout << v[0].second << "\n";
-        return;
-    }
-    if (v[0].first != v[1].first){
-        cout << v[0].second << "\n";
-    }
-    else
-        cout << -1 << "\n";
+    if (a[n - 1] == 1)
+        sum += 1;
+
+    cout << sum << "\n";
 }
 
 signed main()
