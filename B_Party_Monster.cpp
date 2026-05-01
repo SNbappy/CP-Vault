@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-04-30 21:40:57
+Created: 2026-04-30 20:42:10
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -32,24 +32,22 @@ void Depressed_C0der()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
-
-    vector<int> pos(n + 1, -1);
-    int ans = n + 5;
+    int a = 0, b = 0;
+    string s;
+    cin >> s;
     for (int i = 0; i < n; i++)
     {
-        if (pos[a[i]] != -1)
-        {
-            ans = min(ans, i - pos[a[i]] + 1);
-        }
-        pos[a[i]] = i;
+        /* code */
+        if (s[i] == '(')
+            a++;
+        else
+            ++b;
     }
-    if (ans > n)
-        cout << -1 << "\n";
+
+    if (a == b)
+        cout << "YES" << "\n";
     else
-        cout << ans << "\n";
+        cout << "NO" << "\n";
 }
 
 signed main()

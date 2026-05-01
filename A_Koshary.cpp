@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-04-30 21:40:57
+Created: 2026-04-30 20:36:53
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,26 +30,23 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
-
-    vector<int> pos(n + 1, -1);
-    int ans = n + 5;
-    for (int i = 0; i < n; i++)
+    int a, b;
+    cin >> a >> b;
+    // if (a == b) {
+    //     if (a%2 == 0 and b % 2 == 0)
+    //     {
+    //         cout << "YES" << "\n";
+    //     }
+    //     else
+    //         cout << "NO" << "\n";
+    //     return;
+    // }
+    if (a % 2 == 1 and b % 2 == 1)
     {
-        if (pos[a[i]] != -1)
-        {
-            ans = min(ans, i - pos[a[i]] + 1);
-        }
-        pos[a[i]] = i;
+        cout << "NO" << "\n";
     }
-    if (ans > n)
-        cout << -1 << "\n";
     else
-        cout << ans << "\n";
+        cout << "YES" << "\n";
 }
 
 signed main()

@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-04-30 21:40:57
+Created: 2026-04-30 20:43:46
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -34,22 +34,50 @@ void Depressed_C0der()
     cin >> n;
     vector<int> a(n);
     for (int i = 0; i < n; i++)
+    {
+        /* code */
         cin >> a[i];
-
-    vector<int> pos(n + 1, -1);
-    int ans = n + 5;
+    }
+    vector<int> tr, tw, si, ot;
     for (int i = 0; i < n; i++)
     {
-        if (pos[a[i]] != -1)
-        {
-            ans = min(ans, i - pos[a[i]] + 1);
-        }
-        pos[a[i]] = i;
+        if (a[i] % 6 == 0)
+            si.push_back(a[i]);
+        else if (a[i] % 3 == 0)
+            tr.push_back(a[i]);
+        else if (a[i] % 2 == 0)
+            tw.push_back(a[i]);
+        else
+            ot.push_back(a[i]);
     }
-    if (ans > n)
-        cout << -1 << "\n";
-    else
-        cout << ans << "\n";
+    vector<int> ans;
+    while (!si.empty())
+    {
+        ans.push_back(si.back());
+        si.pop_back();
+    }
+    
+    while (!tr.empty())
+    {
+        ans.push_back(tr.back());
+        tr.pop_back();
+    }
+
+    while (!ot.empty())
+    {
+        ans.push_back(ot.back());
+        ot.pop_back();
+    }
+    
+    while (!tw.empty())
+    {
+        ans.push_back(tw.back());
+        tw.pop_back();
+    }
+    
+    for (auto x : ans)
+        cout << x << " ";
+    cout << "\n";
 }
 
 signed main()
