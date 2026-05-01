@@ -44,7 +44,7 @@ void Depressed_C0der()
             return;
         }
     }
-    
+    cout << n + 1 << "\n";
 }
 
 signed main()
