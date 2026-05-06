@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-05-06 12:16:03
+Created: 2026-05-06 19:17:30
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -33,47 +33,20 @@ void Depressed_C0der()
     int n;
     cin >> n;
     vector<int> a(n);
-    for (auto &x : a)
-    {
-        cin >> x;
-    }
-
-    int mex = 0, mx = 0;
-    int ans = 0;
-
-    sort(all(a));
-    multiset<int> ms;
-    for (int i = 0; i <= n; i++)
-        ms.insert(i);
+    vector<bool> seen(n + 5, false);
     for (int i = 0; i < n; i++)
     {
-        mx = max(mx, a[i]);
-        if (ms.count(a[i]))
-        {
-            ms.erase(a[i]);
-        }
-        ans += mx + *ms.begin();
+        cin >> a[i];
+        if (a[i] <= n)
+        seen[a[i]] = true;
     }
 
-    ms.clear();
-    for (int i = 0; i <= n; i++)
-        ms.insert(i);
-    int as = 0;
-    mx = 0, mex = 0;
+    int mex = 0;
+    int mx = *max_element(all(a));
+    while(seen[mex])
+        mex++;
 
-    sort(rall(a));
-
-    for (int i = 0; i < n; i++)
-    {
-        mx = max(mx, a[i]);
-        if (ms.count(a[i])){
-            ms.erase(a[i]);
-        }
-        as += mx + *ms.begin();
-        // cout << *ms.begin() << "\n";
-    }
-
-    cout << max(ans, as) << "\n";
+    cout << n*mx + mex * (mex + 1) / 2 + mex * (n - mex) - min(mex, mx) << "\n";
 }
 
 signed main()
