@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-05-07 15:19:27
+Created: 2026-05-07 15:10:55
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -28,31 +28,21 @@ using namespace std;
 #define debug(...)
 #endif
 
-string str = "";
-
-void num_str(int num) {
-    if (num) {
-        num_str((num - 1) / 26);
-        str += 'a' + (num - 1) % 26;
-    }
-}
-
 void Depressed_C0der()
 {
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
-    int i = 1;
-    while(1) {
-        str.clear();
-        num_str(i);
-        if (s.find(str) == string::npos) {
-            cout << str << "\n";
-            return;
-        }
-        i++;
+    int n, k;
+    cin >> n >> k;
+    if (n % 4 == 0) {
+        cout << n / 2 << " " << n / 4 << " " << n / 4 << "\n";
+        return;
     }
+
+    if (n % 2 == 0) {
+        cout << n / 2 - 1 << " " << n / 2 - 1 << " " << 2 << "\n";
+        return;
+    }
+
+    cout << n / 2 << " " << n / 2 << " " << 1 << "\n";
 }
 
 signed main()
