@@ -27,7 +27,7 @@ using namespace std;
 #else
 #define debug(...)
 #endif
-
+//
 void Depressed_C0der()
 {
     int n;
