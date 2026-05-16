@@ -30,7 +30,51 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    
+    int n, l, r;
+    cin >> n >> l >> r;
+
+    vector<int> a(n);
+
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    sort(all(a));
+
+    int niteParbo = 0;
+    int j = n - 1;
+
+    for (int i = 0; i < n; i++)
+    {
+
+        while (i < j && a[i] + a[j] > r)
+        {
+            j--;
+        }
+
+        if (i >= j)
+            break;
+
+        niteParbo += (j - i);
+    }
+
+    int baad = 0;
+    j = n - 1;
+
+    for (int i = 0; i < n; i++)
+    {
+
+        while (i < j && a[i] + a[j] > (l - 1))
+        {
+            j--;
+        }
+
+        if (i >= j)
+            break;
+
+        baad += (j - i);
+    }
+
+    cout << niteParbo - baad << '\n';
 }
 
 signed main()
