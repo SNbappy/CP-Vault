@@ -1,74 +1,72 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
-
 Author: Depressed_C0der
-Created: 2024-09-13 10:52:18
+Created: 2026-05-16 13:55:12
 */
-
 #include <bits/stdc++.h>
 using namespace std;
-
-#define tst   \
-    int t;    \
-    cin >> t; \
-    while (t--)
-#define el '\n'
-#define yes cout << "YES" << el
-#define no cout << "NO" << el
-#define ll long long
-#define Depressed_C0der int main()
-#define Goodbye return 0;
+#define int long long
 #define all(n) n.begin(), n.end()
 #define rall(n) n.rbegin(), n.rend()
 #define pb push_back
+#define ppb pop_back
+#define pf push_front
+#define ppf pop_front
+#define sz(x) (int)x.size()
+#define fi first
+#define se second
+#define pii pair<int, int>
+#define vi vector<int>
+#define vvi vector<vector<int>>
+#define mii map<int, int>
+#define vpii vector<pair<int, int>>
+#ifndef ONLINE_JUDGE
+#define debug(...)                                                  \
+    cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; \
+    _print(__VA_ARGS__)
+#else
+#define debug(...)
+#endif
 
-/************************************************************
- *                   Utility Function                      *
- ************************************************************/
-
-void Beche_achi()
+void Depressed_C0der()
 {
-
-    ll n;
+    int n;
     cin >> n;
-    vector<ll> a(n);
-    for (ll i = 0; i < n; i++)
-    {
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
         cin >> a[i];
-    }
-    sort(all(a));
-    bool found[n + 1];
-    for (ll i = 0; i < n + 1; i++)
-    {
-        found[i] = false;
-    }
-    for (ll i = 0; i < n; i++)
-    {
-        while (a[i] > 1 && (a[i] > n || found[a[i]]))
+    sort(rall(a));
+    set<int> st;
+    for (int i = 1; i <= n; i++)
+        st.insert(i);
+    for (int i = 0; i < n; i++) {
+        while(a[i] > 0 and st.find(a[i]) == st.end())
             a[i] /= 2;
-        if (a[i] > n || found[a[i]])
-        {
-            no;
+
+        if (a[i] == 0) {
+            cout << "NO" << "\n";
             return;
         }
-        found[a[i]] = true;
+
+        st.erase(a[i]);
     }
-    yes;
+
+    cout << "YES" << "\n";
 }
 
-/************************************************************
- *                      Main Function                      *
- ************************************************************/
-
-Depressed_C0der
+signed main()
 {
-
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
 
-    tst
-    Beche_achi();
+    int tc = 1;
+    cin >> tc;
 
-    Goodbye
+    for (int i = 1; i <= tc; i++)
+    {
+        // cout << "Case " << i << ": ";
+        Depressed_C0der();
+    }
+    return 0;
 }

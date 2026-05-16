@@ -38,8 +38,27 @@ void Depressed_C0der()
     {
         cin >> a[i];
     }
-    
-    
+
+    int l = 1, r = h;
+    while (l < r)
+    {
+        int mid = (l + r) / 2;
+
+        int ans = mid;
+
+        for (int i = 1; i < n; i++){
+            ans += min(a[i] - a[i - 1], mid);
+            if (ans >= h)
+                break;
+        }
+            
+
+        if (ans >= h)
+            r = mid;
+        else
+            l = mid + 1;
+    }
+    cout << l << "\n";
 }
 
 signed main()
