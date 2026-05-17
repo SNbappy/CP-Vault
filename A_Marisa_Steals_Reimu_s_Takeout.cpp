@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-05-17 23:18:33
+Created: 2026-05-17 17:51:03
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,13 +30,13 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int a, b, c;
-    cin >> a >> b >> c;
-    string x = "", y = "";
-    --c;
-    x += '1' + string((a - 1), '0');
-    y += string((b - c), '1') + string(c, '0');
-    cout << x << " " << y << "\n";
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    
 }
 
 signed main()
