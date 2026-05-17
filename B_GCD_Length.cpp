@@ -36,7 +36,7 @@ void Depressed_C0der()
     --c;
     x += '1' + string((a - 1), '0');
     y += string((b - c), '1') + string(c, '0');
-    cout << x << " " << y << "\n";
+    cout << x << " " << y << "\n";//
 }
 
 signed main()
