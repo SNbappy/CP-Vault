@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-05-23 09:32:07
+Created: 2026-05-23 10:13:32
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -32,32 +32,20 @@ void Depressed_C0der()
 {
     int n;
     cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
-
-    unordered_map<int, int> mx, mn;
-
-    for (int i = 0; i < n - 1; i++)
-    {
-        for (int j = i + 1; j < n; j++)
-        {
-            if (a[i] > a[j])
-                mx[i]++;
-            else if (a[i] < a[j])
-                mn[i]++;
-        }
+    string s;
+    cin >> s;
+    string st;
+    for (auto x: s) {
+        if (!st.empty() and st.back() == x)
+            st.pop_back();
+        else
+            st.push_back(x);
     }
-    vector<int> v;
-    
-    for (int i = 0; i < n; i++)
-    {
-        v.push_back(max(mx[i], mn[i]));
-    }
-    
-    for (auto x: v)
-        cout << x << " ";
-    cout << "\n";
+
+    if (st.empty())
+        cout << "YES" << "\n";
+    else
+        cout << "NO" << "\n";
 }
 
 signed main()
