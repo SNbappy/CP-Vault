@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-05-23 14:22:08
+Created: 2026-06-01 08:53:22
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,10 +30,6 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n;
-    cin >> n;
-    string s;
-    cin >> s;
     
 }
 

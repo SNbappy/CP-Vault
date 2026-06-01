@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-05-23 14:22:08
+Created: 2026-06-01 07:28:35
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -32,9 +32,28 @@ void Depressed_C0der()
 {
     int n;
     cin >> n;
-    string s;
-    cin >> s;
-    
+    vector<int> a(n);
+    for (int i = 0; i < n; ++i)
+        cin >> a[i];
+
+    int mx = 0;
+    for (int i = 0; i < n - 1; ++i)
+    {
+        mx = max(mx, a[i] - a[i + 1]);
+    }
+
+    for (int i = 1; i < n; ++i)
+    {
+        if (a[i] < a[i - 1])
+        {
+            a[i] += mx;
+        }
+    }
+
+    if (is_sorted(all(a)))
+        cout << "YES\n";
+    else
+        cout << "NO\n";
 }
 
 signed main()
