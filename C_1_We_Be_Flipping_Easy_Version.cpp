@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-06-08 14:14:01
+Created: 2026-06-08 14:26:53
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -33,16 +33,30 @@ void Depressed_C0der()
     int n;
     cin >> n;
     vector<int> a(n);
+    vector<int> v(n);
     for (int i = 0; i < n; i++)
-        cin >> a[i];
-
-    int cnt = 0;
-    for (int i = 0; i < n - 1; i++)
     {
-        if (abs(a[i] - a[i + 1]) == __gcd(a[i], a[i + 1]))
-            ++cnt;
+        cin >> a[i];
     }
-    cout << cnt << "\n";
+    bool ok = true;
+    vector<int> ans;
+    for (int i = n - 1; i >= 0; i--)
+    {
+        if (a[i] > 0 and ok == true)
+        {
+            ans.push_back(i + 1);
+            ok = false;
+        }
+        if (a[i] < 0 and ok == false)
+        {
+            ans.push_back(i + 1);
+            ok = true;
+        }
+    }
+    cout << ans.size() << "\n";
+    for (auto x: ans)
+        cout << x << " ";
+    cout << "\n";
 }
 
 signed main()
