@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-06-08 15:28:52
+Created: 2026-06-08 15:33:28
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,51 +30,21 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n, k, p, m;
-    cin >> n >> k >> p >> m;
-
-    vector<int> a(n + 1);
-
-    for (int i = 1; i <= n; i++)
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
         cin >> a[i];
-
-    multiset<int> opt;
-
-    for (int i = 1; i <= k - 1; i++)
-        opt.insert(a[i]);
-
-    for (int i = k; i <= p - 1; i++)
+    int cnt = 0;
+    for (int i = 0; i < n - 1; i++)
     {
-        opt.insert(a[i]);
-        m -= *opt.begin();
-        opt.erase(opt.begin());
+        if (a[i] == 7 - a[i + 1] || a[i] == a[i + 1])
+        {
+            cnt++;
+            i++;
+        }
     }
-
-    m -= a[p];
-
-    if (m < 0)
-    {
-        cout << 0 << '\n';
-        return;
-    }
-
-    int sum = a[p];
-
-    opt.clear();
-
-    for (int i = 1; i <= n; i++)
-    {
-        if (i != p)
-            opt.insert(a[i]);
-    }
-
-    for (int i = 1; i <= n - k; i++)
-    {
-        sum += *opt.begin();
-        opt.erase(opt.begin());
-    }
-
-    cout << 1 + m / sum << '\n';
+    cout << cnt << "\n";
 }
 
 signed main()
