@@ -30,7 +30,24 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    
+    string s;
+    cin >> s;
+    int one = 0, two = 0;
+    int cnt = 0;
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (s[i] == '4' || s[i] == '8')
+            cnt++;
+        if (s[i] == '1' || s[i] == '3' || s[i] == '5' || s[i] == '7' || s[i] == '9')
+            one++;
+        if (s[i] == '2' || s[i] == '6')
+            two++;
+        if (one and (s[i] == '2' || s[i] == '6'))
+            cnt++, one--;
+        if (two and s[i] == '0')
+            cnt++, two--;
+    }
+    cout << cnt << "\n";
 }
 
 signed main()
