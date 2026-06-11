@@ -30,7 +30,32 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    
+    int n;
+    cin >> n;
+    string s;
+    cin >> s;
+    int one = 0;
+    int cnt = 0;
+    vector<int> ans;
+    for (int i = n - 1; i >= 0; i--)
+    {
+        if (s[i] == '0')
+        {
+            int x = n - i - 1 - one;
+            cnt += x;
+            one++;
+            ans.push_back(cnt);
+        }
+    }
+
+    n -= ans.size();
+
+    for (int i = 0; i < n; i++)
+        ans.push_back(-1);
+
+    for (auto x : ans)
+        cout << x << " ";
+    cout << "\n";
 }
 
 signed main()
