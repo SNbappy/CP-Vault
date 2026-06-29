@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-06-12 08:53:27
+Created: 2026-06-22 13:50:40
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -33,11 +33,10 @@ void Depressed_C0der()
     int n;
     cin >> n;
     vector<int> a(n);
-
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
-
-    
+    for (auto &x: a)
+        cin >> x;
+    sort(all(a));
+    cout << a[n - 1] - a[0] + 1 << "\n";
 }
 
 signed main()

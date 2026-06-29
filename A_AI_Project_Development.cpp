@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-06-12 08:53:27
+Created: 2026-06-22 12:42:38
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,14 +30,21 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
-
-    
+    int n, x, y, z;
+    cin >> n >> x >> y >> z;
+    int a = n / (x + y);
+    if (n % (x + y) != 0)
+        ++a;
+    int b = (n - x * z) / (x + 10 * y) + z;
+    if (b < 0)
+    {
+        b = n / x;
+        if (n % x != 0)
+            ++b;
+    }
+    if ((n - x * z) % (x + 10 * y) != 0)
+        ++b;
+    cout << min(a, b) << "\n";
 }
 
 signed main()
