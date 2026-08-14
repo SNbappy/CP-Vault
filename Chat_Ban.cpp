@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-08-14 08:02:16
+Created: 2026-08-14 08:17:08
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -28,52 +28,9 @@ using namespace std;
 #define debug(...)
 #endif
 
-bool canPlace(vector<int> stalls, int c, int distance)
-{
-    int lastPlace = stalls[0];
-    int cows = 1;
-
-    for (int i = 1; i < stalls.size(); i++)
-    {
-        if (stalls[i] - lastPlace >= distance)
-        {
-            cows++;
-            lastPlace = stalls[i];
-            if (cows == c)
-                return true;
-        }
-    }
-    return false;
-}
-
 void Depressed_C0der()
 {
-    int n, c;
-    cin >> n >> c;
-    vector<int> stalls(n);
-
-    for (int i = 0; i < stalls.size(); i++)
-        cin >> stalls[i];
-
-    sort(all(stalls));
-
-    int low = 0;
-    int high = stalls[n - 1] - stalls[0];
-    int ans = 0;
-
-    while (low <= high)
-    {
-        int mid = low + (high - low) / 2;
-
-        if (canPlace(stalls, c, mid))
-        {
-            ans = mid;
-            low = mid + 1;
-        }
-        else
-            high = mid - 1;
-    }
-    cout << ans << "\n";
+    
 }
 
 signed main()
