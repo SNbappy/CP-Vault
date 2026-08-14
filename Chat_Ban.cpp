@@ -30,7 +30,40 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    
+    int k, x;
+    cin >> k >> x;
+    int lo = 1;
+    int hi = k;
+    int ans = 2 * k - 1;
+    while (lo <= hi)
+    {
+        int mid = lo + (hi - lo) / 2;
+        int sum = mid * (mid + 1) / 2;
+
+        if (sum >= x)
+        {
+            ans = min(ans, mid);
+            hi = mid - 1;
+        }
+        else
+            lo = mid + 1;
+    }
+
+    lo = 1, hi = k - 1;
+    while (lo <= hi)
+    {
+        int mid = lo + (hi - lo) / 2;
+        int firstHalf = k * (k + 1) / 2;
+        int extra = mid * (2 * k - mid - 1) / 2;
+        if (firstHalf + extra >= x)
+        {
+            ans = min(ans, k + mid);
+            hi = mid - 1;
+        }
+        else
+            lo = mid + 1;
+    }
+    cout << ans << "\n";
 }
 
 signed main()
