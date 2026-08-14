@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-08-11 07:16:25
+Created: 2026-08-11 02:32:59
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -32,23 +32,26 @@ void Depressed_C0der()
 {
     int n;
     cin >> n;
-    int x = 19;
-    int cnt = 0;
-    while(1) {
-        int sum = 0;
-        int k = x;
-        while(k) {
-            sum += k % 10;
-            k /= 10;
-        }
-        if (sum == 10)
-            cnt++;
-        if (cnt == n){
-            cout << x << "\n";
-            return;
-        }
-        ++x;
+    vector<int> v(n);
+    for (int i = 0; i < n; i++)
+    {
+        cin >> v[i];
     }
+    sort(v.begin(), v.end());
+    v.push_back(INT_MAX);
+    int cnt = 1;
+    int ans = 0;
+    for (int i = 0; i < n; i++)
+    {
+        if (v[i + 1] - v[i] < 2)
+            cnt++;
+        else
+        {
+            ans = max(ans, cnt);
+            cnt = 1;
+        }
+    }
+    cout << n - ans << '\n';
 }
 
 signed main()
@@ -58,7 +61,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {

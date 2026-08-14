@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-08-11 07:16:25
+Created: 2026-07-05 11:03:00
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,24 +30,24 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n;
-    cin >> n;
-    int x = 19;
-    int cnt = 0;
-    while(1) {
-        int sum = 0;
-        int k = x;
-        while(k) {
-            sum += k % 10;
-            k /= 10;
+    int n, k;
+    cin >> n >> k;
+
+    string s;
+    cin >> s;
+
+    int bestPairs = __LONG_LONG_MAX__;
+
+    string ans;
+
+    for (int leftDelete = 0; leftDelete <= k; leftDelete++) {
+        vector<int> remove(n, 0);
+
+        int needLeft = leftDelete;
+
+        for (int i = 0; i < n && needLeft; i++) {
+            
         }
-        if (sum == 10)
-            cnt++;
-        if (cnt == n){
-            cout << x << "\n";
-            return;
-        }
-        ++x;
     }
 }
 
@@ -58,7 +58,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
