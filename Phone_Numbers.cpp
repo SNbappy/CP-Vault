@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-08-14 19:20:18
+Created: 2026-08-16 03:14:36
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,33 +30,32 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n, h;
-    cin >> n >> h;
-    vector<int> a(n);
+    int n, m;
+    string s;
+    cin >> n >> m >> s;
+    set<char> ch(all(s));
 
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
+    if (s.size() >= m)
+    {
+        s.resize(m);
 
-    int lo = 1, hi = *max_element(all(a));
-    int ans = hi;
-    while(lo <= hi) {
-        int mid = lo + (hi - lo) / 2;
-        // cout << mid << "\n";
-        int cnt = 0;
-        for (int i = 0; i < n; i++){
-            if (a[i] % mid != 0)
-                cnt += a[i] / mid + 1;
-            else
-                cnt += a[i] / mid;
+        while (true)
+        {
+            auto it = ch.upper_bound(s.back());
+            s.pop_back();
+            if (it != ch.end())
+            {
+                s.push_back(*it);
+                break;
+            }
         }
-        if (cnt <= h){
-            ans = min(ans, mid);
-            hi = mid - 1;
-        }
-        else
-            lo = mid + 1;
     }
-    cout << ans << "\n";
+
+    if (s.size() < m)
+    {
+        s += string(m - s.size(), *ch.begin());
+    }
+    cout << s << "\n";
 }
 
 signed main()
@@ -66,7 +65,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
