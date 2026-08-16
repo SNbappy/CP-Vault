@@ -30,7 +30,18 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    
+    vector<string> s(16);
+    s[1] = "A";
+    char c = 'A';
+    for (int i = 2; i <= 15; i++)
+    {
+        ++c;
+        s[i] = s[i - 1] + c + s[i - 1];
+    }
+
+    int n;
+    cin >> n;
+    cout << s[n];
 }
 
 signed main()
@@ -40,7 +51,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
