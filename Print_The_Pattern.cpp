@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-08-16 03:30:29
+Created: 2026-08-17 00:50:35
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -28,40 +28,9 @@ using namespace std;
 #define debug(...)
 #endif
 
-const int MAXN = 1e6;
-int pref[MAXN + 1][10];
-
-int getG(int x)
-{
-    while (x >= 10) {
-        int product = 1;
-        while(x > 0){
-            if (x % 10 != 0)
-                product *= x % 10;
-            x /= 10;
-        }
-        x = product;
-    }
-    return x;
-}
-
 void Depressed_C0der()
 {
-    for (int i = 1; i <= MAXN; i++) {
-        for (int k = 1; k < 10; k++) {
-            pref[i][k] = pref[i - 1][k];
-        }
-        int k = getG(i);
-            pref[i][k]++;
-    }
-
-    int t;
-    cin >> t;
-    while(t--) {
-        int l, r, k;
-        cin >> l >> r >> k;
-        cout << pref[r][k] - pref[l - 1][k] << "\n";
-    }
+    
 }
 
 signed main()
@@ -71,7 +40,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
