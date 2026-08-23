@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-08-17 16:11:57
+Created: 2026-08-20 19:47:08
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -33,10 +33,27 @@ void Depressed_C0der()
     int n;
     cin >> n;
     vector<int> a(n);
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
-        
-    
+    for (auto &x: a)
+        cin >> x;
+    int q;
+    cin >> q;
+    int x = accumulate(all(a), 0);
+
+    vector<int> aa(x + 1);
+    int cnt = 0;
+    for (int i = 0; i < n; i++) {
+        while(a[i]--){
+            ++cnt;
+            aa[cnt] = i + 1;
+        }
+    }
+
+        while (q--)
+        {
+            int y;
+            cin >> y;
+            cout << aa[y] << "\n";
+        }
 }
 
 signed main()

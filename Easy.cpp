@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-08-17 16:11:57
+Created: 2026-08-20 07:23:10
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -28,15 +28,30 @@ using namespace std;
 #define debug(...)
 #endif
 
+void solve(int n, int k, char source, char spare, char target) {
+    if (n == 1) {
+        cout << "1 : " << source << " => " << target << "\n";
+        return;
+    }
+
+    int mid = 1LL << (n - 1);
+
+    if (k == mid) {
+        cout << n << " : " << source << " => " << target << "\n";
+        return;
+    }
+    else if (k < mid) {
+        solve(n - 1, k, source, target, spare);
+    }
+    else
+        solve(n - 1, k - mid, spare, source, target);
+}
+
 void Depressed_C0der()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
-        
-    
+    int n, a;
+    cin >> n >> a;
+    solve(n, a, 'A', 'B', 'C');
 }
 
 signed main()
@@ -46,7 +61,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {

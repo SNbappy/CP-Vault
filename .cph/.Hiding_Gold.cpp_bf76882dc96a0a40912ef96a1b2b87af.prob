@@ -1,0 +1,1 @@
+{"name":"Local: Hiding_Gold","url":"d:\\Coding\\CP\\Hiding_Gold.cpp","tests":[{"id":1787459835516,"input":"2\n5 8\noo**oooo\n*oo*ooo*\n******oo\n*o*oo*oo\n******oo\n3 4\n**oo\n**oo\n*oo*\n","output":"Case 1: 11\nCase 2: 4\n"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\Coding\\CP\\Hiding_Gold.cpp","group":"local","local":true}
