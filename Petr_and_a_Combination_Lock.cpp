@@ -30,8 +30,34 @@ using namespace std;
 
 void Depressed_C0der()
 {
+    int n;
+    cin >> n;
+    vector<int> a(n);
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    int sum = accumulate(all(a), 0);
     
-}
+    if (sum % 360 == 0) {
+        cout << "YES" << "\n";
+        return;
+    }
+
+    for (int mask = 0; mask < (1 << n); mask++) {
+        int cnt = 0;
+        for (int j = 0; j < n; j++) {
+            if (mask & (1 << j)) {
+                cnt += a[j];
+            }
+
+            if (sum - cnt == cnt) {
+                cout << "YES" << "\n";
+                return;
+            }
+        }
+    }
+    cout << "NO" << "\n";
+} 
 
 signed main()
 {
@@ -40,7 +66,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
