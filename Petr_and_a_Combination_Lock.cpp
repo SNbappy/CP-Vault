@@ -1,12 +1,25 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2025-10-20 10:43:24
+Created: 2026-08-30 08:58:40
 */
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
 #define all(n) n.begin(), n.end()
+#define rall(n) n.rbegin(), n.rend()
+#define pb push_back
+#define ppb pop_back
+#define pf push_front
+#define ppf pop_front
+#define sz(x) (int)x.size()
+#define fi first
+#define se second
+#define pii pair<int, int>
+#define vi vector<int>
+#define vvi vector<vector<int>>
+#define mii map<int, int>
+#define vpii vector<pair<int, int>>
 #ifndef ONLINE_JUDGE
 #define debug(...)                                                  \
     cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; \
@@ -15,47 +28,24 @@ using namespace std;
 #define debug(...)
 #endif
 
-void Solve()
+void Depressed_C0der()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
-    {
-        cin >> a[i];
-    }
-    for (int i = 0; i < (1 << n); i++)
-    {
-        int sum = 0;
-        for (int j = 0; j < n; j++)
-        {
-            if (i & (1 << j))
-            {
-                sum += a[j];
-            }
-            else
-                sum -= a[j];
-        }
-        if (sum == 0 || sum % 360 == 0)
-        {
-            cout << "YES" << '\n';
-            return;
-        }
-    }
-    cout << "NO" << '\n';
+    
 }
+
 signed main()
 {
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
+
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
-        // Cout << \"Case \" << i << \": \";
-        Solve();
+        // cout << "Case " << i << ": ";
+        Depressed_C0der();
     }
     return 0;
 }
