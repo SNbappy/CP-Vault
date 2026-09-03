@@ -50,10 +50,12 @@ void Depressed_C0der()
                 cnt += a[j];
             }
 
-            if (sum - cnt == cnt) {
-                cout << "YES" << "\n";
-                return;
-            }
+            
+        }
+        if ((sum - 2 * cnt) % 360 == 0)
+        {
+            cout << "YES" << "\n";
+            return;
         }
     }
     cout << "NO" << "\n";

@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-08-30 09:06:37
+Created: 2026-09-03 23:48:46
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,7 +30,26 @@ using namespace std;
 
 void Depressed_C0der()
 {
-        
+    int n;
+    cin >> n;
+    vector<int> cnt(31);
+
+    for (int i = 0; i < n; i++) {
+        int x;
+        cin >> x;
+
+        int bit = __lg(x);
+        cnt[bit]++;
+    }
+    int ans = 0;
+    for (int bit = 0; bit < 31; bit++)
+    {
+        int x = cnt[bit];
+
+        ans += x * (x - 1) / 2;
+    }
+
+    cout << ans << "\n";
 }
 
 signed main()
