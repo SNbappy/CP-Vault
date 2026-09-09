@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-05 03:24:03
+Created: 2026-09-09 16:09:45
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,43 +30,24 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int n;
-    cin >> n;
-    vector<int> a(n);
-    for (int i = 0; i < n; i++)
-        cin >> a[i];
+    int n, k;
+    cin >> n >> k;
+    vector<int> div;
+    for (int i = 1; i * i <= n; i++) {
+        if (n % i == 0) {
+            div.push_back(i);
 
-    vector<int> pref(n);
-
-    pref[0] = a[0];
-
-    for (int i = 1; i < n; i++) {
-        pref[i] = pref[i - 1] ^ a[i];
+            if (n /i != i)
+                div.push_back(n / i);
+        }
     }
-
-    if (pref[n - 1] == 0) {
-        cout << "YES" << "\n";
+    sort(all(div));
+    if (div.size() < k) {
+        cout << -1 << '\n';
         return;
     }
 
-    int pos = -1;
-    for (int i = 0; i < n - 2; i++) {
-        if (pref[i] == pref[n - 1]) {
-            pos = i;
-            break;
-        }
-    }
-
-    if (pos != -1) {
-        for (int i = pos + 1; i < n - 1; i++) {
-            if (pref[i] == 0){
-                cout << "YES" << "\n";
-                return;
-            }
-        }
-    }
-
-    cout << "NO" << "\n";
+    cout << div[k - 1] << "\n";
 }
 
 signed main()
@@ -76,7 +57,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
