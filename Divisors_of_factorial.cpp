@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-11 03:24:19
+Created: 2026-09-11 03:37:25
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -28,26 +28,55 @@ using namespace std;
 #define debug(...)
 #endif
 
-const int MAXN = 5e5;
-vector<int> divCnt(MAXN + 1);
+const int MAXN = 5e4;
+const int MOD = 1e9 + 7;
+vector<bool> isPrime(MAXN + 1, true);
 
-void precompute()
+void Sieve()
 {
-    for (int d = 1; d <= MAXN; d++)
+    isPrime[0] = isPrime[1] = false;
+
+    for (int i = 2; i * i <= MAXN; i++)
     {
-        for (int j = 2 * d; j <= MAXN; j += d)
+        if (isPrime[i])
         {
-            divCnt[j] += d;
+            for (int j = i * i; j <= MAXN; j += i)
+            {
+                isPrime[j] = false;
+            }
         }
     }
+}
+
+int legendre(int n, int p)
+{
+    int cnt = 0;
+    while (n > 0)
+    {
+        cnt += n / p;
+        n /= p;
+    }
+    return cnt;
 }
 
 void Depressed_C0der()
 {
     int n;
     cin >> n;
+    vector<int> prime;
+    for (int i = 2; i <= n; i++)
+    {
+        if (isPrime[i])
+            prime.push_back(i);
+    }
+    int ans = 1;
+    for (int i = 0; i < prime.size(); i++)
+    {
+        ans *= (1 + legendre(n, prime[i])) % MOD;
+        ans %= MOD;
+    }
 
-    cout << divCnt[n] << "\n";
+    cout << ans << "\n";
 }
 
 signed main()
@@ -56,7 +85,7 @@ signed main()
     cin.tie(0);
     cout.tie(0);
 
-    precompute();
+    Sieve();
 
     int tc = 1;
     cin >> tc;
