@@ -28,9 +28,41 @@ using namespace std;
 #define debug(...)
 #endif
 
+const int MAXN = 1e6;
+vector<bool> isPrime(MAXN + 1, true);
+
+void Sieve()
+{
+    isPrime[0] = isPrime[1] = false;
+
+    for (int i = 2; i * i <= MAXN; i++)
+    {
+        if (isPrime[i])
+        {
+            for (int j = i * i; j <= MAXN; j += i)
+            {
+                isPrime[j] = false;
+            }
+        }
+    }
+}
+
 void Depressed_C0der()
 {
-    
+    int n;
+    cin >> n;
+    while (n--) {
+        int x;
+        cin >> x;
+        int root = round(sqrtl((long double)x));
+        if (root * root == x) {
+            if (isPrime[root]){
+                cout << "YES" << "\n";
+                continue;
+            }
+        }
+        cout << "NO" << "\n";
+    }
 }
 
 signed main()
@@ -38,9 +70,9 @@ signed main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-
+    Sieve();
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
