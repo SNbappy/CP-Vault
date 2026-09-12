@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-13 02:07:28
+Created: 2026-09-13 02:17:53
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,18 +30,7 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    int x, y;
-    cin >> x >> y;
-
-    long double a = y * logl(x);
-    long double b = x * logl(y);
-
-    if (a > b)
-        cout << ">" << "\n";
-    else if (a < b)
-        cout << "<" << "\n";
-    else
-        cout << "=" << "\n";
+    
 }
 
 signed main()
@@ -51,7 +40,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
