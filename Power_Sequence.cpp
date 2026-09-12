@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-12 20:00:35
+Created: 2026-09-13 02:00:12
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -30,7 +30,42 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    
+    int n;
+    cin >> n;
+    vector<int> a(n);
+
+    for (int i = 0; i < n; i++)
+        cin >> a[i];
+
+    sort(all(a));
+
+    int ans = 0;
+
+    for (int i = 0; i < n; i++)
+        ans += (a[i] - 1);
+
+    int pre = 1;
+
+    for (int i = 2;; i++)
+    {
+        int now = 1;
+        int temp = 0;
+        int j;
+        for (j = 0; j < n; j++)
+        {
+            temp += abs(a[j] - now);
+            now *= i;
+            if (temp >= ans)
+                break;
+        }
+
+        if (j == n)
+            ans = min(temp, ans);
+        if (j < pre)
+            break;
+        pre = j;
+    }
+    cout << ans << "\n";
 }
 
 signed main()
@@ -40,7 +75,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
