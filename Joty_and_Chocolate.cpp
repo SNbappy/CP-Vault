@@ -30,7 +30,12 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    
+    int n, a, b, p, q;
+    cin >> n >> a >> b >> p >> q;
+    int lcm = a * b / gcd(a, b);
+    int x = n / lcm;
+    int ans = (n / a - x) * p + (n / b - x) * q + x * max(p, q);
+    cout << ans << "\n";
 }
 
 signed main()
@@ -40,7 +45,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {
