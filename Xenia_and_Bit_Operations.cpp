@@ -1,8 +1,7 @@
-
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-15 00:12:39
+Created: 2026-09-17 15:16:00
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -29,85 +28,61 @@ using namespace std;
 #define debug(...)
 #endif
 
-const int N = 1e5 + 9, inf = 1e9 + 8;
+const int N = (1 << 17) + 9;
 int a[N];
 int t[N * 4];
 
+int merge(int ans_l, int ans_r, int seg_l, int seg_r) {
+    int seg_len = seg_r - seg_l + 1;
+    int pw = __lg(seg_len);
+    if (pw % 2 == 1)
+        return ans_l | ans_r;
+    else
+        return ans_l ^ ans_r;
+}
+
 void build(int n, int b, int e)
 {
-    if (b == e)
-    {
+    if (b == e) {
         t[n] = a[b];
         return;
     }
+
     int mid = (b + e) / 2, l = 2 * n, r = 2 * n + 1;
+
     build(l, b, mid);
     build(r, mid + 1, e);
-    t[n] = t[l]+t[r];
+    t[n] = merge(t[l], t[r], b, e);
 }
 
-void upd(int n, int b, int e, int i, int v)
-{
-    if (i < b or e < i)
+void upd(int n, int b, int e, int i, int v) {
+    if (i < b or i > e)
         return;
-    if (b == e)
-    {
+    if (b == e) {
         t[n] = v;
         return;
     }
+
     int mid = (b + e) / 2, l = 2 * n, r = 2 * n + 1;
     upd(l, b, mid, i, v);
     upd(r, mid + 1, e, i, v);
-    t[n] = t[l]+t[r];
-}
-
-int query(int n, int b, int e, int i, int j)
-{
-    if (e < i or j < b)
-        return inf;
-    if (b >= i and e <= j)
-        return t[n];
-    int mid = (b + e) / 2, l = 2 * n, r = 2 * n + 1;
-    return min(query(l, b, mid, i, j), query(r, mid + 1, e, i, j));
+    t[n] = merge(t[l], t[r], b, e);
 }
 
 void Depressed_C0der()
 {
     int n, q;
     cin >> n >> q;
+    n = 1 << n;
     for (int i = 1; i <= n; i++)
         cin >> a[i];
 
     build(1, 1, n);
-
-    while (q--)
-    {
-        int ty;
-        cin >> ty;
-        if (ty == 1)
-        {
-            int i, v;
-            cin >> i >> v;
-            ++i;
-            // a[i] = v;
-            upd(1, 1, n, i, v);
-            for (int i = 0; i < 4 * n; i++) {
-                cerr << t[i] << " ";
-            }
-            cerr << '\n';
-        }
-        else
-        {
-            int l, r;
-            cin >> l >> r;
-            --r;
-            ++l, ++r;
-            // long long ans = 0;
-            // for (int i = l; i <= r; i++)
-            //     ans += a[i];
-            int ans = query(1, 1, n, l, r);
-            cout << ans << "\n";
-        }
+    while(q--) {
+        int i, x;
+        cin >> i >> x;
+        upd(1, 1, n, i, x);
+        cout << t[1] << "\n";
     }
 }
 
@@ -126,4 +101,4 @@ signed main()
         Depressed_C0der();
     }
     return 0;
-}
+} 

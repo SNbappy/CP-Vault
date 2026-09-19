@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-20 01:02:34
+Created: 2026-09-19 22:41:46
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -28,35 +28,32 @@ using namespace std;
 #define debug(...)
 #endif
 
-const int N = 105;
-int g[N][N];
+const int N = 1e5 + 5;
+vector<int> adj[N];
+bool visited[N];
+
+void dfs(int u) {
+    visited[u] = true;
+    cout << u << " ";
+    for (int v: adj[u]) {
+        if (!visited[v]) {
+            dfs(v);
+        }
+    }
+}
 
 void Depressed_C0der()
 {
-    int n;
-    cin >> n;
-    for (int i = 0; i < n; i++)
-    {
-        int u, cnt;
-        cin >> u >> cnt;
-        while (cnt--)
-        {
-            int v;
-            cin >> v;
-            g[u][v] = 1;
-        }
+    int n, m;
+    cin >> n >> m;
+    for (int i = 0; i < m; i++) {
+        int u, v;
+        cin >> u >> v;
+        adj[u].push_back(v);
+        adj[v].push_back(u);
     }
-
-    for (int i = 1; i <= n; i++)
-    {
-        for (int j = 1; j <= n; j++)
-        {
-            cout << g[i][j];
-            if (j != n)
-                cout << " ";
-        }
-        cout << "\n";
-    }
+    dfs(1);
+    cout << "\n";
 }
 
 signed main()

@@ -1,8 +1,7 @@
-
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-15 00:12:39
+Created: 2026-09-17 16:22:31
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -29,9 +28,26 @@ using namespace std;
 #define debug(...)
 #endif
 
-const int N = 1e5 + 9, inf = 1e9 + 8;
+const int N = 1e5 + 9;
 int a[N];
-int t[N * 4];
+
+long long t[4 * N], lazy[4 * N];
+
+void push(int n, int b, int e)
+{
+    if (lazy[n] == 0)
+        return;
+
+    t[n] = t[n] + (e - b + 1) * lazy[n];
+    if (b != e)
+    {
+        int mid = (b + e) / 2, l = 2 * n, r = 2 * n + 1;
+        lazy[l] += lazy[n];
+        lazy[r] += lazy[n];
+    }
+
+    lazy[n] = 0;
+}
 
 void build(int n, int b, int e)
 {
@@ -43,70 +59,63 @@ void build(int n, int b, int e)
     int mid = (b + e) / 2, l = 2 * n, r = 2 * n + 1;
     build(l, b, mid);
     build(r, mid + 1, e);
-    t[n] = t[l]+t[r];
+    t[n] = t[l] + t[r];
 }
 
-void upd(int n, int b, int e, int i, int v)
+void upd(int n, int b, int e, int i, int j, int v)
 {
-    if (i < b or e < i)
+    push(n, b, e);
+    if (e < i or j < b)
         return;
-    if (b == e)
+    if (b >= i and e <= j)
     {
-        t[n] = v;
+        lazy[n] += v;
         return;
     }
+
     int mid = (b + e) / 2, l = 2 * n, r = 2 * n + 1;
-    upd(l, b, mid, i, v);
-    upd(r, mid + 1, e, i, v);
-    t[n] = t[l]+t[r];
+    upd(l, b, mid, i, j, v);
+    upd(r, mid + 1, e, i, j, v);
+    t[n] = t[l] + t[r];
 }
 
 int query(int n, int b, int e, int i, int j)
 {
+    push(n, b, e);
     if (e < i or j < b)
-        return inf;
+        return 0;
     if (b >= i and e <= j)
         return t[n];
     int mid = (b + e) / 2, l = 2 * n, r = 2 * n + 1;
-    return min(query(l, b, mid, i, j), query(r, mid + 1, e, i, j));
+    return query(l, b, mid, i, j) + query(r, mid + 1, e, i, j);
 }
 
 void Depressed_C0der()
 {
     int n, q;
     cin >> n >> q;
-    for (int i = 1; i <= n; i++)
-        cin >> a[i];
-
-    build(1, 1, n);
-
     while (q--)
     {
         int ty;
         cin >> ty;
         if (ty == 1)
         {
-            int i, v;
-            cin >> i >> v;
-            ++i;
-            // a[i] = v;
-            upd(1, 1, n, i, v);
-            for (int i = 0; i < 4 * n; i++) {
-                cerr << t[i] << " ";
+            int l, r, v;
+            cin >> l >> r >> v;
+            --r;
+
+            ++l, ++r;
+            for (int i = l; i <= r; i++)
+            {
+                a[i] += v;
             }
-            cerr << '\n';
         }
         else
         {
-            int l, r;
-            cin >> l >> r;
-            --r;
-            ++l, ++r;
-            // long long ans = 0;
-            // for (int i = l; i <= r; i++)
-            //     ans += a[i];
-            int ans = query(1, 1, n, l, r);
-            cout << ans << "\n";
+            int i;
+            cin >> i;
+            ++i;
+            cout << a[i] << "\n";
         }
     }
 }
