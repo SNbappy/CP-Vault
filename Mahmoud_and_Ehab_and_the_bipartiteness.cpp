@@ -20,16 +20,43 @@ const int N = 1e5 + 9;
 vector<int> g[N];
 int col[N];
 
+void dfs(int u, int c)
+{
+    col[u] = c;
+    for (auto v: g[u]) {
+        if (col[v] == 0) {
+            dfs(v, (c == 1 ? 2 : 1));
+        }
+    }
+}
+
 void Depressed_C0der()
 {
     int n;
     cin >> n;
-    for (int i = 1; i < n; i++) {
+    for (int i = 1; i < n; i++)
+    {
         int u, v;
         cin >> u >> v;
         g[u].push_back(v);
         g[v].push_back(u);
     }
+
+    for (int i = 1; i <= n; i++)
+        col[i] = 0;
+
+    dfs(1, 1);
+
+    int red = 0, blue = 0;
+
+    for (int i = 1; i <= n; i++) {
+        if (col[i] == 1)
+            red++;
+        else
+            blue++;
+    }
+
+    cout << red * blue - (n - 1) << "\n";
 }
 
 signed main()
