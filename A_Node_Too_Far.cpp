@@ -20,7 +20,7 @@ const int inf = 1e9;
 
 void Depressed_C0der()
 {
-    int edges;
+    int edges, cs;
     while(cin >> edges and edges) {
         map<int, vector<int>> g;
         set<int> nodes;
@@ -60,9 +60,11 @@ void Depressed_C0der()
                     not_reachable++;
                 }
             }
-            cout << not_reachable << "\n";
+            cout << "Case " << ++cs << ": "
+                 << not_reachable
+                 << " nodes not reachable from node "
+                 << start << " with TTL = " << ttl << ".\n";
         }
-        
     }
 }
 
