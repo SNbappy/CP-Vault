@@ -1,25 +1,13 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-20 01:42:49
+Created: 2026-09-30 16:32:02
 */
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
 #define all(n) n.begin(), n.end()
 #define rall(n) n.rbegin(), n.rend()
-#define pb push_back
-#define ppb pop_back
-#define pf push_front
-#define ppf pop_front
-#define sz(x) (int)x.size()
-#define fi first
-#define se second
-#define pii pair<int, int>
-#define vi vector<int>
-#define vvi vector<vector<int>>
-#define mii map<int, int>
-#define vpii vector<pair<int, int>>
 #ifndef ONLINE_JUDGE
 #define debug(...)                                                  \
     cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; \
@@ -29,11 +17,13 @@ using namespace std;
 #endif
 
 const int N = 105;
-string s[N];
-bool vis[N][N];
-int di[] = {0, -1, 0, +1, -1, -1, +1, +1};
-int dj[] = {+1, 0, -1, 0, +1, -1, -1, +1};
+vector<string> s(N);
+int vis[N][N];
+
 int n, m;
+
+int di[] = {+1, -1, 0, 0, +1, +1, -1, -1};
+int dj[] = {0, 0, +1, -1, -1, +1, -1, +1};
 
 bool is_valid(int i, int j)
 {
@@ -48,8 +38,7 @@ void dfs(int i, int j)
     {
         int nxt_i = i + di[k];
         int nxt_j = j + dj[k];
-
-        if (is_valid(nxt_i, nxt_j) and s[nxt_i][nxt_j] == '@' and !vis[nxt_i][nxt_j])
+        if (is_valid(nxt_i, nxt_j) and !vis[nxt_i][nxt_j] and s[nxt_i][nxt_j] == '@')
         {
             dfs(nxt_i, nxt_j);
         }
@@ -58,30 +47,35 @@ void dfs(int i, int j)
 
 void Depressed_C0der()
 {
-    while (cin >> n >> m and n and m)
+    while (cin >> n >> m and n != 0 and m != 0)
     {
         for (int i = 0; i < n; i++)
-            cin >> s[i];
-        int components = 0;
-        for (int i = 0; i < n; i++)
         {
-            for (int j = 0; j < m; j++)
-            {
-                if (s[i][j] == '@' and !vis[i][j])
-                {
-                    dfs(i, j);
-                    components++;
-                }
-            }
+            cin >> s[i];
         }
-        cout << components << "\n";
+        int cnt = 0;
 
         for (int i = 0; i < n; i++)
         {
             for (int j = 0; j < m; j++)
             {
-                vis[i][j] = false;
+                if (s[i][j] == '@')
+                {
+                    if (!vis[i][j])
+                    {
+                        cnt++;
+                        dfs(i, j);
+                    }
+                }
             }
+        }
+
+        cout << cnt << "\n";
+
+        for (int i = 0; i < n; i++)
+        {
+            for (int j = 0; j < m; j++)
+                vis[i][j] = false;
         }
     }
 }

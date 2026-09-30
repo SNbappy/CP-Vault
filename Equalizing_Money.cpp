@@ -1,25 +1,13 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-20 12:01:30
+Created: 2026-09-30 20:05:44
 */
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
 #define all(n) n.begin(), n.end()
 #define rall(n) n.rbegin(), n.rend()
-#define pb push_back
-#define ppb pop_back
-#define pf push_front
-#define ppf pop_front
-#define sz(x) (int)x.size()
-#define fi first
-#define se second
-#define pii pair<int, int>
-#define vi vector<int>
-#define vvi vector<vector<int>>
-#define mii map<int, int>
-#define vpii vector<pair<int, int>>
 #ifndef ONLINE_JUDGE
 #define debug(...)                                                  \
     cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; \
@@ -32,38 +20,33 @@ const int N = 1005;
 vector<int> g[N];
 bool vis[N];
 
-vector<int> a(N);
+set<int> s;
+int a[N];
 
-int total_sum, total_person;
+int amount, people;
 
 void dfs(int u)
 {
     vis[u] = true;
-    total_person++;
-    total_sum += a[u];
-    for (int v : g[u])
+    amount += a[u];
+    people++;
+    for (auto v : g[u])
     {
         if (!vis[v])
+        {
             dfs(v);
+        }
     }
 }
 
 void Depressed_C0der()
 {
-
+    bool ok = true;
     int n, m;
     cin >> n >> m;
+    for (int i = 1; i <= n; i++)
+        cin >> a[i];
 
-    for (int i = 1; i <= n; i++) {
-        g[i].clear();
-        vis[i] = false;
-    }
-
-        for (int i = 1; i <= n; i++)
-        {
-            cin >> a[i];
-        }
-    set<int> st;
     while (m--)
     {
         int u, v;
@@ -72,31 +55,36 @@ void Depressed_C0der()
         g[v].push_back(u);
     }
 
-    for (int i = 1; i <= n; i++)
+    for (int u = 1; u <= n; u++)
     {
-        if (!vis[i])
+        if (!vis[u])
         {
-            total_sum = 0;
-            total_person = 0;
-            dfs(i);
-
-            if (total_sum % total_person == 0)
+            amount = 0;
+            people = 0;
+            dfs(u);
+            // cout << u << "\n";
+            // cout << amount << " " << people << "\n";
+            if (amount % people)
             {
-                int each_amount = total_sum / total_person;
-                st.insert(each_amount);
+                ok = false;
             }
-            else
-            {
-                cout << "No" << "\n";
-                return;
-            }
+            amount /= people;
+            s.insert(amount);
         }
     }
 
-    if (st.size() != 1)
-        cout << "No" << "\n";
-    else
+    if (s.size() == 1 and ok)
         cout << "Yes" << "\n";
+    else
+        cout << "No" << "\n";
+
+    s.clear();
+
+    for (int i = 1; i <= n; i++)
+    {
+        g[i].clear();
+        vis[i] = false;
+    }
 }
 
 signed main()

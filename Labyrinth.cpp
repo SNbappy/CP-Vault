@@ -53,7 +53,9 @@ void Depressed_C0der()
             }
         }
     }
+
     queue<pair<int, int>> q;
+
     for (int i = 0; i < n; i++)
     {
         for (int j = 0; j < m; j++)
@@ -61,12 +63,16 @@ void Depressed_C0der()
             d[i][j] = inf;
         }
     }
+
     q.push(start);
+
     d[start.first][start.second] = 0;
+
     while (!q.empty())
     {
         auto [i, j] = q.front();
         q.pop();
+
         for (int k = 0; k < 4; k++)
         {
             int nxt_i = i + di[k];
@@ -81,6 +87,7 @@ void Depressed_C0der()
     }
 
     int ans = d[end.first][end.second];
+    
     if (ans == inf)
     {
         cout << "NO\n";

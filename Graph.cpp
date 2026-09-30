@@ -1,25 +1,13 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-20 01:02:34
+Created: 2026-09-30 15:19:25
 */
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
 #define all(n) n.begin(), n.end()
 #define rall(n) n.rbegin(), n.rend()
-#define pb push_back
-#define ppb pop_back
-#define pf push_front
-#define ppf pop_front
-#define sz(x) (int)x.size()
-#define fi first
-#define se second
-#define pii pair<int, int>
-#define vi vector<int>
-#define vvi vector<vector<int>>
-#define mii map<int, int>
-#define vpii vector<pair<int, int>>
 #ifndef ONLINE_JUDGE
 #define debug(...)                                                  \
     cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; \
@@ -28,33 +16,35 @@ using namespace std;
 #define debug(...)
 #endif
 
-const int N = 105;
-int g[N][N];
-
 void Depressed_C0der()
 {
     int n;
     cin >> n;
+    vector<vector<int>> g(n, vector<int>(n));
+    // int g[n][n];
+
+    // for (int i = 0; i < n; i++)
+    //     for (int j = 0; j < n; j++)
+    //         g[i][j] = 0;
+
     for (int i = 0; i < n; i++)
     {
-        int u, cnt;
-        cin >> u >> cnt;
-        while (cnt--)
+        int u, k;
+        cin >> u >> k;
+        --u;
+        for (int j = 0; j < k; j++)
         {
             int v;
             cin >> v;
+            --v;
             g[u][v] = 1;
         }
     }
 
-    for (int i = 1; i <= n; i++)
+    for (int i = 0; i < n; i++)
     {
-        for (int j = 1; j <= n; j++)
-        {
-            cout << g[i][j];
-            if (j != n)
-                cout << " ";
-        }
+        for (int j = 0; j < n; j++)
+            cout << g[i][j] << (n - 1 != j ? " " : "");
         cout << "\n";
     }
 }

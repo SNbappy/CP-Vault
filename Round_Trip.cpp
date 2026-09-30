@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-30 20:40:14
+Created: 2026-09-30 11:32:56
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -16,58 +16,60 @@ using namespace std;
 #define debug(...)
 #endif
 
-const int N = 1e5 + 5;
-vector<int> g[N];
+const int N = 1e5 + 9;
 bool vis[N];
-int cat[N], consecutive[N];
-int ans = 0;
-int n, m;
+bool found;
+int par[N];
+vector<int> cycle, g[N];
 
-void dfs(int u, int p)
-{
-    if (cat[u] == 1)
-    {
-        consecutive[u] = consecutive[p] + 1;
-    }
-    else
-        consecutive[u] = 0;
-
-    if (consecutive[u] > m)
+void dfs(int u, int p) {
+    if (found)
         return;
-
-    bool isLeaf = true;
     vis[u] = true;
-    for (auto v : g[u])
-    {
-        if (!vis[v])
-        {
-            isLeaf = false;
+    par[u] = p;
+    for (auto v : g[u]) {
+        if (!vis[v]) {
             dfs(v, u);
         }
+        else if (v != p) {
+            found = true;
+            while (u != v) {
+                cycle.push_back(u);
+                u = par[u];
+            }
+            cycle.push_back(v);
+            cycle.push_back(u);
+            return;
+        }
     }
-
-    if (isLeaf)
-        ++ans;
 }
 
 void Depressed_C0der()
 {
+    int n, m;
     cin >> n >> m;
-    for (int i = 1; i <= n; i++)
-    {
-        cin >> cat[i];
-    }
-
-    while(--n) {
+    for (int i = 1; i <= m; i++) {
         int u, v;
         cin >> u >> v;
         g[u].push_back(v);
         g[v].push_back(u);
     }
 
-    dfs(1, 0);
+    for (int i = 1; i <= n; i++) {
+        if (!vis[i]) {
+            dfs(i, 0);
+            if (found) {
+                cout << cycle.size() << '\n';
+                for (auto u: cycle) {
+                    cout << u << ' ';
+                }
+                cout << '\n';
+                return;
+            }
+        }
+    }
 
-    cout << ans << "\n";
+    cout << "IMPOSSIBLE\n";
 }
 
 signed main()
