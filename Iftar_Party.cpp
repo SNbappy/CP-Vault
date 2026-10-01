@@ -1,25 +1,13 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-11 16:01:12
+Created: 2026-10-01 02:11:42
 */
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
 #define all(n) n.begin(), n.end()
 #define rall(n) n.rbegin(), n.rend()
-#define pb push_back
-#define ppb pop_back
-#define pf push_front
-#define ppf pop_front
-#define sz(x) (int)x.size()
-#define fi first
-#define se second
-#define pii pair<int, int>
-#define vi vector<int>
-#define vvi vector<vector<int>>
-#define mii map<int, int>
-#define vpii vector<pair<int, int>>
 #ifndef ONLINE_JUDGE
 #define debug(...)                                                  \
     cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; \
@@ -32,30 +20,31 @@ void Depressed_C0der()
 {
     int p, l;
     cin >> p >> l;
-    p = (p - l);
-    vector<int> q;
-    for (int i = 1; i * i <= p; i++)
+    int now = p - l;
+    vector<int> div;
+    for (int i = 1; i * i <= now; i++)
     {
-        if (p % i == 0)
+        if (now % i == 0)
         {
             if (i > l)
-                q.push_back(i);
-            if (i * i != p)
-            {
-                if (p / i > l)
-                    q.push_back(p / i);
-            }
+                div.push_back(i);
+            if (i * i != now and now / i > l)
+                div.push_back(now / i);
         }
     }
-    if (q.empty())
+
+    sort(all(div));
+
+    if (div.empty())
     {
-        cout << "impossible" << "\n";
-        return;
+        cout << "impossible\n";
     }
-    sort(all(q));
-    for (auto x : q)
-        cout << x << " ";
-    cout << "\n";
+    else
+    {
+        for (auto x : div)
+            cout << x << " ";
+        cout << "\n";
+    }
 }
 
 signed main()
