@@ -1,25 +1,13 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-09 16:36:20
+Created: 2026-10-02 11:58:21
 */
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
 #define all(n) n.begin(), n.end()
 #define rall(n) n.rbegin(), n.rend()
-#define pb push_back
-#define ppb pop_back
-#define pf push_front
-#define ppf pop_front
-#define sz(x) (int)x.size()
-#define fi first
-#define se second
-#define pii pair<int, int>
-#define vi vector<int>
-#define vvi vector<vector<int>>
-#define mii map<int, int>
-#define vpii vector<pair<int, int>>
 #ifndef ONLINE_JUDGE
 #define debug(...)                                                  \
     cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; \
@@ -33,20 +21,21 @@ void Depressed_C0der()
     int n;
     cin >> n;
     vector<int> a(n);
-    int GCD = 0;
+    int g = 0;
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
-        GCD = gcd(GCD, a[i]);
+        g = gcd(a[i], g);
     }
+
     vector<int> div;
-    for (int i = 1; i * i <= GCD; i++)
-    {
-        if (GCD % i == 0)
-        {
-            div.push_back(GCD);
-            if (GCD / i != i)
-                div.push_back(GCD);
+
+    for (int i = 1; i * i <= g; i++) {
+        if (g % i == 0) {
+            div.push_back(i);
+
+            if (i * i != g)
+                div.push_back(g / i);
         }
     }
 

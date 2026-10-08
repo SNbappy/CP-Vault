@@ -1,25 +1,13 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-09 16:52:45
+Created: 2026-10-01 16:17:09
 */
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
 #define all(n) n.begin(), n.end()
 #define rall(n) n.rbegin(), n.rend()
-#define pb push_back
-#define ppb pop_back
-#define pf push_front
-#define ppf pop_front
-#define sz(x) (int)x.size()
-#define fi first
-#define se second
-#define pii pair<int, int>
-#define vi vector<int>
-#define vvi vector<vector<int>>
-#define mii map<int, int>
-#define vpii vector<pair<int, int>>
 #ifndef ONLINE_JUDGE
 #define debug(...)                                                  \
     cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; \
@@ -27,35 +15,33 @@ using namespace std;
 #else
 #define debug(...)
 #endif
+const int N = 1e8 + 9, M = 1e8;
+vector<bool> isPrime(N + 1, true);
+vector<int> prime;
 
-void Depressed_C0der()
-{
-    int MAXN = 1e8;
-
-    vector<bool> isPrime(MAXN + 1, true);
-
+void sieve() {
     isPrime[0] = isPrime[1] = false;
-    int cnt = 0;
-    for (int i = 2; i * i <= MAXN; i++)
-    {
-        if (isPrime[i] == true)
-        {
 
-            for (int j = i * i; j <= MAXN; j += i)
-            {
+    for (int i = 2; i * i <= N; i++) {
+        if (isPrime[i]) {
+            for (int j = i * i; j <= N; j+= i) {
                 isPrime[j] = false;
             }
         }
     }
+}
 
-    for (int i = 2; i <= MAXN; i++)
-    {
+void Depressed_C0der()
+{
+    sieve();
+    for (int i = 2; i <= M; i++) {
         if (isPrime[i])
-        {
-            cnt++;
-            if ((cnt - 1) % 100 == 0)
-                cout << i << "\n";
-        }
+            prime.push_back(i);
+    }
+    cout << prime.size() << "\n";
+    for (int i = 0; i < 1000; i += 100) {
+        int x = prime[i] % 100;
+        cout << x << "\n";
     }
 }
 

@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-10-01 15:29:20
+Created: 2026-10-07 09:52:37
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -16,30 +16,50 @@ using namespace std;
 #define debug(...)
 #endif
 
-const int N = 1e6 + 9, M = 1e6;
-int cnt[N], mul[N];
+const int N = 1e5 + 9;
+vector<bool> vis;
+vector<int> g[N];
+vector<int> mn, mx;
+
+int dfs(int u, int dis) {
+    vis[u] = true;
+    mn[u] = dis;
+
+    int cnt = 0;
+
+    for(auto v: g[u]) {
+        if (!vis[v]) {
+            cnt += 1 + dfs(v, dis + 1);
+        }
+    }
+
+    return mx[u] = cnt;
+}
 
 void Depressed_C0der()
 {
     int n;
     cin >> n;
+    for (int i = 1; i < n; i++) {
+        int u, v;
+        cin >> u >> v;
+        g[u].push_back(v);
+        g[v].push_back(u);
+    }
+
+    vis.assign(n + 1, false);
+    mn.assign(n + 1, 0);
+    mx.assign(n + 1, 0);
+
+    dfs(1, 1);
+
+    for (int i = 1; i <= n; i++) {
+        cout << mn[i] << " " << max(0LL, n - mx[i]) << "\n";
+    }
+
     for (int i = 1; i <= n; i++)
     {
-        int x;
-        cin >> x;
-        cnt[x]++;
-    }
-
-    for (int i = 1; i < N; i++)
-    {
-        for (int j = i; j < N; j += i)
-        {
-            mul[i] += cnt[j];
-        }
-    }
-
-    for (int i = 1; i <= M; i++) {
-        cout << mul[i] << ' ';
+        g[i].clear();
     }
 }
 
@@ -50,7 +70,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    // cin >> tc;
+    cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {

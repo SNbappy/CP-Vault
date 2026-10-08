@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-10-05 02:52:00
+Created: 2026-10-03 15:02:47
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -18,7 +18,11 @@ using namespace std;
 
 void Depressed_C0der()
 {
-    
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+
+    }
 }
 
 signed main()

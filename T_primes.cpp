@@ -1,25 +1,13 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-12 03:44:58
+Created: 2026-10-01 15:39:54
 */
 #include <bits/stdc++.h>
 using namespace std;
 #define int long long
 #define all(n) n.begin(), n.end()
 #define rall(n) n.rbegin(), n.rend()
-#define pb push_back
-#define ppb pop_back
-#define pf push_front
-#define ppf pop_front
-#define sz(x) (int)x.size()
-#define fi first
-#define se second
-#define pii pair<int, int>
-#define vi vector<int>
-#define vvi vector<vector<int>>
-#define mii map<int, int>
-#define vpii vector<pair<int, int>>
 #ifndef ONLINE_JUDGE
 #define debug(...)                                                  \
     cerr << "Line:" << __LINE__ << " [" << #__VA_ARGS__ << "] = ["; \
@@ -28,18 +16,18 @@ using namespace std;
 #define debug(...)
 #endif
 
-const int MAXN = 1e6;
-vector<bool> isPrime(MAXN + 1, true);
+const int N = 1e6 + 9;
 
-void Sieve()
-{
+vector<bool> isPrime(N + 1, true);
+
+void sieve(){
     isPrime[0] = isPrime[1] = false;
 
-    for (int i = 2; i * i <= MAXN; i++)
+    for (int i = 2; i * i <= N; i++)
     {
         if (isPrime[i])
         {
-            for (int j = i * i; j <= MAXN; j += i)
+            for (int j = i * i; j <= N; j += i)
             {
                 isPrime[j] = false;
             }
@@ -49,19 +37,21 @@ void Sieve()
 
 void Depressed_C0der()
 {
+    sieve();
     int n;
     cin >> n;
-    while (n--) {
+    for (int i = 0; i < n; i++)
+    {
         int x;
         cin >> x;
-        int root = round(sqrtl((long double)x));
-        if (root * root == x) {
-            if (isPrime[root]){
-                cout << "YES" << "\n";
-                continue;
-            }
+        int m = sqrtl(x);
+
+        if (isPrime[m] and m * m == x)
+        {
+            cout << "YES" << "\n";
         }
-        cout << "NO" << "\n";
+        else
+            cout << "NO" << "\n";
     }
 }
 
@@ -70,7 +60,7 @@ signed main()
     ios_base::sync_with_stdio(0);
     cin.tie(0);
     cout.tie(0);
-    Sieve();
+
     int tc = 1;
     // cin >> tc;
 

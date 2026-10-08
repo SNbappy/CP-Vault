@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-21 20:33:00
+Created: 2026-10-08 10:42:31
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -16,19 +16,20 @@ using namespace std;
 #define debug(...)
 #endif
 
-const int N = 2e5 + 9, inf = 1e9;
+const int N = 1e5 + 9, inf = 1e9;
 vector<int> g[N];
-bool vis[N];
 int d[N], par[N];
 
 void Depressed_C0der()
 {
     int n, m;
     cin >> n >> m;
+
     for (int i = 0; i < m; i++)
     {
         int u, v;
         cin >> u >> v;
+
         g[u].push_back(v);
         g[v].push_back(u);
     }
@@ -46,6 +47,7 @@ void Depressed_C0der()
     {
         int u = q.front();
         q.pop();
+
         for (auto v : g[u])
         {
             if (d[u] + 1 < d[v])
@@ -63,11 +65,9 @@ void Depressed_C0der()
         return;
     }
 
-    cout << d[n] + 1 << "\n";
+    int u = n;
 
     vector<int> path;
-
-    int u = n;
 
     while (u != 1)
     {
@@ -76,8 +76,10 @@ void Depressed_C0der()
     }
 
     path.push_back(1);
-
     reverse(all(path));
+
+    cout << path.size() << "\n";
+
     for (auto x : path)
         cout << x << " ";
     cout << "\n";
