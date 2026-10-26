@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-30 11:32:56
+Created: 2026-10-23 09:13:58
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,10 +17,11 @@ using namespace std;
 #endif
 
 const int N = 1e5 + 9;
+vector<int> cycle;
 bool vis[N];
-bool found;
 int par[N];
-vector<int> cycle, g[N];
+bool found;
+vector<int> g[N];
 
 void dfs(int u, int p) {
     if (found)
@@ -28,17 +29,20 @@ void dfs(int u, int p) {
     vis[u] = true;
     par[u] = p;
     for (auto v : g[u]) {
+        if (found)
+            return;
         if (!vis[v]) {
             dfs(v, u);
         }
         else if (v != p) {
             found = true;
+            int st = u;
             while (u != v) {
                 cycle.push_back(u);
                 u = par[u];
             }
             cycle.push_back(v);
-            cycle.push_back(u);
+            cycle.push_back(st);
             return;
         }
     }
@@ -60,15 +64,14 @@ void Depressed_C0der()
             dfs(i, 0);
             if (found) {
                 cout << cycle.size() << '\n';
-                for (auto u: cycle) {
-                    cout << u << ' ';
+                for (auto u : cycle) {
+                    cout << u << " ";
                 }
-                cout << '\n';
+                cout << "\n";
                 return;
             }
         }
     }
-
     cout << "IMPOSSIBLE\n";
 }
 

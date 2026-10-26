@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-22 00:40:41
+Created: 2026-10-11 20:04:09
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,16 +17,18 @@ using namespace std;
 #endif
 
 const int N = 1005;
-vector<int> g[N], cnt(N);
+vector<int> g[N];
+int cnt[N];
 bool vis[N];
 
-void dfs(int u) {
+void dfs(int u)
+{
     vis[u] = true;
-    ++cnt[u];
-    for (auto v: g[u]) {
-        if (!vis[v]) {
+    cnt[u]++;
+    for (int v : g[u])
+    {
+        if (!vis[v])
             dfs(v);
-        }
     }
 }
 
@@ -34,30 +36,42 @@ void Depressed_C0der()
 {
     int k, n, m;
     cin >> k >> n >> m;
+
     vector<int> person(k);
-    for (int i = 0; i < k; i++) {
+    for (int i = 0; i < k; i++)
+    {
         cin >> person[i];
     }
-    for (int i = 0; i < m; i++) {
+
+    for (int i = 1; i <= m; i++)
+    {
         int u, v;
         cin >> u >> v;
         g[u].push_back(v);
     }
-    for (int i = 0; i < k; i++) {
-        for (int i = 1; i <= n; i++) {
+
+    for (int i = 0; i < k; i++)
+    {
+        for (int i = 1; i <= n; i++)
             vis[i] = false;
-        }
-            dfs(person[i]);
+
+        dfs(person[i]);
     }
+
     int ans = 0;
-    for (int i = 1; i <= n; i++) {
-        // cout << cnt[i] << "\n";
+
+    for (int i = 1; i <= n; i++)
+    {
         if (cnt[i] == k)
-            ++ans;
+        {
+            ans++;
+        }
     }
+
     cout << ans << "\n";
 
-    for (int i = 1; i <= n; i++) {
+    for (int i = 1; i <= n; i++)
+    {
         cnt[i] = 0;
         g[i].clear();
     }

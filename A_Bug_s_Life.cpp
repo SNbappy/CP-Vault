@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-25 22:25:55
+Created: 2026-10-10 08:50:00
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -16,7 +16,7 @@ using namespace std;
 #define debug(...)
 #endif
 
-const int N = 2005;
+const int N = 1e6 + 9;
 vector<int> g[N];
 int col[N];
 bool is_NotHomo;
@@ -24,15 +24,16 @@ bool is_NotHomo;
 void dfs(int u, int c)
 {
     col[u] = c;
+
     for (auto v : g[u])
     {
         if (col[v] == 0)
         {
-            dfs(v, (c == 1 ? 2 : 1));
+            dfs(v, c == 1 ? 2 : 1);
         }
         else
         {
-            if (col[u] == col[v])
+            if (col[v] == col[u])
             {
                 is_NotHomo = false;
             }
@@ -44,17 +45,20 @@ void Depressed_C0der()
 {
     int n, m;
     cin >> n >> m;
-    for (int i = 1; i <= m; i++)
-    {
-        int u, v;
-        cin >> u >> v;
-        g[u].push_back(v);
-        g[v].push_back(u);
-    }
 
     for (int i = 1; i <= n; i++)
     {
         col[i] = 0;
+        g[i].clear();
+    }
+
+    for (int i = 0; i < m; i++)
+    {
+        int u, v;
+        cin >> u >> v;
+
+        g[u].push_back(v);
+        g[v].push_back(u);
     }
 
     is_NotHomo = true;
@@ -72,14 +76,7 @@ void Depressed_C0der()
         cout << "No suspicious bugs found!\n";
     }
     else
-    {
         cout << "Suspicious bugs found!\n";
-    }
-
-    for (int i = 1; i <= n; i++)
-    {
-        g[i].clear();
-    }
 }
 
 signed main()

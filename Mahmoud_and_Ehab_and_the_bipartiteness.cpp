@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-25 22:49:54
+Created: 2026-10-11 19:12:07
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,15 +17,17 @@ using namespace std;
 #endif
 
 const int N = 1e5 + 9;
-vector<int> g[N];
 int col[N];
+vector<int> g[N];
 
-void dfs(int u, int c)
+void dfs(int u, int p)
 {
-    col[u] = c;
-    for (auto v: g[u]) {
-        if (col[v] == 0) {
-            dfs(v, (c == 1 ? 2 : 1));
+    col[u] = p;
+    for (int v : g[u])
+    {
+        if (col[v] == 0)
+        {
+            dfs(v, p == 1 ? 2 : 1);
         }
     }
 }
@@ -46,11 +48,10 @@ void Depressed_C0der()
         col[i] = 0;
 
     dfs(1, 1);
-
     int red = 0, blue = 0;
-
-    for (int i = 1; i <= n; i++) {
-        if (col[i] == 1)
+    for (int u = 1; u <= n; u++)
+    {
+        if (col[u] == 1)
             red++;
         else
             blue++;

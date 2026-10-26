@@ -23,7 +23,11 @@ bool vis[N];
 void dfs(int u) {
     vis[u] = true;
 
-    
+    for (auto v: g[u]) {
+        if(!vis[v]) {
+            dfs(v);
+        }
+    }
 }
 
 void Depressed_C0der()
@@ -38,7 +42,24 @@ void Depressed_C0der()
         g[v].push_back(u);
     }
 
-    
+    int cnt = 0;
+
+    vector<int> path;
+
+    for (int u = 1; u <= n; u++) {
+        if (!vis[u]) {
+            cnt++;
+            dfs(u);
+            path.push_back(u);
+        }
+    }
+
+    cout << cnt - 1 << "\n";
+
+    for (int i = 0; i < path.size() - 1; i++)
+    {
+        cout << path[i] << " " << path[i + 1] << "\n";
+    }
 }
 
 signed main()
@@ -48,7 +69,7 @@ signed main()
     cout.tie(0);
 
     int tc = 1;
-    cin >> tc;
+    // cin >> tc;
 
     for (int i = 1; i <= tc; i++)
     {

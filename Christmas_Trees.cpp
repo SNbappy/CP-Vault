@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-22 12:08:15
+Created: 2026-10-08 11:40:37
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -20,8 +20,10 @@ void Depressed_C0der()
 {
     int n, m;
     cin >> n >> m;
+
     queue<int> q;
     map<int, int> d;
+
     while (n--)
     {
         int u;
@@ -46,6 +48,7 @@ void Depressed_C0der()
             ans += d[u - 1];
             --m;
         }
+
         if (d.find(u + 1) == d.end() and m > 0)
         {
             v.push_back(u + 1);
@@ -56,7 +59,7 @@ void Depressed_C0der()
         }
     }
 
-    cout << ans << "\n";
+    cout << ans << '\n';
     for (auto x : v)
         cout << x << " ";
     cout << "\n";

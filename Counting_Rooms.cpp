@@ -1,7 +1,7 @@
 /*
 بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ
 Author: Depressed_C0der
-Created: 2026-09-26 00:10:17
+Created: 2026-10-08 11:05:55
 */
 #include <bits/stdc++.h>
 using namespace std;
@@ -17,57 +17,52 @@ using namespace std;
 #endif
 
 const int N = 1005;
+vector<string> s(N);
 bool vis[N][N];
+
+int di[] = {+1, -1, 0, 0};
+int dj[] = {0, 0, -1, +1};
+
 int n, m;
-string s[N];
 
-int di[] = {+1, 0, -1, 0, +1, -1, +1, -1};
-int dj[] = {0, +1, 0, -1, +1, -1, -1, +1};
-
-bool is_valid(int i, int j)
-{
+bool isValid (int i, int j) {
     return i >= 0 and i < n and j >= 0 and j < m;
 }
 
-int roomCnt;
-
-void dfs(int i, int j)
-{
+void dfs(int i, int j) {
     vis[i][j] = true;
-    for (int k = 0; k < 4; k++)
-    {
+
+    for (int k = 0; k < 4; k++) {
         int nxt_i = i + di[k];
         int nxt_j = j + dj[k];
-        if (is_valid(nxt_i, nxt_j) and s[nxt_i][nxt_j] == '.' and !vis[nxt_i][nxt_j])
+
+        if (isValid(nxt_i, nxt_j) and s[nxt_i][nxt_j] == '.' and !vis[nxt_i][nxt_j]) {
             dfs(nxt_i, nxt_j);
+        }
     }
 }
 
 void Depressed_C0der()
 {
     cin >> n >> m;
+
     for (int i = 0; i < n; i++)
-    {
         cin >> s[i];
-    }
 
-    roomCnt = 0;
+    int cnt = 0;
 
-    for (int i = 0; i < n; i++)
-    {
-        for (int j = 0; j < m; j++)
-        {
-            if (s[i][j] == '.' and !vis[i][j])
-            {
-                roomCnt++;
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            if (s[i][j] == '.' and !vis[i][j]) {
+                cnt++;
                 dfs(i, j);
             }
         }
     }
 
-    cout << roomCnt << "\n";
+    cout << cnt << "\n";
 }
-
+ 
 signed main()
 {
     ios_base::sync_with_stdio(0);
